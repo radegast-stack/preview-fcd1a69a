@@ -86,6 +86,7 @@ button{font-family:inherit}
 .ub a:hover{color:#fff}
 .ub-left{display:inline-flex;align-items:center;opacity:.92}
 .ub-right{display:flex;align-items:center;gap:18px}
+@media(max-width:720px){.ub-right .ub-hide-m{display:none}.ub{justify-content:flex-end}}
 .ub .tt{width:34px;height:34px;border-radius:9px}
 .tt{width:40px;height:40px;border:1px solid var(--line);border-radius:11px;background:var(--surface-2);display:grid;place-items:center;cursor:pointer;color:var(--ink);flex:none;transition:.16s}
 .utilbar .tt{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#eafaf5}
@@ -147,7 +148,8 @@ section{position:relative}
 
 /* MODALIDADES */
 .mods{padding:clamp(34px,5vw,60px) 0 0}
-.modbar{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:12px}
+.modbar{display:flex;flex-direction:column;gap:14px}
+.modgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .modsearch{position:relative;display:flex;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0 14px;transition:border-color .18s,box-shadow .18s}
 .modsearch:focus-within{border-color:var(--brand);box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 16%,transparent)}
 .modsearch svg{width:19px;height:19px;color:var(--ink-faint);flex:none}
@@ -213,13 +215,17 @@ section{position:relative}
 .metodo h2{color:#fff;font-size:clamp(2rem,4.6vw,3.2rem);max-width:16ch;margin:.7rem 0 0}
 .metodo .lead{color:#cdeee6;max-width:56ch;margin-top:1.1rem;font-size:1.05rem}
 .pilares{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:46px}
-.pilar{position:relative;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:26px 22px;box-shadow:inset 0 1px 0 rgba(255,255,255,.14);transition:transform .22s cubic-bezier(.16,1,.3,1),background .22s;overflow:hidden}
-.pilar:hover{transform:translateY(-6px);background:rgba(255,255,255,.13)}
-.pilar .idx{font-size:.72rem;font-weight:900;letter-spacing:.1em;color:var(--highlight);font-variant-numeric:tabular-nums}
-.pilar .ic{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.15);display:grid;place-items:center;margin:12px 0 16px;color:#fff}
+.pilar{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 22px;box-shadow:0 24px 46px -26px rgba(0,0,0,.6);transition:transform .22s cubic-bezier(.16,1,.3,1),box-shadow .22s;overflow:hidden;--pc:var(--brand)}
+.pilar:nth-child(2){--pc:var(--brand-bright)}
+.pilar:nth-child(3){--pc:var(--brand-lime)}
+.pilar:nth-child(4){--pc:var(--highlight)}
+.pilar::before{content:"";position:absolute;left:0;top:0;height:5px;width:100%;background:var(--pc)}
+.pilar:hover{transform:translateY(-7px);box-shadow:0 34px 58px -24px rgba(0,0,0,.65)}
+
+.pilar .ic{width:54px;height:54px;border-radius:14px;background:color-mix(in srgb,var(--brand) 12%,var(--surface));display:grid;place-items:center;margin:4px 0 16px;color:var(--brand)}
 .pilar .ic svg{width:26px;height:26px}
-.pilar h3{color:#fff;font-size:1.24rem;margin-bottom:.5rem}
-.pilar p{color:#d6efe8;font-size:.93rem}
+.pilar h3{color:var(--ink);font-size:1.24rem;margin-bottom:.5rem}
+.pilar p{color:var(--ink-soft);font-size:.93rem}
 
 /* PARCERIAS */
 .parcerias .head{margin-bottom:6px}
@@ -363,6 +369,7 @@ section{position:relative}
 @media(max-width:600px){.emec-qr{margin-left:0}.emec-qr img{height:72px}}
 .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0 40px;font-size:.8rem;color:#9cc4bc}
 .foot-bottom a{color:#cfe7e1}.foot-bottom a:hover{color:#fff}
+.fb-legal{display:flex;flex-direction:column;gap:3px}
 
 /* NOTES (annotations) */
 .note{display:none;margin-top:20px;background:color-mix(in srgb,var(--highlight) 16%,var(--surface));border:1px solid color-mix(in srgb,var(--highlight) 45%,var(--line));border-left:5px solid var(--highlight);border-radius:12px;padding:16px 18px;font-size:.9rem;line-height:1.6;color:var(--ink)}
@@ -400,8 +407,8 @@ body.notes .note{display:block}
 
 /* responsive */
 @media(max-width:1040px){
-  .modbar{grid-template-columns:1fr 1fr}
-  .modsearch{grid-column:1/-1}
+  .modgrid{grid-template-columns:1fr 1fr}
+  
   .foot-top{grid-template-columns:1fr 1fr}
 }
 @media(max-width:900px){
@@ -419,7 +426,7 @@ body.notes .note{display:block}
   .ub-left{display:none}
 }
 @media(max-width:600px){
-  .modbar{grid-template-columns:1fr}
+  .modgrid{grid-template-columns:1fr}
   .pilares{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr}
   .ingressos{grid-template-columns:1fr}
@@ -443,15 +450,15 @@ body.notes .note{display:block}
 <body>
 
 
-<div class="proto">PROTÓTIPO <b>▸</b> Redesign da home Anhembi Morumbi Sorocaba <b>·</b> banner mantido, resto reconstruído <b>·</b> Smarketeam</div>
+
 
 <div class="utilbar">
   <div class="wrap">
     <div class="ub">
       <span class="ub-left"><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Rua da Penha, 1.181 · Centro, Sorocaba/SP</a></span>
       <div class="ub-right">
-        <a href="#">Trabalhe conosco</a>
-        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>Portal do Aluno</a>
+        <a href="#" class="ub-hide-m">Trabalhe conosco</a>
+        <a href="#" class="ub-hide-m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>Portal do Aluno</a>
         <a href="tel:1530425000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>(15) 3042-5000</a>
         <button class="tt" id="theme" aria-label="Alternar tema">
           <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19"/></svg>
@@ -514,10 +521,12 @@ body.notes .note{display:block}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
         <input type="search" placeholder="Qual curso você procura?" aria-label="Buscar curso">
       </form>
+      <div class="modgrid">
       <a class="modbox" href="#" style="--c:var(--brand)"><span class="mb-lbl">Presencial</span><b>Graduação Presencial</b><span class="mb-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
       <a class="modbox" href="#" style="--c:var(--brand-bright)"><span class="mb-lbl">Presencial + online</span><b>Graduação Semipresencial</b><span class="mb-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
       <a class="modbox" href="#" style="--c:var(--action)"><span class="mb-lbl">Especialização</span><b>MBA e Pós-graduação</b><span class="mb-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
       <a class="modbox" href="#" style="--c:var(--brand-lime)"><span class="mb-lbl">Curta duração</span><b>Cursos Intensivos</b><span class="mb-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </div>
     </div>
     <div class="ticker reveal" aria-hidden="true">
       <div class="ticker-track" id="ticker"></div>
@@ -610,8 +619,7 @@ body.notes .note{display:block}
     </div>
     <div class="depo-grid">
       <div class="depo-feat reveal">
-        <span class="qm">&ldquo;</span>
-        <blockquote>Quem faz a faculdade é você. A maior qualidade daqui é saber que dá pra contar com todo mundo, para criar projetos, ser ouvido e se sentir em casa.</blockquote>
+        <blockquote>&ldquo;Quem faz a faculdade é você. A maior qualidade daqui é saber que dá pra contar com todo mundo, para criar projetos, ser ouvido e se sentir em casa.&rdquo;</blockquote>
         <div class="depo-who">
           <span class="av"><img src="data:image/webp;base64,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" alt="Beatriz Yumi Kozuka"></span>
           <div><b>Beatriz Yumi Kozuka</b><span>Acadêmica de Relações Internacionais</span></div>
@@ -781,7 +789,11 @@ body.notes .note{display:block}
     </div>
     <div class="foot-mec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5zM6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Consulte o cadastro da instituição no sistema e-MEC.<a class="emec-qr" href="https://emec.mec.gov.br/" target="_blank" rel="noopener"><img src="data:image/webp;base64,UklGRm4OAABXRUJQVlA4TGEOAAAv9EFIEBfjqrZtpbpuAahIOgrxSwg96x7kSQWGkSSb2uf3jWh+/uHYxrKKbVvJfVeQ+woQgHr80ZQaDgc3AkGI/p/FAgSTNNV2jAFd+YPQD6Y3ERgl8Rjoy1z4s+FLCBAAQIAgBAAQIAAQAgQAcDXHhZi5lLuYRyl3KY9i7t7XdNN54bwdy+TcNv368B3WpnXuG9l3i61Ex2IgkmfRixiI6FgKRbAsRyIYlmPhdVAS5VRQU2MlaVjBDRPpdkf9OeTA9KnTDYaqNJYNA5oB9Y8ts1hJaqqcCkqivGYlFt6wHIlg2VTXOAratpG6HH/WfXQMImIC5M9LwgZ4vgP4gS1uioV80HyS5Np622bggNtJj7s9flSxKNkqcCEEfPvfBEnJdEZ5fwEi+u+GbRtJkrJvMs/uXTXtdpLbRhIkqdvV89+Lm66QVPc9IKL/kCDJjdvAz3MAjKoQ0E7ylqXaVp5J5MXpBJEgQXx3CiISMv9ZfN4/b9nUre62iOi/JEiS5LZJWD559FhDYLkACb4lSZKkSJL4MDRD4TQzvWGg6f9PmpTsjMiIkVqJPUX03w0bSYpUB+/smUYPuaTYn2tbFRRaWtu08iO2VQ42LZv+WZocnHpsn+GUTSY3OPdBoS/OzZx0qXRFnHtZacWku69b9HcyNvGugeey0IpPD28DvEXKGE1UsVCkql/gzdqHVPCMWvHq5hKq2pTzhaJW7R7HKS5j11CV93MDGc9KKYqjnKGIsgx7A1DPFr0oitEDYOJbvQEummPUCkAVYaMilg2dd4EMcIpmDh47GWLFM2oEMs8RuKgA0emziAHemEZdQnELYEc1L0AutUdRzQJA6NVxzc7TFmxnlAqFng+yGYCGcBxg/3jzx90C2i8DBDsDDiAAdoYCBWEVAgWIyviL4HG3gPbLAMHOgAMIgJ2hQEFYhUABojL+X4cA2oYUArL7HqYmVAYyfJOVFgZl/H8ObgYUbAQz45VqstyghSINSMvEAzluir6dkurIvlaLmq3NQBfY/1tGuPu5qosjHToC8/9zjA1UBTPl4U4Jl4BH5WURpIID7XnkYLff4BbQK4H+tRzhAur3BN/uU4zdPtDKPdkDusrCndfBJwYSfEV6mwMMAT5xhsNCzmoT3Thl/RBRxz3P7hZwCEomaDdx4RYrALB+qyMuCZjCfgc0P5q8BBh7FzEnArrAX3hXtEba33AbbmgjD18OwXyCFgYOy4fINPY6sJ3bKdl4eTJTHC4FlFBP8QJc6o0Pd0j4BIHkcCfdlU4NdHFZcAt/2XHgkL2WNm4gkKMImFKozDdgjn+n1HpJw3DpKXNL0jBbmvLxT/hJs91v0Up53+MmvGImvXCQd/chegrBxDWSzC0UDJaOODBXGqpexJsbCfTyiTIYVoXpMAYkA4P1VCWvGJgqacXizk4JSmRJW3dWSlJVj/eNxzJhIUxBzomAdqtT+SuuGf6fVMhJFAbszpc4jNddK83cogLL1fSkhao7TrmPKUZPCSW0CeZSqSiMEWY5bx29Om+Gazi5KqH3DtEllLFExguyZJCKW07sOkeMN9jTIC8m166CasBpJ59n1HmpF7TUaE95Xs5qPdkST4eDfI0Wy7SbjhI0bwE2Rbbyxu/MiMwLRs5DRBmsRhxJw5dGJZH8tMRlidbkL4NjPZGVUoH+M6fxURtou0+s7ME/OmsKoJGITAU8qdUpqbBkSS9yCxSMKbSMPhupjBQrjkoyrdF3+4xGtaYwvlox6PjSqzGriV5KqTNu1IjkL07rm58rxPZs9U8LEkQoCuPs1biIFufeNz6z0Xm7XzhFFF6w4QhZbuR6MTdCtBmeWac4cGFjonHXZg0EnPaHQ0RXpaZ0xEIfw0A6yJTOTSeAtZNd3bxvpGfCvZqnmN5CLt1J+VJKJIPmMqOKnh0a1KAkcA6jT2q/pjsLs7xC/qbWGq6OrcYM0IdJkbBjwAkg2GOujhAaJh+tJu0hnuz/chUTzAgMjrdToqRBanH/Q3bBzUk6jgzbLsqcY7VRqRFhmJLAJS0MNL5rPaYAMlfJ5+9heKROYrXhQQLRTCCKctsZA6PPWvOVI0YX018N9IlQxD0J1zX5R4CHJUOsHmZL4sEUnuyG4AgCbzX8eqITN9FnaQQI4S+HEtUCaoKQdeEqPo7ggRYzbo7vGjxqQbqdHvhcwaEY0fYCLxl5oMQtFclySgX0xw5GkhM3ZGNRCIvfLfJIOfg8MsNbuqeuZmBRCOlPhG7XwT9//HHzA9KniFLSj7jxd0FZQGdXuQgXx4Hf7uSkkOgiDd1BhPcx6QCzDLYVBScAIlWVvXtoc3E60I2zeiklsHP+tsRYgADmgEAOHoGlAXVNBdME0/xYTbF79wxqOOAFRBZ8NChBA7GrdvTYtMjtx9cZT8pOCYUCdwNaqcyXAaQiIoJZZ1LoONDLgz9mqrPyjBsfrzXtqJIjdkwKDlpl2D8ZeUvLQuRxmF5ClLREcp4pGJUH4UI3DPDb4I7DhToipAkvHHkocBU05aeUdMKjcI3qBiodT+GWfkyI8DkGR/ZEM37N8faljc4l2WsotTByQAWUwVy6mnKGWwwFtm3sJ3ZKdzMc+LOK4+JeWWNMnLlAbC8r7mfzmMYQovoy6jjuRr6Gzp5CkBH/U7hXAM4wcUNEhHpMo47sxaVY07nMwxDVflFlv35R/QEJ1sKy+bEZdil0YZW0wHvdTIswPmO6p3QP04WHSRgjNqjP6K1eAPskDhkZMOBzlIfxEKe1k42SRzEJg9D2B6iwHMcrh/Zw7rc5MiOEhRIIio3/P5VIYcjEaUfKmAHHAQVaOydLpYVyRukEmC7BKVFlCvYZmCG6FYxmRSosaaFoQCz8XVHk5+0vgFmL+7y9AROcEoVkspRw0+q+8v/uUwogDvI2lNAGAAZSC8EhrawMJUoY/+ZPeu2Y2HBw42TuAOC/ZxdOTKCi0l0olxC7PpKCKTE9tzmgz7d6LMAAIEyDo1eVEV7JatvvbAFqO4IUiv0PS8XkxwiDi+eXG0E7gz5H4z2khD6d6WFl6qCD7Xm+PYY+BS0F2kR7PTCoBnKXX6P97i5ygve6yT9sNzrH1M+aa+Drp82PrwVvYBtYKRrpGehSniTuXCHUt+QGX6ZUocfwL00kTvnDfrQdeDbHLHojUQfOwF5C+uCCyKJKnhoGacUPOIekItEQ0W9wHyMMeg21CT7xG504icqsJ0ANy514U+ksFYkY/jjYIFq4ik3Oc5+Vw7VCLM3JROadwfkgStiKLe5BEn7Y060j4ipzflZBEB1sxRZXkYuOcQagYgEtFz4HQA2wVYIgiCCqCFvxV5INCdcuPzBBKs+Fm1QmBluO48YFCT7m8T3dyMGeTOLFW5MuCcJHFWErNri7lNJGY73AVXAE8NtLog8RryGqIIgOtmJbI7rreUspnXJS5+eicJ/IgGgOQRAdbMUG50dzeaI7gpbES8rYihlf0GRnDgEEoIJWfkPQQhBZAGB8VIAlvWCsB/plmuBkn1f4LIIgOviK7a2NgUAEwwEtfmgzQXTwFZubA4/wBFqAk8JnuTnUFFAQBNHFV2xuCU7FgRYjzXUOnCqMgiCq+IpXvAgX4WUWVh+o2DA/6JyYSOYthwnjrl9NLKVU2C99juCXEgVBNPEVmxpurg6/z1WMWhqeqyc2JFwQWVQhvmIyUzQx8GHlULtkNcdD/GCD6BFUTLlNrI/vPT5ruh7X8Q8+iBpZxShCMjG0+Y6gB1TM/1aLoGJKVv637RO8b0CJnkdHf5CYKTpCphPsEBdD9MWNhvB+RoAL2zSlJEEQPqqQpGJiRsJZWMT74sEe9xni4X9pgiBKVxNUTDksLOAxexsBVCaF+PP1R0EQHYKKid191ZhM7zsxFnCS6V85vKP/FQTRIamY2Mf7le+CIboU2PG6pld5AkKZ/JlWpLKwXuglqUIRmyCIDlnFMG83scq4dOBtP0okCKJDUjH2WJgrDK/sALIgiApJxcSbHFnYzXmP41LSeV3ZJan4KxoMdG3AhLTQDukTVBQ+ducpZkRZrfUE8OgOnwXujJ8/No8c5eOVhCTIpA42X5KKTc2jaRi8bSeOwsVtkSReMBrAobsgyKQIy5JUbGoPenATvaVyvD1M9IQGhx+CIBPH298+dFiNE1Z8xBEzGxjxBhRoPRFXfmUNOXw4ZRUr7d0Tdkbok123MAmkNkJPWIBIMjG9LsWRc70eDOd1XkMXmG4UBFFQs6xiQ6MOjMP3pvRq2UB/8UEUtCSs2MzwPnSyFbrW6+Iz/BxsYLvPBpn3BHHFFmGcd8CA2gQtlGCBx4K2rMxfBhj8Lexzti7yrgPQpc9KQKgfOES60pNphJPsLzi2S/Kjs6DPkFL0VxopiFmePz5xyQXtXkd+TwaCMmoAJKCiHAUtgxr0sJ7bg+94ZHmrlcCMgFZaf45C7v2QEABEqSwjBT4dYDgdSJ4VQUDtc6L/hwXYIUEiO74hia06jFLkuN8RQIGdwTpJksqTIFmIar+E/23fA/c+wVJIClDNqVzNqkrhIc9vQb7KQEOGAIGiOx0BVGgjxGbe7oUODIL2AMb7O0LcJfzlFQJQQT33OgLIAS63POETND8+NARQ0t89T7B/AaZwGx+ZWqAMfEhYtpVjkv8FQJ7/GwDgVAIj4R/81wI3rtkA6BoAmmq+ACMdgBXVjEAhkgEvTKMB1CIVMDB9uQgZkRbAgusvcJ6LtwAumupjEwiNP5g+ZiKTA3Yk8xGOMWfPTdO8IJTLxAokj3AYPO2UPuc49C1aG5ixMwzHLmxHmbUN4TS3LYZQ1EtCDBtiy94w2R5FFqYzHlhdC7ogyibYF4hOVoRWfEVnqCXN2kSTGl6+iBzpsPlwiCxaSbWvQKtZtP6XfmIzSikaedrWFmS2L5tOfsj+zKPQKwEA" alt="Selo e-MEC com QR code para consultar o cadastro da instituicao"></a></div>
     <div class="foot-bottom">
-      <span>© 2026 Centro Universitário Anhembi Morumbi · Campus Athon Sorocaba · Athon Ensino Superior Ltda · CNPJ 03.363.565/0001-21</span>
+      <div class="fb-legal">
+        <span>© 2026 - Centro Universitário Anhembi Morumbi Campus Athon Sorocaba</span>
+        <span>Razão Social: Athon Ensino Superior Ltda.</span>
+        <span>CNPJ: 03.363.565/0001-21</span>
+      </div>
       <a href="#">Política de privacidade</a>
     </div>
   </div>
@@ -901,7 +913,7 @@ body.notes .note{display:block}
     el.setAttribute('aria-label',it.title);
     el.innerHTML=
       '<div class="cover"></div><div class="tri"></div><div class="glow"></div>'+
-      (it.isnew?'<span class="new">Novo</span>':'')+
+      ''+
       '<div class="top"><span class="chip">'+it.chip+'</span><span class="exp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>'+
       '<div class="body"><div class="date">'+it.date+'</div><h3>'+it.title+'</h3><div class="desc">'+it.desc+'</div><span class="go">Saiba mais '+arrow()+'</span></div>';
     el.addEventListener('click',function(){openModal(i);});
