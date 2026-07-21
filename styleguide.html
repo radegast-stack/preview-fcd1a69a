@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex, nosnippet">
+<meta name="referrer" content="no-referrer">
+<title>Design System — Anhembi Morumbi Sorocaba</title>
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/components.css">
+<style>
+/* styleguide-only helpers */
+.sg-wrap{max-width:1100px;margin:0 auto;padding:clamp(24px,5vw,64px) clamp(16px,4vw,40px)}
+.sg-h{font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.03em}
+.sg-sub{color:var(--ink-soft);max-width:60ch;margin-top:.8rem;font-size:1.05rem}
+.sg-sec{margin-top:clamp(40px,6vw,72px)}
+.sg-sec>h2{font-size:1.5rem;margin-bottom:.4rem}
+.sg-sec>.sg-desc{color:var(--ink-soft);font-size:.95rem;margin-bottom:22px;max-width:64ch}
+.sg-grid{display:grid;gap:14px}
+.sw{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
+.sw .chip-c{height:88px}
+.sw .meta{padding:12px 14px}
+.sw .meta b{display:block;font-size:.9rem}
+.sw .meta code{font-size:.78rem;color:var(--ink-soft);font-family:'Courier New',monospace}
+.sg-type>*{margin:0 0 10px}
+.sg-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.sg-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm)}
+.sg-code{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-family:'Courier New',monospace;font-size:.82rem;line-height:1.6;color:var(--ink);overflow-x:auto;white-space:pre}
+.sg-tag{display:inline-block;font-size:.7rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--action);border:1px solid color-mix(in srgb,var(--action) 40%,var(--line));border-radius:999px;padding:.3em .7em}
+@media(min-width:560px){.sg-grid.cols{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}}
+</style>
+</head>
+<body>
+<div class="sg-wrap">
+
+  <span class="sg-tag">Design System · v1</span>
+  <h1 class="sg-h">Anhembi Morumbi Sorocaba</h1>
+  <p class="sg-sub">Kit de marca e componentes extraído da home. Toda página nova reusa estes tokens e blocos — muda aqui, muda no site inteiro. Arquivos: <code>assets/base.css</code> (tokens + fontes + reset), <code>assets/components.css</code> (componentes), <code>assets/app.js</code> (interações).</p>
+
+  <!-- COMO USAR -->
+  <section class="sg-sec">
+    <h2>Como criar uma página nova</h2>
+    <p class="sg-desc">Comece por este boilerplate. Ele já traz claro/escuro, fontes da marca e todos os componentes.</p>
+    <div class="sg-code">&lt;!doctype html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Título da página — Anhembi Morumbi Sorocaba&lt;/title&gt;
+  &lt;link rel="stylesheet" href="assets/base.css"&gt;
+  &lt;link rel="stylesheet" href="assets/components.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- header e footer: copiar do index.html --&gt;
+  &lt;!-- conteúdo usando os componentes abaixo --&gt;
+  &lt;script src="assets/app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+  </section>
+
+  <!-- CORES -->
+  <section class="sg-sec">
+    <h2>Cores da marca</h2>
+    <p class="sg-desc">Paleta oficial travada. Usar sempre via variável (ex.: <code>var(--brand)</code>) para respeitar claro/escuro automaticamente.</p>
+    <div class="sg-grid cols" id="swatches"></div>
+  </section>
+
+  <!-- TIPOGRAFIA -->
+  <section class="sg-sec">
+    <h2>Tipografia — Lato</h2>
+    <p class="sg-desc">Display em 900 com tracking apertado; corpo em 400/700. Números com <code>tabular-nums</code>.</p>
+    <div class="sg-card sg-type">
+      <div class="eyebrow">Eyebrow / rótulo de seção</div>
+      <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">Display 900 — Aa Bb 123</h1>
+      <h2 style="font-size:1.9rem">Título de seção 900</h2>
+      <h3 style="font-size:1.3rem">Subtítulo 900</h3>
+      <p style="max-width:60ch;color:var(--ink-soft)">Corpo de texto em Lato 400. A leitura ideal fica em torno de 65 caracteres por linha. <b>Negrito em 700 para dar ênfase</b> sem quebrar o ritmo.</p>
+    </div>
+  </section>
+
+  <!-- BOTOES -->
+  <section class="sg-sec">
+    <h2>Botões</h2>
+    <p class="sg-desc">Classe base <code>.btn</code> + variante. Tamanho grande com <code>.btn-lg</code>.</p>
+    <div class="sg-card">
+      <div class="sg-row">
+        <a class="btn btn-a" href="#">Ação primária</a>
+        <a class="btn btn-lime" href="#">Inscrição (lima)</a>
+        <a class="btn btn-g" href="#">Secundário</a>
+        <a class="btn btn-a btn-lg" href="#">Grande <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="sg-sec">
+    <h2>Cards com traço de destaque</h2>
+    <p class="sg-desc">Padrão usado em "Formando líderes" e "Formas de ingresso": card sólido, sombra e um traço colorido no topo (rotativo por posição).</p>
+    <div class="sg-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+      <div class="pilar" style="--pc:var(--brand)"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v5h-5"/></svg></div><h3>Teal</h3><p>Traço --brand no topo.</p></div>
+      <div class="pilar" style="--pc:var(--brand-bright)"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/></svg></div><h3>Verde-água</h3><p>Traço --brand-bright.</p></div>
+      <div class="pilar" style="--pc:var(--brand-lime)"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><h3>Limão</h3><p>Traço --brand-lime.</p></div>
+      <div class="pilar" style="--pc:var(--highlight)"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div><h3>Amarelo</h3><p>Traço --highlight.</p></div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="sg-sec">
+    <h2>Campos de formulário</h2>
+    <p class="sg-desc">Label acima, foco com anel teal. Container <code>.lead-form</code>, blocos <code>.field</code>.</p>
+    <form class="lead-form" style="max-width:460px" onsubmit="return false">
+      <div class="field"><label for="sg-n">Nome</label><input id="sg-n" type="text" placeholder="Digite aqui"></div>
+      <div class="field"><label for="sg-c">Curso</label><select id="sg-c"><option>Selecione</option><option>Direito</option></select></div>
+      <button class="btn btn-a btn-lg btn-full" type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <!-- CHIPS -->
+  <section class="sg-sec">
+    <h2>Chips e rótulos</h2>
+    <div class="sg-card">
+      <div class="gt-chips">
+        <span>Gestão e Negócios</span><span>Engenharias</span><span>Ciências da Saúde</span><span>Comunicação e Artes</span>
+      </div>
+    </div>
+  </section>
+
+  <p style="margin-top:64px;color:var(--ink-faint);font-size:.85rem;border-top:1px solid var(--line);padding-top:24px">Protótipo interno · não indexável · Smarketeam</p>
+</div>
+
+<script>
+(function(){
+  var tokens=[
+    ['--brand','#00796c','Teal (marca)'],['--brand-bright','#06ae8f','Teal claro'],
+    ['--brand-deep','#005347','Teal escuro'],['--brand-lime','#84bc45','Verde-limão'],
+    ['--action','#a42c81','Magenta (ação)'],['--highlight','#dedd00','Amarelo (destaque)'],
+    ['--ink','#0f201c','Tinta (texto)'],['--ground','#f4f8f6','Fundo']
+  ];
+  var box=document.getElementById('swatches');
+  tokens.forEach(function(t){
+    var el=document.createElement('div');el.className='sw';
+    el.innerHTML='<div class="chip-c" style="background:var('+t[0]+')"></div><div class="meta"><b>'+t[2]+'</b><code>'+t[0]+' · '+t[1]+'</code></div>';
+    box.appendChild(el);
+  });
+})();
+</script>
+</body>
+</html>
