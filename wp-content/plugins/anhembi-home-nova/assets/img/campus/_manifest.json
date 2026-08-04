@@ -1,0 +1,209 @@
+[
+ {
+  "slug": "alameda",
+  "titulo": "Alameda de entrada",
+  "cat": "espacos",
+  "orig": "2560x1920",
+  "kb": 199,
+  "kb_m": 57,
+  "src_kb": 752
+ },
+ {
+  "slug": "sala-cordier",
+  "titulo": "Sala de aula patrocinada Cordier",
+  "cat": "patrocinadas",
+  "orig": "900x776",
+  "kb": 30,
+  "kb_m": 14,
+  "src_kb": 224
+ },
+ {
+  "slug": "sala-starrett",
+  "titulo": "Sala de aula patrocinada STARRETT",
+  "cat": "patrocinadas",
+  "orig": "900x776",
+  "kb": 62,
+  "kb_m": 38,
+  "src_kb": 334
+ },
+ {
+  "slug": "sala-apter",
+  "titulo": "Sala de aula patrocinada APTER",
+  "cat": "patrocinadas",
+  "orig": "900x776",
+  "kb": 52,
+  "kb_m": 32,
+  "src_kb": 312
+ },
+ {
+  "slug": "sala-new-moveis",
+  "titulo": "Laboratorio de Arquitetura patrocinado NEW MOVEIS",
+  "cat": "patrocinadas",
+  "orig": "900x776",
+  "kb": 60,
+  "kb_m": 38,
+  "src_kb": 352
+ },
+ {
+  "slug": "sala-fidere",
+  "titulo": "Sala de aula patrocinada FIDERE",
+  "cat": "patrocinadas",
+  "orig": "900x776",
+  "kb": 63,
+  "kb_m": 38,
+  "src_kb": 336
+ },
+ {
+  "slug": "sala-blue-royal",
+  "titulo": "Sala de aula patrocinada BLUE ROYAL",
+  "cat": "patrocinadas",
+  "orig": "900x776",
+  "kb": 58,
+  "kb_m": 34,
+  "src_kb": 354
+ },
+ {
+  "slug": "auditorio",
+  "titulo": "Auditorio",
+  "cat": "espacos",
+  "orig": "634x543",
+  "kb": 31,
+  "kb_m": 25,
+  "src_kb": 403
+ },
+ {
+  "slug": "biblioteca",
+  "titulo": "Biblioteca",
+  "cat": "espacos",
+  "orig": "634x543",
+  "kb": 76,
+  "kb_m": 61,
+  "src_kb": 234
+ },
+ {
+  "slug": "area-estudos",
+  "titulo": "Area de estudos da biblioteca",
+  "cat": "espacos",
+  "orig": "634x543",
+  "kb": 44,
+  "kb_m": 35,
+  "src_kb": 511
+ },
+ {
+  "slug": "lab-ti",
+  "titulo": "Laboratorio de TI",
+  "cat": "labs",
+  "orig": "634x543",
+  "kb": 39,
+  "kb_m": 32,
+  "src_kb": 201
+ },
+ {
+  "slug": "lab-arquitetura",
+  "titulo": "Laboratorio de Arquitetura",
+  "cat": "labs",
+  "orig": "634x543",
+  "kb": 29,
+  "kb_m": 21,
+  "src_kb": 193
+ },
+ {
+  "slug": "sala-juri",
+  "titulo": "Sala Juri do curso de Direito",
+  "cat": "espacos",
+  "orig": "634x543",
+  "kb": 36,
+  "kb_m": 27,
+  "src_kb": 203
+ },
+ {
+  "slug": "estudio-foto",
+  "titulo": "Estudio de Fotografia",
+  "cat": "estudios",
+  "orig": "900x776",
+  "kb": 30,
+  "kb_m": 20,
+  "src_kb": 378
+ },
+ {
+  "slug": "estudio-video",
+  "titulo": "Estudio de Video",
+  "cat": "estudios",
+  "orig": "900x776",
+  "kb": 32,
+  "kb_m": 19,
+  "src_kb": 312
+ },
+ {
+  "slug": "estudio-radio",
+  "titulo": "Estudio de Radio",
+  "cat": "estudios",
+  "orig": "900x776",
+  "kb": 61,
+  "kb_m": 31,
+  "src_kb": 283
+ },
+ {
+  "slug": "lab-estetica",
+  "titulo": "Laboratorio de Estetica e Cosmetica",
+  "cat": "labs",
+  "orig": "2048x1365",
+  "kb": 184,
+  "kb_m": 49,
+  "src_kb": 1440
+ },
+ {
+  "slug": "lab-hidraulica",
+  "titulo": "Laboratorio de Hidraulica",
+  "cat": "labs",
+  "orig": "900x776",
+  "kb": 49,
+  "kb_m": 30,
+  "src_kb": 311
+ },
+ {
+  "slug": "lab-quimica",
+  "titulo": "Laboratorio de Quimica",
+  "cat": "labs",
+  "orig": "900x776",
+  "kb": 51,
+  "kb_m": 32,
+  "src_kb": 316
+ },
+ {
+  "slug": "atelie-moda",
+  "titulo": "Atelie de moda",
+  "cat": "labs",
+  "orig": "900x776",
+  "kb": 38,
+  "kb_m": 24,
+  "src_kb": 298
+ },
+ {
+  "slug": "lab-engenharia",
+  "titulo": "Laboratorio de Engenharia",
+  "cat": "labs",
+  "orig": "900x776",
+  "kb": 82,
+  "kb_m": 50,
+  "src_kb": 388
+ },
+ {
+  "slug": "secretaria-mba",
+  "titulo": "Secretaria do MBA Executivo",
+  "cat": "espacos",
+  "orig": "900x776",
+  "kb": 38,
+  "kb_m": 24,
+  "src_kb": 67
+ },
+ {
+  "slug": "npj",
+  "titulo": "Sala de atendimento do NPJ",
+  "cat": "espacos",
+  "orig": "634x543",
+  "kb": 14,
+  "kb_m": 10,
+  "src_kb": 162
+ }
+]

@@ -1,16 +1,25 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en-US">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow, noarchive, noimageindex, nosnippet">
-<meta name="googlebot" content="noindex, nofollow">
+<meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="referrer" content="no-referrer">
-<title>Anhembi Morumbi Sorocaba — Home</title>
-<link rel="stylesheet" href="assets/base.css">
-<link rel="stylesheet" href="assets/components.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name='robots' content='max-image-preview:large' />
+<title>anhembi-local</title>
+<link rel='stylesheet' id='anhembi-home-base-css' href='./wp-content/plugins/anhembi-home-nova/assets/base.css?ver=1.3.0' media='all' />
+<link rel='stylesheet' id='anhembi-home-components-css' href='./wp-content/plugins/anhembi-home-nova/assets/components.css?ver=1.3.0' media='all' />
+<meta name="generator" content="WordPress 7.0.2" />
+<link rel="canonical" href="./" />
+<link rel='shortlink' href='./' />
+<style class="wp-fonts-local">
+@font-face{font-family:Manrope;font-style:normal;font-weight:200 800;font-display:fallback;src:url('./wp-content/themes/twentytwentyfive/assets/fonts/manrope/Manrope-VariableFont_wght.woff2') format('woff2');}
+@font-face{font-family:"Fira Code";font-style:normal;font-weight:300 700;font-display:fallback;src:url('./wp-content/themes/twentytwentyfive/assets/fonts/fira-code/FiraCode-VariableFont_wght.woff2') format('woff2');}
+</style>
 </head>
-<body>
+<body class="home wp-singular page-template page-template-anhembi-home-nova page page-id-8 wp-embed-responsive wp-theme-twentytwentyfive anhembi-home-nova">
 <div class="utilbar">
   <div class="wrap">
     <div class="ub">
@@ -19,10 +28,6 @@
         <a href="#" class="ub-hide-m">Trabalhe conosco</a>
         <a href="#" class="ub-hide-m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>Portal do Aluno</a>
         <a href="tel:1530425000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>(15) 3042-5000</a>
-        <button class="tt" id="theme" aria-label="Alternar tema">
-          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19"/></svg>
-          <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        </button>
       </div>
     </div>
   </div>
@@ -31,26 +36,27 @@
 <header id="hdr">
   <div class="wrap">
     <div class="bar">
-      <a class="brand" href="#" aria-label="Anhembi Morumbi Sorocaba">
-        <img class="logo-img" src="assets/img/logo.webp" alt="Anhembi Morumbi Sorocaba" width="628" height="248">
+      <a class="brand" href="./" aria-label="Anhembi Morumbi Sorocaba">
+        <img class="logo-img" src="./wp-content/plugins/anhembi-home-nova/assets/img/logo.webp" alt="Anhembi Morumbi Sorocaba" width="628" height="248">
       </a>
       <nav class="main">
-        <a href="#">Sobre</a>
-        <a href="#">Graduação</a>
-        <a href="#">MBA e Pós</a>
-        <a href="#">Para Vestibulandos</a>
-        <a href="#">Empresas</a>
-        <a href="#">Eventos</a>
-        <a href="#">Blog</a>
+        <span class="nav-pill" id="navPill" aria-hidden="true"></span>
+        <a href="./sobre/">Sobre</a>
+        <a href="./graduacao/">Graduação</a>
+        <a href="./mba/">MBA e Pós</a>
+        <a href="./vestibular/">Para Vestibulandos</a>
+        <a href="./athon-solucoes/">Empresas</a>
+        <a href="./eventos/">Eventos</a>
+        <a href="https://anhembisorocaba.com.br/blog/">Blog</a>
       </nav>
       <div class="tools">
-        <a class="btn btn-a btn-inscreva desk" href="#">Inscreva-se</a>
+        <a class="btn btn-a btn-inscreva desk" href="./vestibular/">Inscreva-se</a>
         <button class="tt burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
       </div>
     </div>
     <nav class="mobmenu" id="mobmenu" aria-label="Menu">
-      <a href="#">Sobre</a><a href="#">Graduação</a><a href="#">MBA e Pós</a><a href="#">Para Vestibulandos</a><a href="#">Empresas</a><a href="#">Eventos</a><a href="#">Blog</a><a href="#">Portal do Aluno</a>
-      <a class="btn btn-a" href="#">Inscreva-se</a>
+      <a href="./sobre/">Sobre</a><a href="./graduacao/">Graduação</a><a href="./mba/">MBA e Pós</a><a href="./vestibular/">Para Vestibulandos</a><a href="./athon-solucoes/">Empresas</a><a href="./eventos/">Eventos</a><a href="https://anhembisorocaba.com.br/blog/">Blog</a><a href="#">Portal do Aluno</a>
+      <a class="btn btn-a" href="./vestibular/">Inscreva-se</a>
     </nav>
   </div>
 </header>
@@ -60,9 +66,9 @@
   <div class="wrap">
     <div class="banner">
       <div class="bslides" id="bslides">
-        <div class="bslide"><picture><source media="(max-width:600px)" srcset="assets/img/banner/vestibular-m.webp"><img src="assets/img/banner/vestibular.webp" alt="Vestibular 2026/2 Anhembi Morumbi Sorocaba, inscrições abertas" width="1920" height="800"></picture></div>
-        <div class="bslide"><picture><source media="(max-width:600px)" srcset="assets/img/banner/minicursos-m.webp"><img src="assets/img/banner/minicursos.webp" alt="Minicursos de Férias 2026 gratuitos, Anhembi Morumbi Sorocaba" width="1920" height="800"></picture></div>
-        <div class="bslide"><picture><source media="(max-width:600px)" srcset="assets/img/banner/saude-m.webp"><img src="assets/img/banner/saude.webp" alt="Anhembi Morumbi Sorocaba, cursos da área da saúde" width="1920" height="800"></picture></div>
+        <div class="bslide"><picture><source media="(max-width:600px)" srcset="./wp-content/plugins/anhembi-home-nova/assets/img/banner/vestibular-m.webp"><img src="./wp-content/plugins/anhembi-home-nova/assets/img/banner/vestibular.webp" alt="Vestibular 2026/2 Anhembi Morumbi Sorocaba, inscrições abertas" width="1920" height="800"></picture></div>
+        <div class="bslide"><picture><source media="(max-width:600px)" srcset="./wp-content/plugins/anhembi-home-nova/assets/img/banner/minicursos-m.webp"><img src="./wp-content/plugins/anhembi-home-nova/assets/img/banner/minicursos.webp" alt="Minicursos de Férias 2026 gratuitos, Anhembi Morumbi Sorocaba" width="1920" height="800"></picture></div>
+        <div class="bslide"><picture><source media="(max-width:600px)" srcset="./wp-content/plugins/anhembi-home-nova/assets/img/banner/saude-m.webp"><img src="./wp-content/plugins/anhembi-home-nova/assets/img/banner/saude.webp" alt="Anhembi Morumbi Sorocaba, cursos da área da saúde" width="1920" height="800"></picture></div>
       </div>
       <button class="barrow l" aria-label="Banner anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
       <button class="barrow r" aria-label="Próximo banner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
@@ -175,7 +181,7 @@
       <div class="depo-feat reveal">
         <blockquote>&ldquo;Quem faz a faculdade é você. A maior qualidade daqui é saber que dá pra contar com todo mundo, para criar projetos, ser ouvido e se sentir em casa.&rdquo;</blockquote>
         <div class="depo-who">
-          <span class="av"><img src="assets/img/beatriz.webp" alt="Beatriz Yumi Kozuka"></span>
+          <span class="av"><img src="./wp-content/plugins/anhembi-home-nova/assets/img/beatriz.webp" alt="Beatriz Yumi Kozuka"></span>
           <div><b>Beatriz Yumi Kozuka</b><span>Acadêmica de Relações Internacionais</span></div>
         </div>
       </div>
@@ -225,7 +231,7 @@
       </div>
     </div>
     <div class="vestcta-cta reveal">
-      <a class="btn btn-lime btn-lg magnetic" href="#">Fazer minha inscrição <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-lime btn-lg magnetic" href="./vestibular/">Fazer minha inscrição <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -241,7 +247,7 @@
         <div class="gt-chips"><span>Gestão e Negócios</span><span>Ciências Jurídicas</span><span>Engenharias</span><span>T.I e Computação</span><span>Ciências da Saúde</span><span>Comunicação e Artes</span><span>Arquitetura e Design</span></div>
         <a class="btn btn-a btn-lg" href="https://anhembisorocaba.com.br/blog/material-gratuito/" target="_blank" rel="noopener">Ver todos os guias <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-      <div class="gt-visual reveal d1"><div class="gt-frame"><img src="assets/img/guia.webp" alt="Guia completo dos cursos, Anhembi Morumbi Sorocaba"></div></div>
+      <div class="gt-visual reveal d1"><div class="gt-frame"><img src="./wp-content/plugins/anhembi-home-nova/assets/img/guia.webp" alt="Guia completo dos cursos, Anhembi Morumbi Sorocaba"></div></div>
     </div>
     <div class="cont-two reveal">
       <div class="cont-col">
@@ -305,8 +311,8 @@
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <img class="logo-w" src="assets/img/logo.webp" alt="Anhembi Morumbi Sorocaba">
-        <p>Centro Universitário Anhembi Morumbi, unidade Sorocaba. Campus Athon, no centro da cidade.</p>
+        <img class="logo-w" src="./wp-content/plugins/anhembi-home-nova/assets/img/logo.webp" alt="Anhembi Morumbi Sorocaba">
+        <p>Centro Universitário Anhembi Morumbi, unidade Sorocaba. No centro da cidade, na Rua da Penha.</p>
         <div class="foot-social">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
           <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
@@ -316,18 +322,18 @@
       </div>
       <div class="foot-col">
         <h4>Cursos</h4>
-        <a href="#">Graduação Presencial</a>
+        <a href="./graduacao/">Graduação Presencial</a>
         <a href="#">Graduação Semipresencial</a>
-        <a href="#">MBA e Pós-graduação</a>
-        <a href="#">Cursos Intensivos</a>
+        <a href="./mba/">MBA e Pós-graduação</a>
+        <a href="./cursos-intensivos/">Cursos Intensivos</a>
         <a href="#">Guias completos</a>
       </div>
       <div class="foot-col">
         <h4>A faculdade</h4>
-        <a href="#">Sobre</a>
-        <a href="#">Campus</a>
+        <a href="./sobre/">Sobre</a>
+        <a href="./campus/">Campus</a>
         <a href="#">Anhembi na mídia</a>
-        <a href="#">Para empresas</a>
+        <a href="./athon-solucoes/">Para empresas</a>
         <a href="#">Trabalhe conosco</a>
       </div>
       <div class="foot-col foot-contatos">
@@ -338,10 +344,10 @@
         <div class="fc"><b>Informações</b><span>contato@anhembisorocaba.com.br</span></div>
       </div>
     </div>
-    <div class="foot-mec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5zM6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Consulte o cadastro da instituição no sistema e-MEC.<a class="emec-qr" href="https://emec.mec.gov.br/" target="_blank" rel="noopener"><img src="assets/img/emec-qr.webp" alt="Selo e-MEC com QR code para consultar o cadastro da instituicao"></a></div>
+    <div class="foot-mec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5zM6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Consulte o cadastro da instituição no sistema e-MEC.<a class="emec-qr" href="https://emec.mec.gov.br/" target="_blank" rel="noopener"><img src="./wp-content/plugins/anhembi-home-nova/assets/img/emec-qr.webp" alt="Selo e-MEC com QR code para consultar o cadastro da instituicao"></a></div>
     <div class="foot-bottom">
       <div class="fb-legal">
-        <span>© 2026 - Centro Universitário Anhembi Morumbi Campus Athon Sorocaba</span>
+        <span>© 2026 Centro Universitário Anhembi Morumbi &middot; Sorocaba</span>
         <span>Razão Social: Athon Ensino Superior Ltda.</span>
         <span>CNPJ: 03.363.565/0001-21</span>
       </div>
@@ -377,6 +383,21 @@
     </div>
   </div>
 </div>
-<script src="assets/app.js"></script>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/twentytwentyfive/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="anhembi-home-app-js-before">
+window.__ASSET_BASE=".\/wp-content\/plugins\/anhembi-home-nova\/";
+//# sourceURL=anhembi-home-app-js-before
+</script>
+<script id="anhembi-home-app-js" src="./wp-content/plugins/anhembi-home-nova/assets/app.js?ver=1.3.0"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"./wp-includes/js/wp-emoji-release.min.js?ver=7.0.2"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=./wp-includes/js/wp-emoji-loader.min.js
+</script>
 </body>
 </html>
