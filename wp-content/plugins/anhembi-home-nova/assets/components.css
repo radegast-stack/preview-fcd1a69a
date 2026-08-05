@@ -1135,3 +1135,20 @@ nav.main .subnav a:hover{background:var(--surface-2)}
 @media (max-width:900px){
   .lista-hero::after{right:-110px;width:min(70vw,360px);opacity:.07}
 }
+
+/* ==========================================================================
+   MIGALHA: contraste legivel em fundo claro e em fundo verde
+   ========================================================================== */
+/* padrao: fundo claro (lista-hero das paginas de egressos, na midia, cursos) */
+.migalha{color:var(--ink-soft);font-weight:700}
+.migalha a{color:var(--brand);border-bottom-color:var(--line-strong)}
+.migalha a:hover{color:var(--brand-deep);border-bottom-color:var(--brand)}
+.migalha span{opacity:.75;color:var(--ink-faint)}
+
+/* fundo verde: volta o tom claro, mas mais forte que o de antes */
+.serie-hero .migalha,.curso-topo .migalha{color:#d8f2ea}
+.serie-hero .migalha a,.curso-topo .migalha a{color:#fff;border-bottom-color:rgba(255,255,255,.55)}
+.serie-hero .migalha a:hover,.curso-topo .migalha a:hover{border-bottom-color:#fff}
+.serie-hero .migalha span,.curso-topo .migalha span{color:#9fd3c6;opacity:1}
+
+.interna-hero .migalha{color:var(--ink-soft)}
