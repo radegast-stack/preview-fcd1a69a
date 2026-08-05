@@ -1197,3 +1197,55 @@ nav.main .subnav a:hover{background:var(--surface-2)}
 @media (max-width:600px){
   .areas-foto{display:none}   /* no celular a foto rouba espaco da lista */
 }
+
+/* ==========================================================================
+   GRADE POR NIVEL (matriz nova, sem semestre fixo)
+   ========================================================================== */
+:root{--nivel-1:var(--brand-deep);--nivel-2:var(--brand-bright);--nivel-3:var(--brand-lime)}
+
+.grade-aviso{background:var(--surface-2);border-left:4px solid var(--highlight);border-radius:0 14px 14px 0;
+  padding:16px 20px;margin:clamp(18px,2.6vw,26px) 0 clamp(20px,3vw,30px);color:var(--ink-soft);max-width:78ch}
+.grade-aviso b{color:var(--ink)}
+
+.niveis{display:grid;gap:16px}
+.nivel{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface)}
+.nivel-cab{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-end;
+  padding:clamp(18px,2.6vw,26px);border-top:6px solid var(--cor);background:var(--surface-2)}
+.nivel-etapa{font-size:.7rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--cor)}
+.nivel-cab h3{font-size:clamp(1.2rem,2.6vw,1.6rem);font-weight:900;letter-spacing:-.02em;margin:.25rem 0 .35rem}
+.nivel-cab p{margin:0;color:var(--ink-soft);max-width:52ch;font-size:.96rem}
+.nivel-num{display:flex;gap:22px;margin:0}
+.nivel-num dt{font-size:.66rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+.nivel-num dd{margin:2px 0 0;font-weight:900;font-size:1.12rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.nivel-rolagem{overflow-x:auto}
+.nivel-tabela{width:100%;border-collapse:collapse;min-width:620px}
+.nivel-tabela thead th{text-align:left;font-size:.66rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);padding:13px clamp(16px,2.4vw,24px);border-bottom:1px solid var(--line)}
+.nivel-tabela thead th:last-child{text-align:right}
+.nivel-tabela tbody th{text-align:left;font-weight:700;font-size:1rem;vertical-align:top;width:42%;
+  padding:14px clamp(16px,2.4vw,24px);border-bottom:1px solid var(--line)}
+.nivel-tabela tbody td{vertical-align:top;color:var(--ink-soft);font-size:.93rem;
+  padding:14px clamp(16px,2.4vw,24px);border-bottom:1px solid var(--line)}
+.nivel-tabela tbody tr:last-child th,.nivel-tabela tbody tr:last-child td{border-bottom:0}
+.nivel-tabela tbody tr:hover th,.nivel-tabela tbody tr:hover td{background:var(--surface-2)}
+.nt-pre ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+.nt-pre li{position:relative;padding-left:16px}
+.nt-pre li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--cor)}
+.nt-sem{color:var(--ink-faint);font-size:1.15rem}
+.nt-h{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink-faint)}
+.nt-h span{font-weight:900;font-size:1.04rem;color:var(--ink)}
+
+.grade-extra{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;margin-top:16px;
+  background:var(--brand);color:#fff;border-radius:18px;padding:clamp(20px,3vw,28px)}
+.grade-extra b{display:block;font-size:.72rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.grade-extra p{margin:.3rem 0 0;max-width:56ch;color:#eafaf6}
+.ge-total{text-align:right}
+.ge-total span{display:block;font-size:clamp(1.9rem,4.4vw,2.6rem);font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+.ge-total small{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;font-weight:900;opacity:.85}
+
+@media (max-width:720px){
+  .nivel-num{gap:16px}
+  .grade-extra{grid-template-columns:1fr}
+  .ge-total{text-align:left}
+}
