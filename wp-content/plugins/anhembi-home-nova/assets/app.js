@@ -169,6 +169,16 @@
   /* menu da propria pagina: marca a secao visivel e rola o chip para dentro */
   var secnav=document.getElementById('secnav');
   if(secnav){
+    /* a barra encosta exatamente embaixo do cabecalho, em qualquer largura */
+    var hdr=document.getElementById('hdr');
+    function alturaCabecalho(){
+      if(!hdr)return;
+      document.documentElement.style.setProperty('--hdr-h',Math.round(hdr.getBoundingClientRect().height)+'px');
+    }
+    alturaCabecalho();
+    addEventListener('resize',alturaCabecalho,{passive:true});
+    addEventListener('load',alturaCabecalho);
+
     var chips=[].slice.call(secnav.querySelectorAll('a'));
     var alvos=chips.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
     function marca(i){
@@ -190,8 +200,9 @@
         if(al)lista.push({k:k,y:al.getBoundingClientRect().top});
       });
       lista.sort(function(a,b){return a.y-b.y;});
+      var linha=(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr-h'),10)||72)+90;
       var i=lista.length?lista[0].k:0;
-      lista.forEach(function(o){if(o.y<=150)i=o.k;});
+      lista.forEach(function(o){if(o.y<=linha)i=o.k;});
       var fim=document.documentElement.scrollHeight-window.innerHeight;
       if(fim>0&&(window.scrollY||window.pageYOffset)>=fim-6)i=alvos.length-1;
       if(i!==atual){atual=i;marca(i);}
