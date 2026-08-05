@@ -377,23 +377,14 @@
 
   montaFiltro(document.getElementById('lcGrid'),'.curso-card',
               [{barra:document.getElementById('lcArea')},
-               {barra:document.getElementById('lcGrau'), attr:'data-grau'},
-               {barra:document.getElementById('lcMod'),  attr:'data-mod'}],
+               {barra:document.getElementById('lcGrau'),  attr:'data-grau'},
+               {barra:document.getElementById('lcMod'),   attr:'data-mod'},
+               {barra:document.getElementById('lcTurno'), attr:'data-turno'}],
               document.getElementById('lcConta'),['curso','cursos'],
               {busca:document.getElementById('lcBusca'),
                vazio:document.getElementById('lcVazio'),
                limpar:document.getElementById('lcLimpar')});
 
-  /* atalhos por area na primeira dobra: acionam o filtro da lista e descem ate ela */
-  [].slice.call(document.querySelectorAll('.area-atalho')).forEach(function(a){
-    a.addEventListener('click',function(){
-      var barra=document.getElementById('lcArea');
-      if(!barra)return;
-      var alvo=a.getAttribute('data-atalho')||'tudo';
-      var botao=barra.querySelector('.gal-f[data-cat="'+alvo+'"]');
-      if(botao&&!botao.classList.contains('on'))botao.click();
-    });
-  });
 
   /* galeria do campus: filtro por categoria + lightbox (sem dependencia externa) */
   var gal=document.getElementById('campusGrid');

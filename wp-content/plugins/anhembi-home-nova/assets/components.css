@@ -976,13 +976,10 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 /* depoimento com foto real no lugar das iniciais */
 .dep-foto{object-fit:cover;padding:0;border:2px solid rgba(255,255,255,.35)}
 
-/* atalhos por área na primeira dobra: caem direto no filtro da lista */
-.area-atalhos{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.3rem;max-width:560px}
-.area-atalho{font-size:.86rem;font-weight:800;padding:.5em 1.1em;border-radius:999px;background:var(--surface);
-  border:1px solid var(--line-strong);color:var(--ink-soft);transition:border-color .18s,color .18s,transform .18s}
-.area-atalho:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-2px)}
-.area-atalho.todos{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:900}
-.area-atalho.todos:hover{background:var(--brand-deep);border-color:var(--brand-deep);color:#fff}
+/* acoes da primeira dobra da listagem: hero claro, contorno escuro */
+.lista-hero .curso-acoes{margin-top:1.5rem}
+.lista-hero .curso-acoes .btn-g{border-color:var(--line-strong);color:var(--ink)}
+.lista-hero .curso-acoes .btn-g:hover{border-color:var(--brand);color:var(--brand);background:transparent}
 .curso-card.off{display:none}
 .filtros-blocos{display:grid;gap:12px;margin:18px 0 26px}
 .filtro-linha{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
@@ -1249,11 +1246,12 @@ nav.main .subnav a:hover{background:var(--surface-2)}
   border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(4px)}
 .empregabilidade b{font-size:clamp(1.7rem,3.6vw,2.2rem);font-weight:900;letter-spacing:-.04em;line-height:1;
   color:var(--highlight);font-variant-numeric:tabular-nums}
-.empregabilidade span{font-size:.92rem;font-weight:800;line-height:1.22;color:#eafaf6;max-width:19ch}
+.empregabilidade > span{font-size:.92rem;font-weight:800;line-height:1.22;color:#eafaf6;max-width:19ch}
+.empregabilidade b .count-up{font:inherit;color:inherit}
 .empregabilidade.claro{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow-sm)}
 .empregabilidade.claro b{color:var(--brand)}
-.empregabilidade.claro span{color:var(--ink-soft)}
-@media (max-width:560px){.empregabilidade{gap:.65em;padding:.5em 1em .5em .85em}.empregabilidade span{font-size:.86rem}}
+.empregabilidade.claro > span{color:var(--ink-soft)}
+@media (max-width:560px){.empregabilidade{gap:.65em;padding:.5em 1em .5em .85em}.empregabilidade > span{font-size:.86rem}}
 
 .mercado-faixa{margin-top:clamp(28px,4vw,44px);padding-top:22px;border-top:1px solid var(--line)}
 .mf-titulo{display:block;font-size:.74rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px}

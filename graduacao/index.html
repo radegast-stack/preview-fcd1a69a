@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name='robots' content='max-image-preview:large' />
 <title>Graduação &#8211; anhembi-local</title>
-<link rel='stylesheet' id='anhembi-home-base-css' href='../wp-content/plugins/anhembi-home-nova/assets/base.css?ver=2.10.0' media='all' />
-<link rel='stylesheet' id='anhembi-home-components-css' href='../wp-content/plugins/anhembi-home-nova/assets/components.css?ver=2.10.0' media='all' />
+<link rel='stylesheet' id='anhembi-home-base-css' href='../wp-content/plugins/anhembi-home-nova/assets/base.css?ver=2.11.0' media='all' />
+<link rel='stylesheet' id='anhembi-home-components-css' href='../wp-content/plugins/anhembi-home-nova/assets/components.css?ver=2.11.0' media='all' />
 <meta name="generator" content="WordPress 7.0.2" />
 <link rel="canonical" href="../graduacao/" />
 <link rel='shortlink' href='../?p=12' />
@@ -112,19 +112,12 @@
       <h1 class="big-h">Graduação em Sorocaba</h1>
                   <div class="lista-intro"><p>Cursos com foco total em preparar profissionais extraordinários para o mercado.</p>
 </div>
-                        <div class="area-atalhos reveal" aria-label="Ir direto para uma área">
-                <a class="area-atalho" href="#cursos" data-atalho="arquitetura">Arquitetura</a>
-                <a class="area-atalho" href="#cursos" data-atalho="comunicacao">Comunicação</a>
-                <a class="area-atalho" href="#cursos" data-atalho="direito">Direito</a>
-                <a class="area-atalho" href="#cursos" data-atalho="engenharias">Engenharias</a>
-                <a class="area-atalho" href="#cursos" data-atalho="moda-e-beleza">Moda e Beleza</a>
-                <a class="area-atalho" href="#cursos" data-atalho="negocios">Negócios</a>
-                <a class="area-atalho" href="#cursos" data-atalho="saude">Saúde</a>
-                <a class="area-atalho" href="#cursos" data-atalho="tecnologia-da-informacao">Tecnologia da Informação</a>
-                <a class="area-atalho todos" href="#cursos">Ver todos os 34 cursos</a>
+                  <div class="curso-acoes reveal">
+        <a class="btn btn-lime btn-lg btn-sweep magnetic" href="../vestibular/">Inscreva-se <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-g btn-lg" href="#cursos">Ver todos os cursos</a>
       </div>
-                  <div class="empregabilidade claro reveal">
-        <b>87%</b>
+            <div class="empregabilidade claro reveal">
+        <b><span class="count-up" data-count="87">87</span>%</b>
         <span>de empregabilidade entre os formados</span>
       </div>
           </div>
@@ -176,6 +169,11 @@
                     <option value="presencial">Presencial</option>
                     <option value="semipresencial">Semipresencial</option>
                   </select>
+                        <select id="lcTurno" class="fx-select" aria-label="Filtrar por turno">
+          <option value="tudo">Turno: todos</option>
+                    <option value="manha">Manhã</option>
+                    <option value="noite">Noite</option>
+                  </select>
               </div>
             <div class="gal-filtros" id="lcArea">
         <button type="button" class="gal-f on" data-cat="tudo" aria-pressed="true">Tudo</button>
@@ -190,139 +188,139 @@
               </div>
           </div>
     <div class="cursos-grid" id="lcGrid">
-            <a class="curso-card" data-cat="negocios" data-grau="bacharelado" data-mod="presencial" href="../curso/administracao/">
+            <a class="curso-card" data-cat="negocios" data-grau="bacharelado" data-mod="presencial" data-turno="manha noite" href="../curso/administracao/">
         <span class="curso-area">Negócios</span>        <h3>Administração</h3>
         <div class="curso-meta">Bacharelado presencial · 8 semestres</div>        <span class="tlista"><span class="tchip t-sol"><svg aria-hidden="true" focusable="false"><use href="#i-sol"></use></svg>Manhã</span><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="tecnologia-da-informacao" data-grau="tecnologo" data-mod="presencial" href="../curso/analise-e-desenvolvimento-de-sistemas/">
+            <a class="curso-card" data-cat="tecnologia-da-informacao" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/analise-e-desenvolvimento-de-sistemas/">
         <span class="curso-area">Tecnologia da Informação</span>        <h3>Análise e Desenvolvimento de Sistemas</h3>
         <div class="curso-meta">Tecnólogo presencial · 5 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="arquitetura" data-grau="bacharelado" data-mod="presencial" href="../curso/arquitetura-e-urbanismo/">
+            <a class="curso-card" data-cat="arquitetura" data-grau="bacharelado" data-mod="presencial" data-turno="manha noite" href="../curso/arquitetura-e-urbanismo/">
         <span class="curso-area">Arquitetura</span>        <h3>Arquitetura e Urbanismo</h3>
         <div class="curso-meta">Bacharelado presencial · 10 semestres</div>        <span class="tlista"><span class="tchip t-sol"><svg aria-hidden="true" focusable="false"><use href="#i-sol"></use></svg>Manhã</span><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="saude" data-grau="bacharelado" data-mod="semipresencial" href="../curso/biomedicina/">
+            <a class="curso-card" data-cat="saude" data-grau="bacharelado" data-mod="semipresencial" data-turno="noite" href="../curso/biomedicina/">
         <span class="curso-area">Saúde</span>        <h3>Biomedicina</h3>
         <div class="curso-meta">Bacharelado semipresencial · 8 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="negocios" data-grau="bacharelado" data-mod="presencial" href="../curso/ciencias-contabeis/">
+            <a class="curso-card" data-cat="negocios" data-grau="bacharelado" data-mod="presencial" data-turno="manha noite" href="../curso/ciencias-contabeis/">
         <span class="curso-area">Negócios</span>        <h3>Ciências Contábeis</h3>
         <div class="curso-meta">Bacharelado presencial · 8 semestres</div>        <span class="tlista"><span class="tchip t-sol"><svg aria-hidden="true" focusable="false"><use href="#i-sol"></use></svg>Manhã</span><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" href="../curso/comercio-exterior/">
+            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/comercio-exterior/">
         <span class="curso-area">Negócios</span>        <h3>Comércio Exterior</h3>
         <div class="curso-meta">Tecnólogo presencial · 4 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="comunicacao" data-grau="bacharelado" data-mod="presencial" href="../curso/design/">
+            <a class="curso-card" data-cat="comunicacao" data-grau="bacharelado" data-mod="presencial" data-turno="manha noite" href="../curso/design/">
         <span class="curso-area">Comunicação</span>        <h3>Design &#8211; Comunicação visual</h3>
         <div class="curso-meta">Bacharelado presencial · 8 semestres</div>        <span class="tlista"><span class="tchip t-sol"><svg aria-hidden="true" focusable="false"><use href="#i-sol"></use></svg>Manhã</span><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="moda-e-beleza" data-grau="bacharelado" data-mod="presencial" href="../curso/design-de-moda/">
+            <a class="curso-card" data-cat="moda-e-beleza" data-grau="bacharelado" data-mod="presencial" data-turno="noite" href="../curso/design-de-moda/">
         <span class="curso-area">Moda e Beleza</span>        <h3>Design de Moda (Bacharelado)</h3>
         <div class="curso-meta">Bacharelado presencial · 8 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="moda-e-beleza" data-grau="tecnologo" data-mod="presencial" href="../curso/design-de-moda-tecnologo/">
+            <a class="curso-card" data-cat="moda-e-beleza" data-grau="tecnologo" data-mod="presencial" data-turno="manha noite" href="../curso/design-de-moda-tecnologo/">
         <span class="curso-area">Moda e Beleza</span>        <h3>Design de Moda (Tecnólogo)</h3>
         <div class="curso-meta">Tecnólogo presencial · 4 semestres</div>        <span class="tlista"><span class="tchip t-sol"><svg aria-hidden="true" focusable="false"><use href="#i-sol"></use></svg>Manhã</span><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="direito" data-grau="bacharelado" data-mod="presencial" href="../curso/direito/">
+            <a class="curso-card" data-cat="direito" data-grau="bacharelado" data-mod="presencial" data-turno="manha noite" href="../curso/direito/">
         <span class="curso-area">Direito</span>        <h3>Direito</h3>
         <div class="curso-meta">Bacharelado presencial · 10 semestres</div>        <span class="tlista"><span class="tchip t-sol"><svg aria-hidden="true" focusable="false"><use href="#i-sol"></use></svg>Manhã</span><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="negocios" data-grau="bacharelado" data-mod="presencial" href="../curso/economia/">
+            <a class="curso-card" data-cat="negocios" data-grau="bacharelado" data-mod="presencial" data-turno="manha noite" href="../curso/economia/">
         <span class="curso-area">Negócios</span>        <h3>Economia</h3>
         <div class="curso-meta">Bacharelado presencial · 8 semestres</div>        <span class="tlista"><span class="tchip t-sol"><svg aria-hidden="true" focusable="false"><use href="#i-sol"></use></svg>Manhã</span><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="engenharias" data-grau="bacharelado" data-mod="presencial" href="../curso/engenharia-civil/">
+            <a class="curso-card" data-cat="engenharias" data-grau="bacharelado" data-mod="presencial" data-turno="manha noite" href="../curso/engenharia-civil/">
         <span class="curso-area">Engenharias</span>        <h3>Engenharia Civil</h3>
         <div class="curso-meta">Bacharelado presencial · 10 semestres</div>        <span class="tlista"><span class="tchip t-sol"><svg aria-hidden="true" focusable="false"><use href="#i-sol"></use></svg>Manhã</span><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="engenharias" data-grau="bacharelado" data-mod="presencial" href="../curso/engenharia-da-computacao/">
+            <a class="curso-card" data-cat="engenharias" data-grau="bacharelado" data-mod="presencial" data-turno="manha noite" href="../curso/engenharia-da-computacao/">
         <span class="curso-area">Engenharias</span>        <h3>Engenharia de Computação</h3>
         <div class="curso-meta">Bacharelado presencial · 10 semestres</div>        <span class="tlista"><span class="tchip t-sol"><svg aria-hidden="true" focusable="false"><use href="#i-sol"></use></svg>Manhã</span><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="engenharias" data-grau="bacharelado" data-mod="presencial" href="../curso/engenharia-de-producao/">
+            <a class="curso-card" data-cat="engenharias" data-grau="bacharelado" data-mod="presencial" data-turno="manha noite" href="../curso/engenharia-de-producao/">
         <span class="curso-area">Engenharias</span>        <h3>Engenharia de Produção</h3>
         <div class="curso-meta">Bacharelado presencial · 10 semestres</div>        <span class="tlista"><span class="tchip t-sol"><svg aria-hidden="true" focusable="false"><use href="#i-sol"></use></svg>Manhã</span><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="engenharias" data-grau="bacharelado" data-mod="presencial" href="../curso/engenharia-mecanica/">
+            <a class="curso-card" data-cat="engenharias" data-grau="bacharelado" data-mod="presencial" data-turno="manha noite" href="../curso/engenharia-mecanica/">
         <span class="curso-area">Engenharias</span>        <h3>Engenharia Mecânica</h3>
         <div class="curso-meta">Bacharelado presencial · 10 semestres</div>        <span class="tlista"><span class="tchip t-sol"><svg aria-hidden="true" focusable="false"><use href="#i-sol"></use></svg>Manhã</span><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="moda-e-beleza" data-grau="tecnologo" data-mod="presencial" href="../curso/estetica-e-cosmetica/">
+            <a class="curso-card" data-cat="moda-e-beleza" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/estetica-e-cosmetica/">
         <span class="curso-area">Moda e Beleza</span>        <h3>Estética e Cosmética</h3>
         <div class="curso-meta">Tecnólogo presencial · 6 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="saude" data-grau="bacharelado" data-mod="semipresencial" href="../curso/farmacia/">
+            <a class="curso-card" data-cat="saude" data-grau="bacharelado" data-mod="semipresencial" data-turno="noite" href="../curso/farmacia/">
         <span class="curso-area">Saúde</span>        <h3>Farmácia</h3>
         <div class="curso-meta">Bacharelado semipresencial · 10 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="saude" data-grau="bacharelado" data-mod="semipresencial" href="../curso/fisioterapia/">
+            <a class="curso-card" data-cat="saude" data-grau="bacharelado" data-mod="semipresencial" data-turno="noite" href="../curso/fisioterapia/">
         <span class="curso-area">Saúde</span>        <h3>Fisioterapia</h3>
         <div class="curso-meta">Bacharelado semipresencial · 9 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="comunicacao" data-grau="tecnologo" data-mod="presencial" href="../curso/fotografia/">
+            <a class="curso-card" data-cat="comunicacao" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/fotografia/">
         <span class="curso-area">Comunicação</span>        <h3>Fotografia</h3>
         <div class="curso-meta">Tecnólogo presencial · 4 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" href="../curso/gestao-comercial/">
+            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/gestao-comercial/">
         <span class="curso-area">Negócios</span>        <h3>Gestão Comercial</h3>
         <div class="curso-meta">Tecnólogo presencial · 4 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" href="../curso/gestao-da-qualidade/">
+            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/gestao-da-qualidade/">
         <span class="curso-area">Negócios</span>        <h3>Gestão da Qualidade</h3>
         <div class="curso-meta">Tecnólogo presencial · 4 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" href="../curso/gestao-de-marketing/">
+            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/gestao-de-marketing/">
         <span class="curso-area">Negócios</span>        <h3>Gestão de Marketing</h3>
         <div class="curso-meta">Tecnólogo presencial · 4 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" href="../curso/gestao-de-rh/">
+            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/gestao-de-rh/">
         <span class="curso-area">Negócios</span>        <h3>Gestão de Recursos Humanos</h3>
         <div class="curso-meta">Tecnólogo presencial · 4 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" href="../curso/gestao-financeira/">
+            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/gestao-financeira/">
         <span class="curso-area">Negócios</span>        <h3>Gestão Financeira</h3>
         <div class="curso-meta">Tecnólogo presencial · 4 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="tecnologia-da-informacao" data-grau="tecnologo" data-mod="presencial" href="../curso/inteligencia-artificial/">
+            <a class="curso-card" data-cat="tecnologia-da-informacao" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/inteligencia-artificial/">
         <span class="curso-area">Tecnologia da Informação</span>        <h3>Inteligência Artificial</h3>
         <div class="curso-meta">Tecnólogo presencial · 5 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="comunicacao" data-grau="bacharelado" data-mod="presencial" href="../curso/jornalismo/">
+            <a class="curso-card" data-cat="comunicacao" data-grau="bacharelado" data-mod="presencial" data-turno="noite" href="../curso/jornalismo/">
         <span class="curso-area">Comunicação</span>        <h3>Jornalismo</h3>
         <div class="curso-meta">Bacharelado presencial · 8 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" href="../curso/logistica/">
+            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/logistica/">
         <span class="curso-area">Negócios</span>        <h3>Logística</h3>
         <div class="curso-meta">Tecnólogo presencial · 4 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="saude" data-grau="bacharelado" data-mod="semipresencial" href="../curso/nutricao/">
+            <a class="curso-card" data-cat="saude" data-grau="bacharelado" data-mod="semipresencial" data-turno="noite" href="../curso/nutricao/">
         <span class="curso-area">Saúde</span>        <h3>Nutrição</h3>
         <div class="curso-meta">Bacharelado semipresencial · 8 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" href="../curso/processos-gerenciais/">
+            <a class="curso-card" data-cat="negocios" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/processos-gerenciais/">
         <span class="curso-area">Negócios</span>        <h3>Processos Gerenciais</h3>
         <div class="curso-meta">Tecnólogo presencial · 4 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="comunicacao" data-grau="tecnologo" data-mod="presencial" href="../curso/producao-audiovisual/">
+            <a class="curso-card" data-cat="comunicacao" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/producao-audiovisual/">
         <span class="curso-area">Comunicação</span>        <h3>Produção Audiovisual</h3>
         <div class="curso-meta">Tecnólogo presencial · 4 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="comunicacao" data-grau="tecnologo" data-mod="presencial" href="../curso/producao-fonografica/">
+            <a class="curso-card" data-cat="comunicacao" data-grau="tecnologo" data-mod="presencial" data-turno="noite" href="../curso/producao-fonografica/">
         <span class="curso-area">Comunicação</span>        <h3>Produção Fonográfica</h3>
         <div class="curso-meta">Tecnólogo presencial · 4 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="comunicacao" data-grau="bacharelado" data-mod="presencial" href="../curso/publicidade-e-propaganda/">
+            <a class="curso-card" data-cat="comunicacao" data-grau="bacharelado" data-mod="presencial" data-turno="manha noite" href="../curso/publicidade-e-propaganda/">
         <span class="curso-area">Comunicação</span>        <h3>Publicidade e Propaganda</h3>
         <div class="curso-meta">Bacharelado presencial · 8 semestres</div>        <span class="tlista"><span class="tchip t-sol"><svg aria-hidden="true" focusable="false"><use href="#i-sol"></use></svg>Manhã</span><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="negocios" data-grau="bacharelado" data-mod="presencial" href="../curso/relacoes-internacionais/">
+            <a class="curso-card" data-cat="negocios" data-grau="bacharelado" data-mod="presencial" data-turno="manha noite" href="../curso/relacoes-internacionais/">
         <span class="curso-area">Negócios</span>        <h3>Relações Internacionais</h3>
         <div class="curso-meta">Bacharelado presencial · 8 semestres</div>        <span class="tlista"><span class="tchip t-sol"><svg aria-hidden="true" focusable="false"><use href="#i-sol"></use></svg>Manhã</span><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-            <a class="curso-card" data-cat="saude" data-grau="bacharelado" data-mod="semipresencial" href="../curso/terapia-ocupacional/">
+            <a class="curso-card" data-cat="saude" data-grau="bacharelado" data-mod="semipresencial" data-turno="noite" href="../curso/terapia-ocupacional/">
         <span class="curso-area">Saúde</span>        <h3>Terapia Ocupacional</h3>
         <div class="curso-meta">Bacharelado semipresencial · 8 semestres</div>        <span class="tlista"><span class="tchip t-lua"><svg aria-hidden="true" focusable="false"><use href="#i-lua"></use></svg>Noite</span></span>        <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
@@ -352,22 +350,22 @@
         <h3>Não sabe qual curso? O teste de carreira aponta os seus.</h3>
         <p>Algumas perguntas sobre o que você gosta de fazer e uma lista curta de cursos com a sua cara.</p>
       </div>
-      <a class="btn btn-lime btn-lg btn-sweep" href="https://admission.worka.love/chat/athon" target="_blank" rel="noopener">Fazer o teste grátis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-lime btn-lg btn-sweep magnetic" href="https://admission.worka.love/chat/athon" target="_blank" rel="noopener">Fazer o teste grátis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="hello-grid">
-            <div class="hello-card reveal" style="--i:0">
+            <div class="hello-card glow-card reveal" style="--i:0">
         <span class="hello-n">01</span>
         <b>Assista a uma aula experimental</b>
         <p>Você pode assistir a uma aula de verdade, junto com os alunos, antes de decidir. Sem custo nenhum.</p>
         <a class="btn btn-a btn-sweep" href="../hello/?agendar=aula">Agendar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-            <div class="hello-card reveal" style="--i:1">
+            <div class="hello-card glow-card reveal" style="--i:1">
         <span class="hello-n">02</span>
         <b>Converse com o coordenador</b>
         <p>Uma hora de conversa com quem coordena o curso que você quer, para tirar dúvidas sobre a formação e o mercado.</p>
         <a class="btn btn-a btn-sweep" href="../hello/?agendar=coordenador">Agendar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-            <div class="hello-card reveal" style="--i:2">
+            <div class="hello-card glow-card reveal" style="--i:2">
         <span class="hello-n">03</span>
         <b>Plantão de dúvidas sobre carreira</b>
         <p>Orientação com profissionais da área para ajudar na escolha. Acontece toda terça, das 18h às 19h.</p>
@@ -384,18 +382,18 @@
       <h2 class="big-h" id="diferenciais" style="margin-top:.5rem">Escolha ser um profissional extraordinário</h2>
     </div>
         <div class="pilares">
-      <div class="pilar reveal" style="--i:0">
+      <div class="pilar glow-card reveal" style="--i:0">
         <span class="pilar-prova">MEC <i>·</i> ENADE</span>
         <b>Ensino avaliado de perto</b>
         <p>Notas no MEC e no ENADE entre as mais altas da região. Não porque nos contentamos com o suficiente, mas porque a régua é a excelência.</p>
       </div>
-      <div class="pilar reveal" style="--i:1">
-        <span class="pilar-prova">6 <small>espaços mantidos por empresas</small></span>
+      <div class="pilar glow-card reveal" style="--i:1">
+        <span class="pilar-prova"><span class="count-up" data-count="6">6</span> <small>espaços mantidos por empresas</small></span>
         <b>O mercado dentro do campus</b>
         <p>Aprender Arquitetura numa sala assinada pela New Móveis ou desenvolver projetos num laboratório equipado pela Starrett faz parte da rotina, não da promessa.</p>
         <span class="pilar-logos"><i>Cordier</i><i>Starrett</i><i>Apter</i><i>New Móveis</i><i>Fidere</i><i>Blue Royal</i></span>
       </div>
-      <div class="pilar reveal" style="--i:2">
+      <div class="pilar glow-card reveal" style="--i:2">
         <span class="pilar-prova">+ <small>certificações ao longo do curso</small></span>
         <b>Currículo antes do diploma</b>
         <p>Certificações intermediárias comprovam competências semestre a semestre. Cada uma valoriza o currículo e acelera a entrada no mercado.</p>
@@ -476,9 +474,9 @@
         <h2 class="big-h">Laboratório de verdade, não slide de laboratório</h2>
         <p>Sete laboratórios por área, três estúdios de produção e seis salas mantidas por empresas parceiras, no centro de Sorocaba.</p>
         <div class="sc-nums">
-          <span><b>23</b> espaços</span>
-          <span><b>7</b> laboratórios</span>
-          <span><b>3</b> estúdios</span>
+          <span><b class="count-up" data-count="23">23</b> espaços</span>
+          <span><b class="count-up" data-count="7">7</b> laboratórios</span>
+          <span><b class="count-up" data-count="3">3</b> estúdios</span>
         </div>
         <a class="btn btn-a btn-lg btn-sweep magnetic" href="../campus/">Conhecer o campus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
@@ -671,7 +669,7 @@
 window.__ASSET_BASE="..\/wp-content\/plugins\/anhembi-home-nova\/";
 //# sourceURL=anhembi-home-app-js-before
 </script>
-<script id="anhembi-home-app-js" src="../wp-content/plugins/anhembi-home-nova/assets/app.js?ver=2.10.0"></script>
+<script id="anhembi-home-app-js" src="../wp-content/plugins/anhembi-home-nova/assets/app.js?ver=2.11.0"></script>
 <script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"../wp-includes/js/wp-emoji-release.min.js?ver=7.0.2"}}
 </script>
