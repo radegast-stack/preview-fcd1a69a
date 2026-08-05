@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name='robots' content='max-image-preview:large' />
 <title>Cursos Intensivos &#8211; anhembi-local</title>
-<link rel='stylesheet' id='anhembi-home-base-css' href='../wp-content/plugins/anhembi-home-nova/assets/base.css?ver=1.4.2' media='all' />
-<link rel='stylesheet' id='anhembi-home-components-css' href='../wp-content/plugins/anhembi-home-nova/assets/components.css?ver=1.4.2' media='all' />
+<link rel='stylesheet' id='anhembi-home-base-css' href='../wp-content/plugins/anhembi-home-nova/assets/base.css?ver=1.5.0' media='all' />
+<link rel='stylesheet' id='anhembi-home-components-css' href='../wp-content/plugins/anhembi-home-nova/assets/components.css?ver=1.5.0' media='all' />
 <meta name="generator" content="WordPress 7.0.2" />
 <link rel="canonical" href="../cursos-intensivos/" />
 <link rel='shortlink' href='../?p=14' />
@@ -78,10 +78,20 @@
       <h1 class="big-h">Cursos Intensivos</h1>
             <div class="lista-intro"><p>Página <strong>Cursos Intensivos</strong> — estrutura base do design system aplicada. Layout específico a ser desenhado nesta fase.</p>
 </div>
-                  <div class="lista-nums">
+                        <div class="lista-nums">
                 <span><b>4</b> intensivo</span>
               </div>
-          </div>
+            <div class="lista-acoes">
+        <a class="btn btn-lime btn-lg btn-sweep magnetic" href="../vestibular/">Fazer minha inscrição <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-g btn-lg" href="../campus/">Conhecer o campus</a>
+      </div>
+    </div>
+    <div class="mercado-faixa reveal">
+      <span class="mf-titulo">Você, bem perto do mercado</span>
+      <div class="logo-marquee logo-marquee--mini">
+        <div class="logo-track" id="logoTrack"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -117,11 +127,84 @@
       </div>
 </section>
 
+
+
+
+<section class="sobre-campus">
+  <div class="wrap">
+    <div class="sc-grid">
+      <div class="sc-txt rise">
+        <span class="eyebrow">Onde você vai estudar</span>
+        <h2 class="big-h">Laboratório de verdade, não slide de laboratório</h2>
+        <p>Sete laboratórios por área, três estúdios de produção e seis salas mantidas por empresas parceiras, no centro de Sorocaba.</p>
+        <div class="sc-nums">
+          <span><b>23</b> espaços</span>
+          <span><b>7</b> laboratórios</span>
+          <span><b>3</b> estúdios</span>
+        </div>
+        <a class="btn btn-a btn-lg btn-sweep magnetic" href="../campus/">Conhecer o campus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <a class="sc-fotos reveal" href="../campus/" aria-label="Ver as fotos do campus">
+                <span class="sc-foto sc-foto--0">
+          <img src="../wp-content/plugins/anhembi-home-nova/assets/img/campus/lab-ti-m.webp" alt="" loading="lazy" decoding="async">
+        </span>
+                <span class="sc-foto sc-foto--1">
+          <img src="../wp-content/plugins/anhembi-home-nova/assets/img/campus/estudio-foto-m.webp" alt="" loading="lazy" decoding="async">
+        </span>
+                <span class="sc-foto sc-foto--2">
+          <img src="../wp-content/plugins/anhembi-home-nova/assets/img/campus/lab-engenharia-m.webp" alt="" loading="lazy" decoding="async">
+        </span>
+                <span class="sc-foto sc-foto--3">
+          <img src="../wp-content/plugins/anhembi-home-nova/assets/img/campus/atelie-moda-m.webp" alt="" loading="lazy" decoding="async">
+        </span>
+                <span class="sc-selo">Ver as 23 fotos</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="duvidas sec-pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="duv-grid">
+      <div class="duv-info rise">
+        <span class="eyebrow">Fale com a gente</span>
+        <h2 class="big-h">Ficou com alguma dúvida?</h2>
+        <p style="color:var(--ink-soft);margin-top:1rem;max-width:44ch">Preencha o formulário para tirar dúvidas ou garantir a sua vaga. A equipe responde em horário comercial.</p>
+        <div class="duv-contatos">
+          <a href="mailto:contato@anhembisorocaba.com.br">contato@anhembisorocaba.com.br</a>
+          <a href="tel:1530425000">(15) 3042-5000</a>
+        </div>
+      </div>
+      <form class="lead-form reveal" id="lf" novalidate>
+        <label class="field"><span>Curso de interesse</span>
+          <select name="curso">
+            <option value="">Escolha uma opção</option>
+                        <option>Analista de Licitação</option>
+                        <option>Certificação Green Belt (Lean Six Sigma)</option>
+                        <option>Formação básica para Operadores Financeiros</option>
+                        <option>Introdução ao Sistema de Franquias</option>
+                      </select>
+        </label>
+        <div class="field-row">
+          <label class="field"><span>Nome</span><input type="text" name="nome" required></label>
+          <label class="field"><span>Telefone</span><input type="tel" name="telefone" required></label>
+        </div>
+        <label class="field"><span>E-mail</span><input type="email" name="email" required></label>
+        <label class="field"><span>Sua dúvida</span><textarea name="duvida" rows="3"></textarea></label>
+        <button class="btn btn-a btn-lg btn-full btn-sweep" type="submit">Solicitar contato</button>
+        <p class="form-note">Ao enviar, você concorda com a nossa política de privacidade.</p>
+        <div class="form-ok" id="ok">Recebemos a sua mensagem. A equipe responde em breve.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
 <section class="vestcta">
   <div class="wrap">
     <div class="vestcta-cta rise">
       <h2 class="big-h">Já sabe qual quer?</h2>
-      <p>A inscrição é rápida: prova online com resultado na hora, nota do ENEM ou transferência.</p>
+      <p>A inscrição é rápida: prova online com resultado em até 72h ou a sua nota do ENEM.</p>
       <a class="btn btn-lime btn-lg btn-sweep magnetic" href="../vestibular/">Fazer minha inscrição <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
@@ -183,7 +266,7 @@
 window.__ASSET_BASE="..\/wp-content\/plugins\/anhembi-home-nova\/";
 //# sourceURL=anhembi-home-app-js-before
 </script>
-<script id="anhembi-home-app-js" src="../wp-content/plugins/anhembi-home-nova/assets/app.js?ver=1.4.2"></script>
+<script id="anhembi-home-app-js" src="../wp-content/plugins/anhembi-home-nova/assets/app.js?ver=1.5.0"></script>
 <script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"../wp-includes/js/wp-emoji-release.min.js?ver=7.0.2"}}
 </script>

@@ -188,6 +188,13 @@
   /* hello: o botao do card ja escolhe a opcao no formulario de agendamento */
   var selAgendar=document.getElementById('agendarSelect');
   if(selAgendar){
+    /* veio de outra pagina com ?agendar=plantao: ja marca e rola ate o formulario */
+    var qs=new URLSearchParams(location.search).get('agendar');
+    if(qs&&[].some.call(selAgendar.options,function(o){return o.value===qs;})){
+      selAgendar.value=qs;
+      var alvo=document.getElementById('agendar');
+      if(alvo)setTimeout(function(){alvo.scrollIntoView({behavior:'smooth',block:'start'});},250);
+    }
     document.querySelectorAll('[data-agendar]').forEach(function(b){
       b.addEventListener('click',function(){
         selAgendar.value=b.getAttribute('data-agendar');
