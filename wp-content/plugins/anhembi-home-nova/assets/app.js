@@ -271,15 +271,24 @@
   });
 
   /* filtro reaproveitavel; aceita mais de um grupo de chips (area + grau + modalidade) */
-  function montaFiltro(grade,seletorItem,grupos,conta,unidade){
+  function montaFiltro(grade,seletorItem,grupos,conta,unidade,extra){
     if(!grade)return null;
+    extra=extra||{};
     grupos=(grupos||[]).filter(function(g){return g&&g.barra;});
-    if(!grupos.length)return null;
+    if(!grupos.length&&!extra.busca)return null;
     var itens=[].slice.call(grade.querySelectorAll(seletorItem));
+    function normaliza(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+    /* o que a busca enxerga: o nome do curso e os apelidos de area do card */
+    itens.forEach(function(b){
+      var t=b.querySelector('h3,h2,b');
+      b._busca=normaliza((t?t.textContent:b.textContent)+' '+(b.getAttribute('data-cat')||'').replace(/-/g,' '));
+    });
+    var termo='';
     grupos.forEach(function(g){
       g.attr=g.attr||'data-cat';
       g.valor='tudo';
-      g.chips=[].slice.call(g.barra.querySelectorAll('.gal-f'));
+      g.sel=g.barra.tagName==='SELECT';
+      if(!g.sel)g.chips=[].slice.call(g.barra.querySelectorAll('.gal-f'));
     });
     function visiveis(){return itens.filter(function(b){return !b.classList.contains('off');});}
     function tem(b,g,valor){
@@ -287,10 +296,14 @@
       return (b.getAttribute(g.attr)||'').split(/\s+/).indexOf(valor)>-1;
     }
     function casa(b,g){return tem(b,g,g.valor);}
-    /* quantos itens sobram se este grupo valesse "valor", respeitando os outros filtros */
+    function casaBusca(b){
+      if(!termo)return true;
+      return termo.split(/\s+/).every(function(t){return b._busca.indexOf(t)>-1;});
+    }
+    /* quantos itens sobram se este grupo valesse "valor", respeitando busca e os outros filtros */
     function quantos(g,valor){
       return itens.filter(function(b){
-        return grupos.every(function(o){return o===g?tem(b,o,valor):casa(b,o);});
+        return casaBusca(b)&&grupos.every(function(o){return o===g?tem(b,o,valor):casa(b,o);});
       }).length;
     }
     function aplicar(){
@@ -298,31 +311,54 @@
       for(var passo=0;passo<grupos.length;passo++){
         var mudou=false;
         grupos.forEach(function(g){
-          if(g.valor!=='tudo'&&quantos(g,g.valor)===0){g.valor='tudo';mudou=true;}
+          if(g.valor!=='tudo'&&quantos(g,g.valor)===0){g.valor='tudo';if(g.sel)g.barra.value='tudo';mudou=true;}
         });
         if(!mudou)break;
       }
       itens.forEach(function(b){
-        b.classList.toggle('off',!grupos.every(function(g){return casa(b,g);}));
+        b.classList.toggle('off',!(casaBusca(b)&&grupos.every(function(g){return casa(b,g);})));
       });
       grupos.forEach(function(g){
+        if(g.sel){
+          [].slice.call(g.barra.options).forEach(function(op){
+            op.disabled=(op.value!=='tudo'&&op.value!==g.valor&&quantos(g,op.value)===0);
+          });
+          g.barra.classList.toggle('on',g.valor!=='tudo');
+          return;
+        }
         g.chips.forEach(function(f){
           var valor=f.getAttribute('data-cat');
           var on=valor===g.valor;
           f.classList.toggle('on',on);f.setAttribute('aria-pressed',on?'true':'false');
-          /* opcao que nao levaria a nenhum resultado some da barra */
+          /* opcao que nao levaria a nenhum resultado fica apagada e inerte */
           var vazia=(valor!=='tudo'&&!on&&quantos(g,valor)===0);
           f.classList.toggle('sem-resultado',vazia);
           f.disabled=vazia;
         });
       });
       if(conta){var n=visiveis().length;conta.textContent=n+' '+(n===1?unidade[0]:unidade[1]);}
+      if(extra.vazio)extra.vazio.hidden=visiveis().length>0;
     }
     grupos.forEach(function(g){
+      if(g.sel){
+        g.barra.addEventListener('change',function(){g.valor=g.barra.value;aplicar();});
+        return;
+      }
       g.chips.forEach(function(f){
         f.addEventListener('click',function(){g.valor=f.getAttribute('data-cat');aplicar();});
       });
     });
+    if(extra.busca){
+      extra.busca.addEventListener('input',function(){termo=normaliza(extra.busca.value.trim());aplicar();});
+    }
+    if(extra.limpar){
+      extra.limpar.addEventListener('click',function(){
+        termo='';
+        if(extra.busca)extra.busca.value='';
+        grupos.forEach(function(g){g.valor='tudo';if(g.sel)g.barra.value='tudo';});
+        aplicar();
+      });
+    }
     aplicar();
     return visiveis;
   }
@@ -343,7 +379,10 @@
               [{barra:document.getElementById('lcArea')},
                {barra:document.getElementById('lcGrau'), attr:'data-grau'},
                {barra:document.getElementById('lcMod'),  attr:'data-mod'}],
-              document.getElementById('lcConta'),['curso','cursos']);
+              document.getElementById('lcConta'),['curso','cursos'],
+              {busca:document.getElementById('lcBusca'),
+               vazio:document.getElementById('lcVazio'),
+               limpar:document.getElementById('lcLimpar')});
 
   /* atalhos por area na primeira dobra: acionam o filtro da lista e descem ate ela */
   [].slice.call(document.querySelectorAll('.area-atalho')).forEach(function(a){

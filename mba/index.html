@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name='robots' content='max-image-preview:large' />
 <title>MBA e Pós-Graduação &#8211; anhembi-local</title>
-<link rel='stylesheet' id='anhembi-home-base-css' href='../wp-content/plugins/anhembi-home-nova/assets/base.css?ver=2.9.0' media='all' />
-<link rel='stylesheet' id='anhembi-home-components-css' href='../wp-content/plugins/anhembi-home-nova/assets/components.css?ver=2.9.0' media='all' />
+<link rel='stylesheet' id='anhembi-home-base-css' href='../wp-content/plugins/anhembi-home-nova/assets/base.css?ver=2.10.0' media='all' />
+<link rel='stylesheet' id='anhembi-home-components-css' href='../wp-content/plugins/anhembi-home-nova/assets/components.css?ver=2.10.0' media='all' />
 <meta name="generator" content="WordPress 7.0.2" />
 <link rel="canonical" href="../mba/" />
 <link rel='shortlink' href='../?p=13' />
@@ -147,24 +147,24 @@
       </div>
       <span class="gal-conta" id="lcConta">32 cursos</span>
     </div>
-    <div class="filtros-blocos reveal">
-            <div class="filtro-linha">
-        <span class="filtro-rot">Área</span>
-        <div class="gal-filtros" id="lcArea">
-          <button type="button" class="gal-f on" data-cat="tudo" aria-pressed="true">Tudo</button>
-                    <button type="button" class="gal-f" data-cat="arquitetura" aria-pressed="false">Arquitetura</button>
-                    <button type="button" class="gal-f" data-cat="negocios" aria-pressed="false">Negócios</button>
-                    <button type="button" class="gal-f" data-cat="tecnologia-da-informacao" aria-pressed="false">Tecnologia da Informação</button>
-                  </div>
-      </div>
-            <div class="filtro-linha">
-        <span class="filtro-rot">Formação</span>
-        <div class="gal-filtros" id="lcGrau">
-          <button type="button" class="gal-f on" data-cat="tudo" aria-pressed="true">Tudo</button>
-                    <button type="button" class="gal-f" data-cat="mba" aria-pressed="false">MBA</button>
-                    <button type="button" class="gal-f" data-cat="pos-graduacao" aria-pressed="false">Pós-graduação</button>
-                  </div>
-      </div>
+    <div class="filtros-nova reveal">
+      <div class="fx-topo">
+        <label class="busca-curso">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="search" id="lcBusca" placeholder="Busque pelo nome do curso" autocomplete="off" aria-label="Buscar curso pelo nome">
+        </label>
+                <select id="lcGrau" class="fx-select" aria-label="Filtrar por formação">
+          <option value="tudo">Formação: todas</option>
+                    <option value="mba">MBA</option>
+                    <option value="pos-graduacao">Pós-graduação</option>
+                  </select>
+                      </div>
+            <div class="gal-filtros" id="lcArea">
+        <button type="button" class="gal-f on" data-cat="tudo" aria-pressed="true">Tudo</button>
+                <button type="button" class="gal-f" data-cat="arquitetura" aria-pressed="false">Arquitetura</button>
+                <button type="button" class="gal-f" data-cat="negocios" aria-pressed="false">Negócios</button>
+                <button type="button" class="gal-f" data-cat="tecnologia-da-informacao" aria-pressed="false">Tecnologia da Informação</button>
+              </div>
           </div>
     <div class="cursos-grid" id="lcGrid">
             <a class="curso-card" data-cat="tecnologia-da-informacao" data-grau="mba" data-mod="" href="../curso/business-intelligence-e-analytics/">
@@ -296,6 +296,11 @@
         <div class="curso-meta">Pós-Graduação · 18 meses (360 horas)</div>                <span class="curso-go">Ver o curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
           </div>
+    <div class="lc-vazio" id="lcVazio" hidden>
+      <b>Nenhum curso com essa combinação.</b>
+      <p>Tente outro nome ou limpe os filtros para ver o catálogo inteiro.</p>
+      <button type="button" class="btn btn-g" id="lcLimpar">Limpar busca e filtros</button>
+    </div>
     <div class="lista-acoes reveal">
       <a class="btn btn-lime btn-lg btn-sweep magnetic" href="../vestibular/">Fazer minha inscrição <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <a class="btn btn-g btn-lg" href="../campus/">Conhecer o campus</a>
@@ -507,7 +512,7 @@
 window.__ASSET_BASE="..\/wp-content\/plugins\/anhembi-home-nova\/";
 //# sourceURL=anhembi-home-app-js-before
 </script>
-<script id="anhembi-home-app-js" src="../wp-content/plugins/anhembi-home-nova/assets/app.js?ver=2.9.0"></script>
+<script id="anhembi-home-app-js" src="../wp-content/plugins/anhembi-home-nova/assets/app.js?ver=2.10.0"></script>
 <script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"../wp-includes/js/wp-emoji-release.min.js?ver=7.0.2"}}
 </script>
