@@ -933,7 +933,8 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .curso-topo .wrap{position:relative}
 .curso-topo .eyebrow{color:var(--highlight)}
 .curso-topo .big-h{color:#fff;margin-top:.5rem}
-.curso-topo-grid{display:grid;grid-template-columns:1fr minmax(240px,300px);gap:clamp(22px,4vw,48px);align-items:end}
+/* minmax(0,1fr): sem isso a esteira de logos (width:max-content) estoura a coluna e empurra a ficha */
+.curso-topo-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,300px);gap:clamp(22px,4vw,48px);align-items:end}
 /* texto do curso, agora no topo verde */
 .curso-intro{margin-top:clamp(14px,2vw,20px);max-width:58ch}
 .curso-intro p{color:#d3f0e9;font-size:1.02rem;line-height:1.62;margin:0 0 .8rem}
@@ -951,6 +952,13 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .cf-linha:last-child{border-bottom:0}
 .cf-linha > span:not(.tlista){font-size:.7rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#a9dcd0}
 .cf-linha b{color:#fff;font-size:1rem;line-height:1.25}
+.cf-emprega b{display:flex;align-items:baseline;gap:.4em;flex-wrap:wrap}
+.cf-emprega i{font-style:normal;font-size:clamp(1.6rem,3.2vw,2rem);font-weight:900;letter-spacing:-.04em;
+  color:var(--highlight);line-height:1;font-variant-numeric:tabular-nums}
+
+/* faixa de logos sobre o verde do topo */
+.mercado-faixa.no-verde{border-top-color:rgba(255,255,255,.22)}
+.mercado-faixa.no-verde .mf-titulo{color:#a9dcd0}
 
 /* estrutura do curso: espacos do campus + eventos da area */
 .est-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -1066,7 +1074,7 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
   .sol-grid{grid-template-columns:repeat(2,1fr)}
   .serie-corpo{grid-template-columns:1fr}
   .serie-ficha{position:static}
-  .curso-topo-grid{grid-template-columns:1fr}
+  .curso-topo-grid{grid-template-columns:minmax(0,1fr)}
   .bonus-grid{grid-template-columns:1fr}
   .dif-grid{grid-template-columns:repeat(2,1fr)}
   .egressos{grid-template-columns:1fr}
