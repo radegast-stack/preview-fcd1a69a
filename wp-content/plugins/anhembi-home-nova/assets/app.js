@@ -252,19 +252,23 @@
     });
   }
 
-  /* video do campus: fachada, so carrega o YouTube quando o visitante clica */
-  var play=document.querySelector('.tour-play');
-  if(play){
-    play.addEventListener('click',function(){
-      var id=play.getAttribute('data-yt'),moldura=play.parentNode;
+  /* video do YouTube por fachada: so carrega o player quando o visitante clica.
+     Serve o video do campus (.tour-play) e o do coordenador (.coord-video). */
+  [].slice.call(document.querySelectorAll('[data-yt]')).forEach(function(botao){
+    botao.addEventListener('click',function(){
       var f=document.createElement('iframe');
-      f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1';
-      f.title='Vídeo de apresentação do campus';
+      f.src='https://www.youtube-nocookie.com/embed/'+botao.getAttribute('data-yt')+'?autoplay=1&rel=0&modestbranding=1';
+      f.title=botao.getAttribute('data-titulo')||'Vídeo';
       f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
       f.allowFullscreen=true;
-      moldura.innerHTML='';moldura.appendChild(f);
+      if(botao.classList.contains('tour-play')){
+        var moldura=botao.parentNode;moldura.innerHTML='';moldura.appendChild(f);
+      }else{
+        var caixa=document.createElement('div');caixa.className='yt-frame';caixa.appendChild(f);
+        botao.parentNode.replaceChild(caixa,botao);
+      }
     });
-  }
+  });
 
   /* filtro reaproveitavel; aceita mais de um grupo de chips (area + grau + modalidade) */
   function montaFiltro(grade,seletorItem,grupos,conta,unidade){
