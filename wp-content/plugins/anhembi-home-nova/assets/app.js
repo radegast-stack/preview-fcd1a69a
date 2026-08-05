@@ -278,6 +278,14 @@
               [{barra:document.getElementById('evFiltros')}],
               document.getElementById('evConta'),['edição','edições']);
 
+  montaFiltro(document.getElementById('egGrid'),'.eg-item',
+              [{barra:document.getElementById('egFiltros')}],
+              document.getElementById('egConta'),['história','histórias']);
+
+  montaFiltro(document.getElementById('nmGrid'),'.midia-item',
+              [{barra:document.getElementById('nmFiltros')}],
+              document.getElementById('nmConta'),['matéria','matérias']);
+
   montaFiltro(document.getElementById('lcGrid'),'.curso-card',
               [{barra:document.getElementById('lcArea')},
                {barra:document.getElementById('lcGrau'), attr:'data-grau'},
