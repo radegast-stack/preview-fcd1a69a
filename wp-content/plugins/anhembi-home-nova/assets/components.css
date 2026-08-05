@@ -49,7 +49,7 @@ nav.main a:hover::after{transform:scaleX(1)}
 /* mobile menu */
 .mobmenu{display:none;flex-direction:column;gap:2px;padding:10px 0 16px}
 .mobmenu.open{display:flex}
-.mobmenu a{padding:.7em .2em;font-weight:800;border-bottom:1px solid var(--line);color:var(--ink)}
+.mobmenu a:not(.btn){padding:.7em .2em;font-weight:800;border-bottom:1px solid var(--line);color:var(--ink)}
 .mobmenu .btn{margin-top:12px;justify-content:center}
 
 /* HERO BANNER (mantido) */
