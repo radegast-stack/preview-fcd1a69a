@@ -345,6 +345,17 @@
                {barra:document.getElementById('lcMod'),  attr:'data-mod'}],
               document.getElementById('lcConta'),['curso','cursos']);
 
+  /* atalhos por area na primeira dobra: acionam o filtro da lista e descem ate ela */
+  [].slice.call(document.querySelectorAll('.area-atalho')).forEach(function(a){
+    a.addEventListener('click',function(){
+      var barra=document.getElementById('lcArea');
+      if(!barra)return;
+      var alvo=a.getAttribute('data-atalho')||'tudo';
+      var botao=barra.querySelector('.gal-f[data-cat="'+alvo+'"]');
+      if(botao&&!botao.classList.contains('on'))botao.click();
+    });
+  });
+
   /* galeria do campus: filtro por categoria + lightbox (sem dependencia externa) */
   var gal=document.getElementById('campusGrid');
   if(gal){

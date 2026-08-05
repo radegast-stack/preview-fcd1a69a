@@ -915,9 +915,13 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .lista-hero{background:var(--surface-2);border-bottom:1px solid var(--line);padding:clamp(32px,5vw,62px) 0}
 .lista-intro{max-width:58ch;margin-top:1rem}
 .lista-intro p{color:var(--ink-soft);font-size:1.04rem}
-.lista-nums{display:flex;gap:22px;flex-wrap:wrap;margin-top:1.4rem}
-.lista-nums span{color:var(--ink-soft);font-size:.95rem;font-weight:700}
-.lista-nums b{color:var(--brand);font-size:1.5rem;font-weight:900;letter-spacing:-.03em}
+/* atalhos por área na primeira dobra: caem direto no filtro da lista */
+.area-atalhos{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.3rem;max-width:560px}
+.area-atalho{font-size:.86rem;font-weight:800;padding:.5em 1.1em;border-radius:999px;background:var(--surface);
+  border:1px solid var(--line-strong);color:var(--ink-soft);transition:border-color .18s,color .18s,transform .18s}
+.area-atalho:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-2px)}
+.area-atalho.todos{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:900}
+.area-atalho.todos:hover{background:var(--brand-deep);border-color:var(--brand-deep);color:#fff}
 .curso-card.off{display:none}
 .filtros-blocos{display:grid;gap:12px;margin:18px 0 26px}
 .filtro-linha{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
