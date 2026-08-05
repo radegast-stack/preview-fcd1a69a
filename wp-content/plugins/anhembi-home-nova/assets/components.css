@@ -9,6 +9,9 @@
 .btn-lime:hover{transform:translateY(-2px);box-shadow:0 12px 26px -14px var(--brand-lime)}
 .btn-g{background:transparent;border-color:var(--line-strong);color:var(--ink)}
 .btn-g:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-2px)}
+/* sobre fundo escuro o contorno vira branco, senao o texto some no verde */
+.comp-band .btn-g,.anos-statement .btn-g,.curso-topo .btn-g,.tour .btn-g{color:#fff;border-color:rgba(255,255,255,.5)}
+.comp-band .btn-g:hover,.anos-statement .btn-g:hover,.curso-topo .btn-g:hover,.tour .btn-g:hover{color:#fff;border-color:#fff;background:rgba(255,255,255,.12)}
 .btn-lg{padding:.95em 1.7em;font-size:1.02rem}
 .btn-full{width:100%;justify-content:center}
 
@@ -962,6 +965,27 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 /* com poucas empresas nao ha o que rolar: fica parado e alinhado a esquerda */
 .logo-parado{-webkit-mask-image:none;mask-image:none}
 .logo-parado .logo-track{animation:none;width:auto;flex-wrap:wrap;gap:0}
+
+/* mensalidade na ficha e programas que reduzem ela */
+/* so um destaque em amarelo por ficha: o amarelo fica com a empregabilidade */
+.cf-linha.destaque.cf-mensalidade b{color:#fff;font-size:1.16rem;font-weight:900;letter-spacing:-.02em}
+.cf-bolsa{display:inline-flex;align-items:center;gap:.35em;margin-top:.45rem;font-size:.8rem;font-weight:800;color:#a9dcd0}
+.cf-bolsa svg{width:13px;height:13px;transition:transform .18s}
+.cf-bolsa:hover{color:#fff}
+.cf-bolsa:hover svg{transform:translateX(3px)}
+
+.bolsas-cab{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(20px,3vw,28px)}
+.bolsas-nota{color:var(--ink-soft);margin-top:.7rem;max-width:56ch;font-size:.98rem}
+.bolsas-nota b{color:var(--ink)}
+.bolsas-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.bolsa-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 20px 18px;display:grid;gap:.35rem;align-content:start}
+.bolsa-card b{font-size:1rem;font-weight:900;letter-spacing:-.01em}
+.bolsa-card p{color:var(--ink-soft);font-size:.9rem;line-height:1.45}
+.bolsa-card a{display:inline-flex;align-items:center;gap:.35em;margin-top:.2rem;font-size:.82rem;font-weight:900;color:var(--brand)}
+.bolsa-card a svg{width:14px;height:14px;transition:transform .18s}
+.bolsa-card a:hover svg{transform:translateX(3px)}
+@media (max-width:1080px){.bolsas-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:720px){.bolsas-grid{grid-template-columns:1fr}.bolsas-cab .btn{width:100%;justify-content:center}}
 
 /* estrutura do curso: espacos do campus + eventos da area */
 .est-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
