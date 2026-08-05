@@ -1056,7 +1056,7 @@ nav.main .subnav a:hover{background:var(--surface-2)}
    LISTA DE CURSOS: prova social no topo, ajuda e depoimentos (Fase 2)
    ========================================================================== */
 .lista-chamada{color:var(--ink);font-size:clamp(1.06rem,2.2vw,1.28rem);font-weight:700;max-width:44ch;margin-top:1rem}
-.lista-acoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:1.6rem}
+.lista-acoes{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:clamp(26px,3.5vw,40px)}
 
 .mercado-faixa{margin-top:clamp(28px,4vw,44px);padding-top:22px;border-top:1px solid var(--line)}
 .mf-titulo{display:block;font-size:.74rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px}
