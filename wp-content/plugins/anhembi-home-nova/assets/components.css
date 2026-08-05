@@ -1152,3 +1152,24 @@ nav.main .subnav a:hover{background:var(--surface-2)}
 .serie-hero .migalha span,.curso-topo .migalha span{color:#9fd3c6;opacity:1}
 
 .interna-hero .migalha{color:var(--ink-soft)}
+
+/* ==========================================================================
+   MENU DA PROPRIA PAGINA (acompanha a rolagem, desktop e celular)
+   ========================================================================== */
+.secnav{position:sticky;top:60px;z-index:30;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(12px) saturate(120%);border-block:1px solid var(--line)}
+.secnav-track{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x proximity;padding:8px 0}
+.secnav-track::-webkit-scrollbar{display:none}
+.secnav a{flex:none;scroll-snap-align:start;position:relative;padding:.62em 1.05em;border-radius:999px;font-size:.86rem;font-weight:800;color:var(--ink-soft);white-space:nowrap;transition:background .18s,color .18s}
+.secnav a:hover{background:var(--surface-2);color:var(--ink)}
+.secnav a.on{background:var(--brand);color:#fff}
+/* o conteudo nao pode ficar escondido atras do cabecalho + esta barra */
+[id="cursos"],[id="ajuda"],[id="teste"],[id="diferenciais"],[id="egressos"],[id="campus"],[id="duvidas"],[id="contato"]{scroll-margin-top:132px}
+
+@media (max-width:900px){
+  .secnav{top:56px}
+  .secnav .wrap{padding-right:0}
+  .secnav a{font-size:.82rem;padding:.58em .95em}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}

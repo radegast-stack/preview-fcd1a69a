@@ -166,6 +166,44 @@
     });
   });
 
+  /* menu da propria pagina: marca a secao visivel e rola o chip para dentro */
+  var secnav=document.getElementById('secnav');
+  if(secnav){
+    var chips=[].slice.call(secnav.querySelectorAll('a'));
+    var alvos=chips.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+    function marca(i){
+      chips.forEach(function(c,k){c.classList.toggle('on',k===i);});
+      var c=chips[i];
+      if(c){
+        var t=secnav.querySelector('.secnav-track');
+        var esq=c.offsetLeft-t.clientWidth/2+c.clientWidth/2;
+        t.scrollTo({left:Math.max(0,esq),behavior:'smooth'});
+      }
+    }
+    /* pela posicao da rolagem: funciona sempre, inclusive onde o IntersectionObserver nao dispara */
+    var atual=-1,pedido=false;
+    function calcula(){
+      pedido=false;
+      /* ordeno pela posicao real na pagina, nao pela ordem dos chips */
+      var lista=[];
+      alvos.forEach(function(al,k){
+        if(al)lista.push({k:k,y:al.getBoundingClientRect().top});
+      });
+      lista.sort(function(a,b){return a.y-b.y;});
+      var i=lista.length?lista[0].k:0;
+      lista.forEach(function(o){if(o.y<=150)i=o.k;});
+      var fim=document.documentElement.scrollHeight-window.innerHeight;
+      if(fim>0&&(window.scrollY||window.pageYOffset)>=fim-6)i=alvos.length-1;
+      if(i!==atual){atual=i;marca(i);}
+    }
+    addEventListener('scroll',function(){
+      if(!pedido){pedido=true;requestAnimationFrame(calcula);}
+    },{passive:true});
+    addEventListener('resize',calcula,{passive:true});
+    chips.forEach(function(c,k){c.addEventListener('click',function(){atual=k;marca(k);});});
+    calcula();
+  }
+
   /* submenu do "Sobre": hover no desktop, toque/teclado tambem abrem */
   document.querySelectorAll('.nav-item.tem-sub').forEach(function(item){
     var gatilho=item.querySelector('a');
