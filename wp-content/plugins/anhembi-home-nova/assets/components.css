@@ -959,6 +959,9 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 /* faixa de logos sobre o verde do topo */
 .mercado-faixa.no-verde{border-top-color:rgba(255,255,255,.22)}
 .mercado-faixa.no-verde .mf-titulo{color:#a9dcd0}
+/* com poucas empresas nao ha o que rolar: fica parado e alinhado a esquerda */
+.logo-parado{-webkit-mask-image:none;mask-image:none}
+.logo-parado .logo-track{animation:none;width:auto;flex-wrap:wrap;gap:0}
 
 /* estrutura do curso: espacos do campus + eventos da area */
 .est-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -978,12 +981,19 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .link-seta svg{width:15px;height:15px;transition:transform .18s}
 .link-seta:hover svg{transform:translateX(4px)}
 .ev-lista{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.ev-item{display:grid;gap:.3rem;align-content:start;background:var(--surface);border:1px solid var(--line);border-radius:18px;
-  padding:22px 22px 20px;color:inherit;transition:transform .2s cubic-bezier(.16,1,.3,1),border-color .2s,box-shadow .2s}
+.ev-item{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:18px;
+  overflow:hidden;color:inherit;transition:transform .2s cubic-bezier(.16,1,.3,1),border-color .2s,box-shadow .2s}
 .ev-item:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--brand) 45%,var(--line));box-shadow:var(--shadow-sm)}
+/* o cartaz do evento e quadrado: mostramos ele inteiro, com ele mesmo desfocado atras */
+.ev-capa{position:relative;display:block;aspect-ratio:16/10;background:var(--surface-2);overflow:hidden}
+.ev-capa img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.ev-fundo{position:absolute;inset:0;filter:blur(20px) saturate(1.15);transform:scale(1.2);opacity:.6}
+.ev-capa-cartaz .ev-cartaz{position:relative;object-fit:contain}
+.ev-item:hover .ev-cartaz{transform:scale(1.05)}
+.ev-txt{display:grid;gap:.3rem;align-content:start;flex:1;padding:20px 22px 20px}
 .ev-quando{font-size:.68rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:var(--action)}
 .ev-item b{font-size:1.1rem;font-weight:900;letter-spacing:-.02em;line-height:1.18}
-.ev-item p{color:var(--ink-soft);font-size:.92rem;margin:.15rem 0 .5rem}
+.ev-desc{color:var(--ink-soft);font-size:.92rem;margin:.15rem 0 .5rem}
 .ev-ir{margin-top:auto;font-size:.85rem;font-weight:900;color:var(--brand);display:inline-flex;align-items:center;gap:.4em}
 .ev-ir svg{width:15px;height:15px;transition:transform .18s}
 .ev-item:hover .ev-ir svg{transform:translateX(4px)}
