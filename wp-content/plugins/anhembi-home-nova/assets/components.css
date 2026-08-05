@@ -924,9 +924,20 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .filtros-nova{display:grid;gap:12px;margin-top:clamp(18px,2.6vw,26px)}
 .fx-topo{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 /* a mesma busca da home (.modsearch): retangulo cheio, 16px de raio, texto firme */
-.busca-curso{flex-basis:100%;display:flex;align-items:center;
+.busca-curso{position:relative;flex-basis:100%;display:flex;align-items:center;
   background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0 14px;
   transition:border-color .18s,box-shadow .18s}
+
+/* sugestoes da busca: cursos listados enquanto digita */
+.ms-sug{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:70;display:none;
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);
+  overflow:hidden;overflow-y:auto;max-height:340px}
+.ms-sug.aberta{display:block}
+.ms-item{display:grid;gap:2px;padding:11px 16px;border-bottom:1px solid var(--line);transition:background .12s}
+.ms-item:last-child{border-bottom:0}
+.ms-item b{font-size:.94rem;font-weight:800;color:var(--ink);line-height:1.25}
+.ms-item span{font-size:.76rem;color:var(--ink-faint)}
+.ms-item:hover,.ms-item.ativo{background:var(--surface-2)}
 .busca-curso:focus-within{border-color:var(--brand);box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 16%,transparent)}
 .busca-curso svg{width:19px;height:19px;color:var(--ink-faint);flex:none}
 .busca-curso input{border:0;outline:0;background:none;font:inherit;font-size:.95rem;font-weight:700;padding:16px 10px;width:100%;color:var(--ink)}

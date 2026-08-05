@@ -252,6 +252,47 @@
     });
   }
 
+  /* busca com sugestoes: lista os cursos enquanto digita e leva direto para a pagina */
+  var dadosBusca=document.getElementById('cursosData');
+  if(dadosBusca){
+    var CURSOS=[];
+    try{CURSOS=JSON.parse(dadosBusca.textContent||'[]');}catch(err){}
+    function normTxt(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+    CURSOS.forEach(function(c){c._n=normTxt(c.t+' '+(c.a||''));});
+    [].slice.call(document.querySelectorAll('.modsearch,.busca-curso')).forEach(function(caixa){
+      var input=caixa.querySelector('input');
+      if(!input||!CURSOS.length)return;
+      var sug=document.createElement('div');sug.className='ms-sug';caixa.appendChild(sug);
+      var lista=[],ativo=-1;
+      function fecha(){sug.classList.remove('aberta');sug.innerHTML='';ativo=-1;}
+      function render(){
+        if(!lista.length){fecha();return;}
+        sug.innerHTML=lista.map(function(c,i){
+          return '<a class="ms-item'+(i===ativo?' ativo':'')+'" href="'+c.u+'"><b>'+c.t+'</b>'+
+                 '<span>'+c.g+(c.a?' · '+c.a:'')+'</span></a>';
+        }).join('');
+        sug.classList.add('aberta');
+      }
+      function procura(){
+        var q=normTxt(input.value.trim());
+        if(q.length<2){fecha();return;}
+        var partes=q.split(/\s+/);
+        lista=CURSOS.filter(function(c){return partes.every(function(t){return c._n.indexOf(t)>-1;});}).slice(0,8);
+        ativo=-1;render();
+      }
+      input.addEventListener('input',procura);
+      input.addEventListener('focus',procura);
+      input.addEventListener('keydown',function(e){
+        if(!sug.classList.contains('aberta'))return;
+        if(e.key==='ArrowDown'){e.preventDefault();ativo=Math.min(ativo+1,lista.length-1);render();}
+        else if(e.key==='ArrowUp'){e.preventDefault();ativo=Math.max(ativo-1,0);render();}
+        else if(e.key==='Enter'){e.preventDefault();var c=lista[ativo>=0?ativo:0];if(c)location.href=c.u;}
+        else if(e.key==='Escape'){fecha();}
+      });
+      document.addEventListener('click',function(e){if(!caixa.contains(e.target))fecha();});
+    });
+  }
+
   /* video do YouTube por fachada: so carrega o player quando o visitante clica.
      Serve o video do campus (.tour-play) e o do coordenador (.coord-video). */
   [].slice.call(document.querySelectorAll('[data-yt]')).forEach(function(botao){
