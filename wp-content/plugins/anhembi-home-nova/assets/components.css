@@ -1092,6 +1092,18 @@ nav.main .subnav a:hover{background:var(--surface-2)}
 .lista-chamada{color:var(--ink);font-size:clamp(1.06rem,2.2vw,1.28rem);font-weight:700;max-width:44ch;margin-top:1rem}
 .lista-acoes{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:clamp(26px,3.5vw,40px)}
 
+/* selo de empregabilidade: no verde do topo do curso e claro na listagem */
+.empregabilidade{display:inline-flex;align-items:center;gap:.8em;margin-top:clamp(18px,2.6vw,26px);
+  padding:.55em 1.2em .55em .95em;border-radius:999px;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(4px)}
+.empregabilidade b{font-size:clamp(1.7rem,3.6vw,2.2rem);font-weight:900;letter-spacing:-.04em;line-height:1;
+  color:var(--highlight);font-variant-numeric:tabular-nums}
+.empregabilidade span{font-size:.92rem;font-weight:800;line-height:1.22;color:#eafaf6;max-width:19ch}
+.empregabilidade.claro{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow-sm)}
+.empregabilidade.claro b{color:var(--brand)}
+.empregabilidade.claro span{color:var(--ink-soft)}
+@media (max-width:560px){.empregabilidade{gap:.65em;padding:.5em 1em .5em .85em}.empregabilidade span{font-size:.86rem}}
+
 .mercado-faixa{margin-top:clamp(28px,4vw,44px);padding-top:22px;border-top:1px solid var(--line)}
 .mf-titulo{display:block;font-size:.74rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px}
 .logo-marquee--mini .logo-m{height:74px;width:158px}
