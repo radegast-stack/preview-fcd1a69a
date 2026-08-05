@@ -166,6 +166,25 @@
     });
   });
 
+  /* submenu do "Sobre": hover no desktop, toque/teclado tambem abrem */
+  document.querySelectorAll('.nav-item.tem-sub').forEach(function(item){
+    var gatilho=item.querySelector('a');
+    item.addEventListener('mouseenter',function(){item.classList.add('aberto');});
+    item.addEventListener('mouseleave',function(){item.classList.remove('aberto');});
+    item.addEventListener('focusin',function(){item.classList.add('aberto');});
+    item.addEventListener('focusout',function(e){
+      if(!item.contains(e.relatedTarget))item.classList.remove('aberto');
+    });
+    if(gatilho&&matchMedia('(pointer:coarse)').matches){
+      gatilho.addEventListener('click',function(e){
+        if(!item.classList.contains('aberto')){e.preventDefault();item.classList.add('aberto');}
+      });
+    }
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape')document.querySelectorAll('.nav-item.aberto').forEach(function(i){i.classList.remove('aberto');});
+  });
+
   /* hello: o botao do card ja escolhe a opcao no formulario de agendamento */
   var selAgendar=document.getElementById('agendarSelect');
   if(selAgendar){
@@ -305,7 +324,8 @@
   /* nav-pill: pilula que desliza entre os itens (adaptado do morphin) */
   var nav=document.querySelector('nav.main'), pill=document.getElementById('navPill');
   if(nav&&pill){
-    nav.querySelectorAll('a').forEach(function(a){
+    /* so os itens do primeiro nivel; os links do submenu ficam de fora */
+    nav.querySelectorAll(':scope > a, :scope > .nav-item > a').forEach(function(a){
       a.addEventListener('mouseenter',function(){
         var nr=nav.getBoundingClientRect(), ar=a.getBoundingClientRect();
         pill.style.left=(ar.left-nr.left)+'px';
