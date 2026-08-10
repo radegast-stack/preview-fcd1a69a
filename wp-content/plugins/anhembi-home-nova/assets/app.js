@@ -157,15 +157,6 @@
     });
   }
 
-  /* glow-card: brilho seguindo o cursor (adaptado do morphin, sutil) */
-  document.querySelectorAll('.glow-card').forEach(function(el){
-    el.addEventListener('pointermove',function(e){
-      var r=el.getBoundingClientRect();
-      el.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
-      el.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
-    });
-  });
-
   /* menu da propria pagina: marca a secao visivel e rola o chip para dentro */
   var secnav=document.getElementById('secnav');
   if(secnav){
