@@ -1438,7 +1438,7 @@ nav.main .subnav a:hover{background:var(--surface-2)}
 
 
 /* o conteudo nao pode ficar escondido atras do cabecalho + esta barra */
-[id="cursos"],[id="ajuda"],[id="teste"],[id="diferenciais"],[id="egressos"],[id="campus"],[id="duvidas"],[id="contato"],[id="sobre"],[id="grade"],[id="atuacao"],[id="inscricao"],[id="ingresso"]{scroll-margin-top:calc(var(--hdr-h,72px) + 74px)}
+[id="networking"],[id="cursos"],[id="ajuda"],[id="teste"],[id="diferenciais"],[id="egressos"],[id="campus"],[id="duvidas"],[id="contato"],[id="sobre"],[id="grade"],[id="atuacao"],[id="inscricao"],[id="ingresso"]{scroll-margin-top:calc(var(--hdr-h,72px) + 74px)}
 
 @media (max-width:900px){
   .secnav .wrap{padding-right:0}
