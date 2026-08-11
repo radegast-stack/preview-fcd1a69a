@@ -179,6 +179,32 @@
     mq.addEventListener?mq.addEventListener('change',function(){aplica(false);}):0;
   })();
 
+  /* filtro por turno da lista de cursos do vestibular (so aparece no celular) */
+  var vgf=document.getElementById('vgFiltro');
+  if(vgf){
+    var botoes=[].slice.call(vgf.querySelectorAll('.vgf'));
+    vgf.addEventListener('click',function(e){
+      var b=e.target.closest('.vgf');
+      if(!b)return;
+      botoes.forEach(function(x){x.classList.toggle('on',x===b);});
+      var turno=b.getAttribute('data-turno');
+      document.querySelectorAll('.vest-grupo').forEach(function(g){
+        var vivos=0;
+        g.querySelectorAll('tbody tr').forEach(function(tr){
+          var serve=!turno||(tr.getAttribute('data-turnos')||'').indexOf(turno)>-1;
+          if(serve){tr.removeAttribute('hidden');vivos++;}else{tr.setAttribute('hidden','');}
+        });
+        /* grupo sem nenhum curso no turno some inteiro; a contagem acompanha o filtro */
+        if(vivos){g.removeAttribute('hidden');}else{g.setAttribute('hidden','');}
+        var qtd=g.querySelector('.vg-qtd');
+        if(qtd){
+          if(!qtd.dataset.total)qtd.dataset.total=qtd.textContent;
+          qtd.textContent=turno?vivos+(vivos===1?' curso':' cursos')+' no turno':qtd.dataset.total;
+        }
+      });
+    });
+  }
+
   /* telefone: o pattern validava caracteres, nao telefone — aqui contam os digitos */
   document.querySelectorAll('input[type=tel]').forEach(function(t){
     function valida(){
