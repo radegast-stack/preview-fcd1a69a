@@ -1014,7 +1014,7 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .pilar{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,2.6vw,28px);
   display:grid;gap:.45rem;align-content:start;box-shadow:var(--shadow-sm)}
 /* etiqueta-kicker: a mesma anatomia em todo card de diferencial */
-.kicker{display:inline-block;font-size:.64rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+.kicker{display:inline-block;justify-self:start;width:fit-content;font-size:.64rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
   color:var(--brand);background:var(--surface-2);border-radius:7px;padding:.42em .78em;margin-bottom:.7rem}
 .comp-band .kicker,.dif-card .kicker{color:var(--highlight);background:rgba(255,255,255,.14)}
 .pilar b{font-size:1.22rem;font-weight:900;letter-spacing:-.02em;line-height:1.15}
@@ -1470,9 +1470,11 @@ nav.main .subnav a:hover{background:var(--surface-2)}
    ========================================================================== */
 :root{--nivel-1:var(--brand-deep);--nivel-2:var(--brand-bright);--nivel-3:var(--brand-lime)}
 
-.grade-aviso{background:var(--surface-2);border-left:4px solid var(--highlight);border-radius:0 14px 14px 0;
+.grade-aviso{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;
+  background:var(--surface-2);border-left:4px solid var(--highlight);border-radius:0 14px 14px 0;
   padding:16px 20px;margin:clamp(18px,2.6vw,26px) 0 clamp(20px,3vw,30px);color:var(--ink-soft);max-width:78ch}
 .grade-aviso b{color:var(--ink)}
+.grade-aviso svg{width:22px;height:22px;color:var(--brand);flex:none;margin-top:1px}
 
 .niveis{display:grid;gap:16px}
 .nivel{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface)}
