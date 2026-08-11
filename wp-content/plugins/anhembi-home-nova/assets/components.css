@@ -911,6 +911,11 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .vg-tabela tbody tr:hover th,.vg-tabela tbody tr:hover td{background:var(--surface-2)}
 .vg-tabela tbody a{color:var(--ink);font-weight:700}
 .vg-tabela tbody tr:hover a{color:var(--brand)}
+/* duracao e turno na mesma celula: a coluna separada de turnos pesava demais */
+.vg-quando{white-space:normal !important}
+.vg-quando .vg-dur{display:inline-block;margin-right:10px}
+.vg-quando .tlista{display:inline-flex;vertical-align:middle;gap:5px}
+.vg-quando .tchip{font-size:.76rem;padding:.22em .62em .22em .48em}
 .vg-preco{text-align:right}
 .vg-preco b{font-weight:900;color:var(--ink);font-variant-numeric:tabular-nums}
 .vg-consulta{font-size:.82rem;font-weight:800;color:var(--brand) !important;text-decoration:underline;text-underline-offset:3px}
