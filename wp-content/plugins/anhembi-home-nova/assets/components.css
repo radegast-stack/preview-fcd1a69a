@@ -893,24 +893,59 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .forma-card p{color:var(--ink-soft)}
 .forma-card .btn{justify-self:start;margin-top:.8rem}
 
-.vest-cursos{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:clamp(24px,3.5vw,38px)}
+/* com preco e turno na linha, cada grau ocupa a largura toda */
+.vest-cursos{display:grid;grid-template-columns:1fr;gap:16px;margin-top:clamp(24px,3.5vw,38px)}
 .vest-grupo{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(20px,2.6vw,28px)}
 .vg-head{display:grid;gap:.2rem;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:14px}
 .vg-head b{font-size:1.24rem}
 .vg-head span{color:var(--ink-soft);font-size:.93rem}
 .vg-qtd{color:var(--brand) !important;font-weight:900;font-size:.8rem !important;letter-spacing:.06em;text-transform:uppercase;margin-top:.3rem}
-.vg-lista{list-style:none;margin:0;padding:0;display:grid;gap:2px}
-.vg-lista li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 12px;border-radius:10px;transition:background .18s}
-.vg-lista li:hover{background:var(--surface-2)}
-.vg-lista a{font-weight:700;color:var(--ink)}
-.vg-lista li:hover a{color:var(--brand)}
-.vg-lista span{color:var(--ink-faint);font-size:.84rem;white-space:nowrap}
+/* curso, duracao, turno e mensalidade na mesma linha */
+.vg-tabela{width:100%;border-collapse:collapse}
+.vg-tabela thead th{text-align:left;font-size:.66rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-faint);padding:0 12px 10px;border-bottom:1px solid var(--line)}
+.vg-tabela thead th:last-child{text-align:right}
+.vg-tabela tbody th{text-align:left;font-weight:700;padding:11px 12px;border-bottom:1px solid var(--line)}
+.vg-tabela tbody td{padding:11px 12px;border-bottom:1px solid var(--line);color:var(--ink-soft);font-size:.88rem;white-space:nowrap}
+.vg-tabela tbody tr:last-child th,.vg-tabela tbody tr:last-child td{border-bottom:0}
+.vg-tabela tbody tr:hover th,.vg-tabela tbody tr:hover td{background:var(--surface-2)}
+.vg-tabela tbody a{color:var(--ink);font-weight:700}
+.vg-tabela tbody tr:hover a{color:var(--brand)}
+.vg-preco{text-align:right}
+.vg-preco b{font-weight:900;color:var(--ink);font-variant-numeric:tabular-nums}
+.vg-consulta{font-size:.82rem;font-weight:800;color:var(--brand) !important;text-decoration:underline;text-underline-offset:3px}
+.vg-rot{display:none} /* so aparece quando a linha vira cartao no celular */
+
+@media (max-width:820px){
+  .vg-tabela thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .vg-tabela,.vg-tabela tbody{display:block}
+  .vg-tabela tbody{display:grid;gap:9px}
+  /* flex em vez de grid: duracao e turnos ficam lado a lado quando cabem e
+     quebram inteiros quando nao cabem, sem partir "8 semestres" no meio */
+  .vg-tabela tbody tr{display:flex;flex-wrap:wrap;gap:3px 14px;
+    background:var(--ground);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .vg-tabela tbody tr:hover th,.vg-tabela tbody tr:hover td{background:transparent}
+  .vg-tabela tbody th{flex:1 0 100%;padding:0;border-bottom:0;font-size:.98rem}
+  .vg-tabela tbody td{padding:0;border-bottom:0;white-space:nowrap;font-size:.82rem}
+  .vg-rot{display:inline;font-weight:900;color:var(--ink-faint);margin-right:.35em}
+  .vg-rot::after{content:":"}
+  .vg-preco{flex:1 0 100%;text-align:left;white-space:normal}
+}
 
 .pagamento{background:var(--highlight);color:var(--highlight-ink);padding:clamp(28px,4vw,46px) 0}
 .pag-grid{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .pagamento .eyebrow{color:#6b5a00}
 .pagamento h2{font-size:clamp(1.4rem,3vw,2rem);margin:.3rem 0 .4rem;max-width:20ch}
 .pagamento p{max-width:52ch;font-weight:700}
+/* os mesmos cinco meios que a pagina de curso lista em Bolsas e financiamentos */
+.pag-meios{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:clamp(22px,3vw,30px)}
+.pag-meio{background:rgba(255,255,255,.5);border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:16px 17px;display:grid;gap:.3rem;align-content:start}
+.pag-meio b{font-size:.95rem;font-weight:900;letter-spacing:-.01em}
+.pag-meio p{font-size:.85rem;line-height:1.45;font-weight:400;max-width:none}
+.pag-meio a{display:inline-flex;align-items:center;gap:.35em;margin-top:.15rem;font-size:.79rem;font-weight:900;
+  color:var(--highlight-ink);text-decoration:underline;text-underline-offset:3px}
+.pag-meio a svg{width:13px;height:13px;transition:transform .18s}
+.pag-meio a:hover svg{transform:translateX(3px)}
 
 .teste-carreira{background:var(--surface-2);border-block:1px solid var(--line);padding:clamp(28px,4vw,46px) 0}
 .tc-grid{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
