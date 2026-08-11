@@ -948,6 +948,20 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .vg-consulta{font-size:.82rem;font-weight:800;color:var(--brand) !important;text-decoration:underline;text-underline-offset:3px}
 .vg-rot{display:none} /* no celular vira rotulo so de leitor de tela */
 
+/* topo com a arte oficial da campanha (campo do painel; muda a cada vestibular) */
+.vest-hero--arte{background:none;padding:0}
+.vh-arte{display:block;line-height:0}
+.vh-arte img{width:100%;height:auto;display:block;aspect-ratio:1920/800}
+@media (max-width:700px){.vh-arte img{aspect-ratio:770/700}}
+.vh-regua{background:var(--brand-deep);color:#fff;padding:clamp(14px,2vw,20px) 0}
+.vh-regua-linha{display:flex;align-items:center;justify-content:space-between;gap:14px 24px;flex-wrap:wrap}
+.vh-chamada{font-weight:900;font-size:clamp(1rem,1.8vw,1.2rem);letter-spacing:-.01em}
+.vh-regua .curso-acoes{margin:0}
+@media (max-width:700px){
+  .vh-regua-linha{justify-content:center;text-align:center}
+  .vh-regua .curso-acoes{width:100%;justify-content:center}
+}
+
 /* filtro por turno: existe apenas no celular, onde a lista vira 34 cartoes */
 .vg-filtro{display:none}
 
