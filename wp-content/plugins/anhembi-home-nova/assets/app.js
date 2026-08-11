@@ -1,7 +1,7 @@
 (function(){
   /* reveal */
   var ioFired=false;
-  var io=new IntersectionObserver(function(es){ioFired=true;es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -8% 0px'});
+  var io=new IntersectionObserver(function(es){ioFired=true;es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px 260px 0px'});
   document.querySelectorAll('.reveal,.rise,.img-reveal').forEach(function(e){io.observe(e);});
   setTimeout(function(){if(!ioFired){document.querySelectorAll('.reveal,.rise,.img-reveal').forEach(function(e){e.classList.add('in');});}},3000);
 
@@ -122,7 +122,7 @@
 
   /* form */
   var lf=document.getElementById('lf');
-  if(lf){lf.addEventListener('submit',function(ev){ev.preventDefault();if(!lf.checkValidity()){lf.reportValidity();return;}lf.querySelectorAll('.field,.field-row,button[type=submit],.form-note').forEach(function(n){n.style.display='none';});document.getElementById('ok').style.display='block';});}
+  if(lf){lf.addEventListener('submit',function(ev){ev.preventDefault();if(!lf.checkValidity()){lf.reportValidity();return;}lf.querySelectorAll('.field,.field-row,button[type=submit],.form-note').forEach(function(n){n.style.display='none';});var ok=document.getElementById('ok');ok.style.display='block';ok.tabIndex=-1;ok.focus();});}
 
   /* mobile menu */
   var burger=document.getElementById('burger'),mobmenu=document.getElementById('mobmenu');
@@ -250,6 +250,7 @@
     try{CURSOS=JSON.parse(dadosBusca.textContent||'[]');}catch(err){}
     function normTxt(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
     CURSOS.forEach(function(c){c._n=normTxt(c.t+' '+(c.a||''));});
+    var escopo=dadosBusca.getAttribute('data-escopo')||'';
     [].slice.call(document.querySelectorAll('.modsearch,.busca-curso')).forEach(function(caixa){
       var input=caixa.querySelector('input');
       if(!input||!CURSOS.length)return;
@@ -258,8 +259,10 @@
       function fecha(){sug.classList.remove('aberta');sug.innerHTML='';ativo=-1;}
       function render(){
         if(!lista.length){fecha();return;}
+        var corte=(typeof lista._corte==='number')?lista._corte:lista.length;
         sug.innerHTML=lista.map(function(c,i){
-          return '<a class="ms-item'+(i===ativo?' ativo':'')+'" href="'+c.u+'"><b>'+c.t+'</b>'+
+          var divisor=(i===corte&&corte>0)||(i===0&&corte===0)?'<span class="ms-div">Em outros catálogos</span>':'';
+          return divisor+'<a class="ms-item'+(i===ativo?' ativo':'')+'" href="'+c.u+'"><b>'+c.t+'</b>'+
                  '<span>'+c.g+(c.a?' · '+c.a:'')+'</span></a>';
         }).join('');
         sug.classList.add('aberta');
@@ -268,7 +271,16 @@
         var q=normTxt(input.value.trim());
         if(q.length<2){fecha();return;}
         var partes=q.split(/\s+/);
-        lista=CURSOS.filter(function(c){return partes.every(function(t){return c._n.indexOf(t)>-1;});}).slice(0,8);
+        var bate=CURSOS.filter(function(c){return partes.every(function(t){return c._n.indexOf(t)>-1;});});
+        if(escopo){
+          var dentro=bate.filter(function(c){return c.e===escopo;}).slice(0,8);
+          var fora=bate.filter(function(c){return c.e!==escopo;}).slice(0,2);
+          lista=dentro.concat(fora);
+          lista._corte=dentro.length;
+        }else{
+          lista=bate.slice(0,8);
+          lista._corte=lista.length;
+        }
         ativo=-1;render();
       }
       input.addEventListener('input',procura);
