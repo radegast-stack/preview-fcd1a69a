@@ -79,6 +79,7 @@ section{position:relative}
 .sec-head p{color:var(--ink-soft);font-size:1rem;max-width:48ch;margin-top:.5rem}
 
 /* reveal */
+.sem-anim .reveal,.sem-anim .rise,.sem-anim .img-reveal img{transition:none !important}
 .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i,0)*90ms)}
 .reveal.in{opacity:1;transform:none}
 .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
@@ -889,7 +890,7 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .forma-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(24px,3vw,34px);display:grid;gap:.5rem;align-content:start;transition:transform .2s cubic-bezier(.16,1,.3,1),border-color .2s,box-shadow .2s}
 .forma-card:hover{transform:translateY(-4px);border-color:var(--brand);box-shadow:var(--shadow)}
 .forma-n{font-size:.78rem;font-weight:900;letter-spacing:.1em;color:var(--action)}
-.forma-card b{font-size:clamp(1.2rem,2.4vw,1.5rem);line-height:1.15}
+.forma-card b,.forma-card h3{font-size:clamp(1.2rem,2.4vw,1.5rem);line-height:1.15;margin:0}
 .forma-card p{color:var(--ink-soft)}
 .forma-card .btn{justify-self:start;margin-top:.8rem}
 
@@ -897,13 +898,13 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .vest-cursos{display:grid;grid-template-columns:1fr;gap:16px;margin-top:clamp(24px,3.5vw,38px)}
 .vest-grupo{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(20px,2.6vw,28px)}
 .vg-head{display:grid;gap:.2rem;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:14px}
-.vg-head b{font-size:1.24rem}
+.vg-head b,.vg-head h3{font-size:1.24rem;margin:0}
 .vg-head span{color:var(--ink-soft);font-size:.93rem}
 .vg-qtd{color:var(--brand) !important;font-weight:900;font-size:.8rem !important;letter-spacing:.06em;text-transform:uppercase;margin-top:.3rem}
 /* curso, duracao, turno e mensalidade na mesma linha */
 .vg-tabela{width:100%;border-collapse:collapse}
 .vg-tabela thead th{text-align:left;font-size:.66rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--ink-faint);padding:0 12px 10px;border-bottom:1px solid var(--line)}
+  color:var(--ink-soft);padding:0 12px 10px;border-bottom:1px solid var(--line)}
 .vg-tabela thead th:last-child{text-align:right}
 .vg-tabela tbody th{text-align:left;font-weight:700;padding:11px 12px;border-bottom:1px solid var(--line)}
 .vg-tabela tbody td{padding:11px 12px;border-bottom:1px solid var(--line);color:var(--ink-soft);font-size:.88rem;white-space:nowrap}
@@ -923,7 +924,7 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .vdif-n{position:absolute;left:12px;bottom:12px;background:var(--brand-deep);color:#fff;font-weight:900;
   font-size:.76rem;letter-spacing:.06em;border-radius:8px;padding:4px 9px;font-variant-numeric:tabular-nums}
 .vdif-txt{padding:16px 18px 20px;display:grid;gap:.35rem;align-content:start}
-.vdif-txt b{font-size:1.04rem;font-weight:900;letter-spacing:-.015em;line-height:1.25}
+.vdif-txt b,.vdif-txt h3{font-size:1.04rem;font-weight:900;letter-spacing:-.015em;line-height:1.25;margin:0}
 .vdif-txt p{color:var(--ink-soft);font-size:.9rem;line-height:1.5;margin:0}
 @media (max-width:900px){.vdif-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:640px){
@@ -932,7 +933,7 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
   .vdif-foto{flex:0 0 116px;aspect-ratio:auto}
   .vdif-n{left:8px;bottom:8px;font-size:.68rem;padding:3px 7px}
   .vdif-txt{padding:13px 15px}
-  .vdif-txt b{font-size:.97rem}
+  .vdif-txt b,.vdif-txt h3{font-size:.97rem}
   .vdif-txt p{font-size:.85rem}
 }
 
@@ -957,7 +958,7 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
   .vg-tabela tbody tr:hover th,.vg-tabela tbody tr:hover td{background:transparent}
   .vg-tabela tbody th{flex:1 0 100%;padding:0;border-bottom:0;font-size:.98rem}
   .vg-tabela tbody td{padding:0;border-bottom:0;white-space:nowrap;font-size:.82rem}
-  .vg-rot{display:inline;font-weight:900;color:var(--ink-faint);margin-right:.35em}
+  .vg-rot{display:inline;font-weight:900;color:var(--ink-soft);margin-right:.35em}
   .vg-rot::after{content:":"}
   .vg-preco{flex:1 0 100%;text-align:left;white-space:normal}
 }
@@ -970,7 +971,7 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 /* os mesmos cinco meios que a pagina de curso lista em Bolsas e financiamentos */
 .pag-meios{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:clamp(22px,3vw,30px)}
 .pag-meio{background:rgba(255,255,255,.5);border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:16px 17px;display:grid;gap:.3rem;align-content:start}
-.pag-meio b{font-size:.95rem;font-weight:900;letter-spacing:-.01em}
+.pag-meio b,.pag-meio h3{font-size:.95rem;font-weight:900;letter-spacing:-.01em;margin:0}
 .pag-meio p{font-size:.85rem;line-height:1.45;font-weight:400;max-width:none}
 .pag-meio a{display:inline-flex;align-items:center;gap:.35em;margin-top:.15rem;font-size:.79rem;font-weight:900;
   color:var(--highlight-ink);text-decoration:underline;text-underline-offset:3px}
@@ -1529,6 +1530,46 @@ nav.main .subnav a:hover{background:var(--surface-2)}
 
 /* so para leitor de tela: informacao que o olho ja tem de outro jeito */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* foco visivel tambem sobre fundo colorido: o anel magenta some no verde e no proprio magenta */
+.vest-hero :focus-visible,.vestcta :focus-visible,.curso-topo :focus-visible,
+.comp-band :focus-visible,.anos-statement :focus-visible,.pagamento :focus-visible{
+  outline-color:#fff;box-shadow:0 0 0 7px rgba(0,0,0,.4)}
+
+/* convite de inscricao repetido no meio da pagina longa */
+.convite{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:center;
+  margin-top:clamp(24px,3.5vw,36px)}
+.convite span{font-weight:900;font-size:1.02rem;letter-spacing:-.01em}
+.convite-solo{padding:clamp(22px,3vw,34px) 0 0}
+.convite-solo .convite{margin-top:0}
+
+/* nota curta que destrava o clique: gratuidade e o que acontece depois */
+.cta-nota{font-size:.8rem;font-weight:700;color:var(--ink-faint);margin:.6rem 0 0}
+.vest-hero .cta-nota{color:#f3d9e9}
+.forma-card .cta-nota{margin-top:.45rem;display:block}
+.tc-nota{font-size:.85rem;font-weight:700;margin:.4rem 0 0;opacity:.85}
+.vestcta-alt{margin-top:1rem;font-size:.9rem;color:#f3d9e9}
+.vestcta-alt a{color:#fff;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+
+/* parcerias como sub-bloco do "por que aqui" */
+.parcerias-sub{margin-top:clamp(30px,4.5vw,52px)}
+.parcerias-sub h3{font-size:clamp(1.2rem,2.6vw,1.6rem);font-weight:900;letter-spacing:-.02em;margin:0 0 6px}
+
+/* cabecalho some ao descer e volta ao subir no celular (a secnav acompanha via --hdr-h) */
+@media (max-width:900px){
+  #hdr{transition:transform .28s ease}
+  html.hdr-fora #hdr{transform:translateY(-105%)}
+  .secnav{transition:top .28s ease}
+}
+@media (prefers-reduced-motion:reduce){#hdr,.secnav{transition:none}}
+
+/* blur animado e caro no celular: entrada fica so com opacidade e deslocamento
+   (o :not(.in) e obrigatorio: sem ele esta regra, que vem depois no arquivo,
+   venceria o .rise.in e deixaria o bloco deslocado para sempre) */
+@media (max-width:700px){
+  .js .rise:not(.in){filter:none;transform:translateY(14px)}
+  .js .rise{filter:none}
+}
 
 /* teclado pula os ~20 tabs de menu; invisivel ate receber foco */
 /* fora da tela por cima, nao pela lateral: -9999px de left aumenta a largura rolavel do documento */

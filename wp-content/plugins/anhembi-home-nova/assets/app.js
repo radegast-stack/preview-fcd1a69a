@@ -1,4 +1,14 @@
 (function(){
+  /* o gate das animacoes liga AQUI, nao no head: se este arquivo falhar,
+     o conteudo pinta visivel por padrao em vez de ficar escondido para sempre.
+     O "sem-anim" faz o esconder ser um salto seco: sem ele, cada bloco nasceria
+     numa transicao 1->0 que o navegador congela fora da tela e o reveal trava. */
+  var raiz=document.documentElement;
+  raiz.classList.add('sem-anim');
+  raiz.classList.add('js');
+  void raiz.offsetWidth;
+  raiz.classList.remove('sem-anim');
+
   /* reveal */
   var ioFired=false;
   var io=new IntersectionObserver(function(es){ioFired=true;es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px 260px 0px'});
@@ -59,7 +69,7 @@
     ['assets/img/parceiros/ejem.webp','EJEM'],['assets/img/parceiros/new-moveis.webp','New Moveis'],['assets/img/parceiros/oficina-da-costura.webp','Oficina da Costura']
   ];
   var lt=document.getElementById('logoTrack');
-  if(lt){
+  if(lt&&!lt.children.length){ /* paginas novas ja rendem os logos no PHP */
     var AB=window.__ASSET_BASE||'';
     var one=logos.map(function(l){return '<div class="logo-m"><img src="'+AB+l[0]+'" alt="'+l[1]+'" loading="lazy"></div>';}).join('');
     lt.innerHTML=one+one;
@@ -125,8 +135,9 @@
   var ctaFixo=document.getElementById('ctaFixo');
   if(ctaFixo){
     ctaFixo.removeAttribute('hidden');
-    var ficha=document.querySelector('.cf-acoes'),
-        fim=document.getElementById('contato')||document.getElementById('inscricao');
+    /* cada template diz o que dispara e o que recolhe; sem data-*, vale o padrao da pagina de curso */
+    var ficha=document.querySelector(ctaFixo.getAttribute('data-apos')||'.cf-acoes'),
+        fim=(ctaFixo.getAttribute('data-antes')&&document.querySelector(ctaFixo.getAttribute('data-antes')))||document.getElementById('contato')||document.getElementById('inscricao');
     var pedidoCta=false;
     function avaliaCta(){
       pedidoCta=false;
@@ -140,6 +151,33 @@
     addEventListener('resize',avaliaCta,{passive:true});
     avaliaCta();
   }
+
+  /* no celular, o cabecalho some ao descer e volta ao subir: devolve ~70px de tela
+     numa pagina longa; a barra de secoes continua fixa e sobe junto (top usa --hdr-h) */
+  (function(){
+    var hdr=document.getElementById('hdr');
+    if(!hdr)return;
+    var mq=matchMedia('(max-width:900px)'),ultimo=0,fora=false,pedidoHdr=false;
+    function aplica(v){
+      fora=v;
+      document.documentElement.classList.toggle('hdr-fora',v);
+      document.documentElement.style.setProperty('--hdr-h',v?'0px':Math.round(hdr.getBoundingClientRect().height)+'px');
+    }
+    function ve(){
+      pedidoHdr=false;
+      if(!mq.matches){if(fora)aplica(false);return;}
+      var y=window.scrollY||window.pageYOffset;
+      var menuAberto=document.querySelector('.mobmenu.open');
+      if(menuAberto||y<160){if(fora)aplica(false);}
+      else if(y>ultimo+8&&!fora){aplica(true);}
+      else if(y<ultimo-8&&fora){aplica(false);}
+      ultimo=y;
+    }
+    addEventListener('scroll',function(){
+      if(!pedidoHdr){pedidoHdr=true;requestAnimationFrame(ve);}
+    },{passive:true});
+    mq.addEventListener?mq.addEventListener('change',function(){aplica(false);}):0;
+  })();
 
   /* telefone: o pattern validava caracteres, nao telefone — aqui contam os digitos */
   document.querySelectorAll('input[type=tel]').forEach(function(t){
