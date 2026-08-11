@@ -944,12 +944,12 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
    Altura igual para todos e largura natural: e o que equilibra marcas de proporcoes diferentes */
 .mf-logos{display:flex;gap:clamp(20px,2.6vw,34px);flex-wrap:wrap;align-items:center}
 .mf-logos span{display:flex;align-items:center}
-.mf-logos img{height:36px;width:auto;max-width:190px;object-fit:contain}
+.mf-logos img{height:25px;width:auto;max-width:135px;object-fit:contain}
 .mf-legenda{font-size:.74rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft)}
 @media (max-width:420px){
   /* os tres logos cabem lado a lado no 390px */
-  .mf-logos{flex-wrap:nowrap;gap:12px}
-  .mf-logos img{height:25px;max-width:none}
+  .mf-logos{flex-wrap:nowrap;gap:11px}
+  .mf-logos img{height:18px;max-width:none}
 }
 /* eyebrow curto e neutro na listagem: o rotulo nao disputa mais com o H1 */
 .lista-hero .eyebrow{color:var(--ink-soft)}
