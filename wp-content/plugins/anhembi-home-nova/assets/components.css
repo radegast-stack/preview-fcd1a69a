@@ -940,14 +940,16 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 
 /* dobra da graduacao (painel 4): prova social parada, sem marquee nem count-up */
 .mf-parada{display:grid;gap:9px;align-content:center}
-.mf-logos{display:flex;gap:10px;flex-wrap:wrap}
-.mf-logos span{background:var(--ground);border:1px solid var(--line);border-radius:12px;height:58px;width:124px;display:flex;align-items:center;justify-content:center;padding:8px 14px}
-.mf-logos img{max-height:32px;max-width:100%;object-fit:contain}
+/* logos soltos, sem caixinha: os arquivos ganharam fundo transparente e margens aparadas.
+   Altura igual para todos e largura natural: e o que equilibra marcas de proporcoes diferentes */
+.mf-logos{display:flex;gap:clamp(20px,2.6vw,34px);flex-wrap:wrap;align-items:center}
+.mf-logos span{display:flex;align-items:center}
+.mf-logos img{height:36px;width:auto;max-width:190px;object-fit:contain}
 .mf-legenda{font-size:.74rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft)}
 @media (max-width:420px){
   /* os tres logos cabem lado a lado no 390px */
-  .mf-logos{flex-wrap:nowrap;gap:7px}
-  .mf-logos span{height:50px;width:auto;flex:1 1 0;min-width:0;padding:7px 10px}
+  .mf-logos{flex-wrap:nowrap;gap:12px}
+  .mf-logos img{height:25px;max-width:none}
 }
 /* eyebrow curto e neutro na listagem: o rotulo nao disputa mais com o H1 */
 .lista-hero .eyebrow{color:var(--ink-soft)}
