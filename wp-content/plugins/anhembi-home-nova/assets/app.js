@@ -306,6 +306,22 @@
     });
   });
 
+  /* gaveta de refino no celular: abre os seletores e mostra quantos filtros estao ativos */
+  var fxAbrir=document.getElementById('fxAbrir'),fxRefina=document.getElementById('fxRefina');
+  if(fxAbrir&&fxRefina){
+    fxAbrir.addEventListener('click',function(){
+      var aberta=fxRefina.classList.toggle('aberta');
+      fxAbrir.setAttribute('aria-expanded',aberta?'true':'false');
+    });
+    var contaFiltros=function(){
+      var n=[].slice.call(fxRefina.querySelectorAll('select')).filter(function(s){return s.value!=='tudo';}).length;
+      fxAbrir.querySelector('b').textContent=n?' · '+n:'';
+    };
+    fxRefina.addEventListener('change',contaFiltros);
+    var limparBtn=document.getElementById('lcLimpar');
+    if(limparBtn)limparBtn.addEventListener('click',function(){setTimeout(contaFiltros,0);});
+  }
+
   /* filtro reaproveitavel; aceita mais de um grupo de chips (area + grau + modalidade) */
   function montaFiltro(grade,seletorItem,grupos,conta,unidade,extra){
     if(!grade)return null;
