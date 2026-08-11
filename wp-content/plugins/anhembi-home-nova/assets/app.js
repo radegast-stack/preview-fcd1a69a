@@ -120,6 +120,16 @@
   rail.addEventListener('scroll',upd,{passive:true});upd();
   }
 
+  /* telefone: o pattern validava caracteres, nao telefone — aqui contam os digitos */
+  document.querySelectorAll('input[type=tel]').forEach(function(t){
+    function valida(){
+      var d=t.value.replace(/\D/g,'');
+      t.setCustomValidity(t.value&&(d.length<10||d.length>11)?'Digite um telefone com DDD, ex.: (15) 99999-9999':'');
+    }
+    t.addEventListener('input',valida);
+    valida();
+  });
+
   /* form */
   var lf=document.getElementById('lf');
   if(lf){lf.addEventListener('submit',function(ev){ev.preventDefault();if(!lf.checkValidity()){lf.reportValidity();return;}lf.querySelectorAll('.field,.field-row,button[type=submit],.form-note').forEach(function(n){n.style.display='none';});var ok=document.getElementById('ok');ok.style.display='block';ok.tabIndex=-1;ok.focus();});}
@@ -173,7 +183,10 @@
     var chips=[].slice.call(secnav.querySelectorAll('a'));
     var alvos=chips.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
     function marca(i){
-      chips.forEach(function(c,k){c.classList.toggle('on',k===i);});
+      chips.forEach(function(c,k){
+        c.classList.toggle('on',k===i);
+        if(k===i){c.setAttribute('aria-current','true');}else{c.removeAttribute('aria-current');}
+      });
       var c=chips[i];
       if(c){
         var t=secnav.querySelector('.secnav-track');
