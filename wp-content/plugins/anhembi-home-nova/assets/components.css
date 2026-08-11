@@ -1398,8 +1398,6 @@ nav.main .subnav a:hover{background:var(--surface-2)}
 /* erro de campo visivel sem depender de balao */
 .field :user-invalid{border-color:#b3262e}
 
-/* divisor no autocomplete quando a sugestao sai do catalogo da pagina */
-.ms-div{display:block;padding:8px 16px 4px;font-size:.64rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint);border-top:1px solid var(--line)}
 
 /* o conteudo nao pode ficar escondido atras do cabecalho + esta barra */
 [id="cursos"],[id="ajuda"],[id="teste"],[id="diferenciais"],[id="egressos"],[id="campus"],[id="duvidas"],[id="contato"],[id="sobre"],[id="grade"],[id="atuacao"],[id="inscricao"],[id="ingresso"]{scroll-margin-top:calc(var(--hdr-h,72px) + 74px)}

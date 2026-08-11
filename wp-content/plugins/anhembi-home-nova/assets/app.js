@@ -259,10 +259,8 @@
       function fecha(){sug.classList.remove('aberta');sug.innerHTML='';ativo=-1;}
       function render(){
         if(!lista.length){fecha();return;}
-        var corte=(typeof lista._corte==='number')?lista._corte:lista.length;
         sug.innerHTML=lista.map(function(c,i){
-          var divisor=(i===corte&&corte>0)||(i===0&&corte===0)?'<span class="ms-div">Em outros catálogos</span>':'';
-          return divisor+'<a class="ms-item'+(i===ativo?' ativo':'')+'" href="'+c.u+'"><b>'+c.t+'</b>'+
+          return '<a class="ms-item'+(i===ativo?' ativo':'')+'" href="'+c.u+'"><b>'+c.t+'</b>'+
                  '<span>'+c.g+(c.a?' · '+c.a:'')+'</span></a>';
         }).join('');
         sug.classList.add('aberta');
@@ -272,15 +270,9 @@
         if(q.length<2){fecha();return;}
         var partes=q.split(/\s+/);
         var bate=CURSOS.filter(function(c){return partes.every(function(t){return c._n.indexOf(t)>-1;});});
-        if(escopo){
-          var dentro=bate.filter(function(c){return c.e===escopo;}).slice(0,8);
-          var fora=bate.filter(function(c){return c.e!==escopo;}).slice(0,2);
-          lista=dentro.concat(fora);
-          lista._corte=dentro.length;
-        }else{
-          lista=bate.slice(0,8);
-          lista._corte=lista.length;
-        }
+        /* a pagina so sugere o proprio catalogo: graduacao nao mostra MBA nem pos */
+        if(escopo)bate=bate.filter(function(c){return c.e===escopo;});
+        lista=bate.slice(0,8);
         ativo=-1;render();
       }
       input.addEventListener('input',procura);
