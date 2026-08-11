@@ -27,7 +27,8 @@
 .ub a:hover{color:#fff}
 .ub-left{display:inline-flex;align-items:center;opacity:.92}
 .ub-right{display:flex;align-items:center;gap:18px}
-@media(max-width:720px){.ub-right .ub-hide-m{display:none}.ub{justify-content:flex-end}}
+/* no celular a barra inteira some (endereco e telefone moram no menu): ~40px de tela de volta */
+@media(max-width:720px){.utilbar{display:none}.ub-right .ub-hide-m{display:none}.ub{justify-content:flex-end}}
 .ub .tt{width:34px;height:34px;border-radius:9px}
 .tt{width:40px;height:40px;border:1px solid var(--line);border-radius:11px;background:var(--surface-2);display:grid;place-items:center;cursor:pointer;color:var(--ink);flex:none;transition:.16s}
 .utilbar .tt{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#eafaf5}
@@ -935,6 +936,31 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
   .vdif-txt{padding:13px 15px}
   .vdif-txt b,.vdif-txt h3{font-size:.97rem}
   .vdif-txt p{font-size:.85rem}
+}
+
+/* dobra da graduacao (painel 4): prova social parada, sem marquee nem count-up */
+.mf-parada{display:grid;gap:9px;align-content:center}
+.mf-logos{display:flex;gap:10px;flex-wrap:wrap}
+.mf-logos span{background:var(--ground);border:1px solid var(--line);border-radius:12px;height:58px;width:124px;display:flex;align-items:center;justify-content:center;padding:8px 14px}
+.mf-logos img{max-height:32px;max-width:100%;object-fit:contain}
+.mf-legenda{font-size:.74rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft)}
+@media (max-width:420px){
+  /* os tres logos cabem lado a lado no 390px */
+  .mf-logos{flex-wrap:nowrap;gap:7px}
+  .mf-logos span{height:50px;width:auto;flex:1 1 0;min-width:0;padding:7px 10px}
+}
+/* eyebrow curto e neutro na listagem: o rotulo nao disputa mais com o H1 */
+.lista-hero .eyebrow{color:var(--ink-soft)}
+/* o titulo da listagem desce um degrau: nao repete o corpo do H1 */
+.h2-lista{font-size:clamp(1.4rem,2.9vw,2rem)}
+@media (max-width:700px){
+  /* uma textura so no fundo do hero: a marca d'agua sai, fica o padrao-tile */
+  .lista-hero::after{display:none}
+  /* chips de area em UMA linha com rolagem, em vez de 5 linhas empilhadas */
+  .filtros-nova .gal-filtros{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;
+    -webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);mask-image:linear-gradient(90deg,#000 90%,transparent)}
+  .filtros-nova .gal-filtros::-webkit-scrollbar{display:none}
+  .filtros-nova .gal-f{flex:none;white-space:nowrap}
 }
 
 /* duracao e turno na mesma celula: a coluna separada de turnos pesava demais */
