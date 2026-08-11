@@ -352,6 +352,9 @@
     [].slice.call(document.querySelectorAll('.modsearch,.busca-curso')).forEach(function(caixa){
       var input=caixa.querySelector('input');
       if(!input||!CURSOS.length)return;
+      /* nas listagens a grade filtrada JA e a sugestao: o dropdown aqui so
+         duplicava a resposta e cobria os controles de filtro (painel 5) */
+      if(input.closest('.filtros-nova'))return;
       var sug=document.createElement('div');sug.className='ms-sug';caixa.appendChild(sug);
       var lista=[],ativo=-1;
       function fecha(){sug.classList.remove('aberta');sug.innerHTML='';ativo=-1;}
@@ -428,10 +431,13 @@
     if(!grupos.length&&!extra.busca)return null;
     var itens=[].slice.call(grade.querySelectorAll(seletorItem));
     function normaliza(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
-    /* o que a busca enxerga: o nome do curso e os apelidos de area do card */
+    /* o que a busca enxerga: nome do curso, area e os apelidos que o
+       vestibulando realmente digita (contabilidade, ADS, RH...) */
     itens.forEach(function(b){
       var t=b.querySelector('h3,h2,b');
-      b._busca=normaliza((t?t.textContent:b.textContent)+' '+(b.getAttribute('data-cat')||'').replace(/-/g,' '));
+      b._busca=normaliza((t?t.textContent:b.textContent)
+        +' '+(b.getAttribute('data-cat')||'').replace(/-/g,' ')
+        +' '+(b.getAttribute('data-apelidos')||''));
     });
     var termo='';
     grupos.forEach(function(g){
@@ -456,15 +462,39 @@
         return casaBusca(b)&&grupos.every(function(o){return o===g?tem(b,o,valor):casa(b,o);});
       }).length;
     }
-    function aplicar(){
-      /* se a escolha de um grupo ficou impossivel depois de outra escolha, ele volta pra "tudo" */
-      for(var passo=0;passo<grupos.length;passo++){
-        var mudou=false;
-        grupos.forEach(function(g){
-          if(g.valor!=='tudo'&&quantos(g,g.valor)===0){g.valor='tudo';if(g.sel)g.barra.value='tudo';mudou=true;}
+    /* rotulo humano de um valor ativo, para a linha de estado */
+    function rotuloDe(g){
+      if(g.sel){var op=g.barra.querySelector('option[value="'+g.valor+'"]');return op?op.textContent:g.valor;}
+      var f=g.chips.filter(function(c){return c.getAttribute('data-cat')===g.valor;})[0];
+      if(!f)return g.valor;
+      var clone=f.cloneNode(true);
+      [].slice.call(clone.querySelectorAll('.f-qtd,svg')).forEach(function(x){x.remove();});
+      return clone.textContent.trim();
+    }
+    /* a linha de estado: cada criterio ativo vira um chip removivel, inclusive a busca */
+    function pintaEstado(){
+      if(!extra.estado)return;
+      var pecas=[];
+      if(termo)pecas.push({tipo:'busca',rotulo:'busca: “'+termo+'”'});
+      grupos.forEach(function(g){if(g.valor!=='tudo')pecas.push({tipo:'grupo',g:g,rotulo:rotuloDe(g)});});
+      if(!pecas.length){extra.estado.hidden=true;extra.estado.innerHTML='';return;}
+      extra.estado.hidden=false;
+      extra.estado.innerHTML=pecas.map(function(p,i){
+        return '<button type="button" class="lce-chip" data-i="'+i+'">'+p.rotulo+'<i aria-hidden="true">×</i>'+
+               '<span class="sr-only"> — remover este filtro</span></button>';
+      }).join('');
+      [].slice.call(extra.estado.querySelectorAll('.lce-chip')).forEach(function(btn,i){
+        btn.addEventListener('click',function(){
+          var p=pecas[i];
+          if(p.tipo==='busca'){termo='';if(extra.busca)extra.busca.value='';}
+          else{p.g.valor='tudo';if(p.g.sel)p.g.barra.value='tudo';}
+          aplicar();
         });
-        if(!mudou)break;
-      }
+      });
+    }
+    function aplicar(){
+      /* a escolha do usuario nunca e desfeita em silencio: combinacao que zera
+         mostra o estado vazio com os criterios removiveis, nao um reset magico */
       itens.forEach(function(b){
         b.classList.toggle('off',!(casaBusca(b)&&grupos.every(function(g){return casa(b,g);})));
       });
@@ -480,14 +510,53 @@
           var valor=f.getAttribute('data-cat');
           var on=valor===g.valor;
           f.classList.toggle('on',on);f.setAttribute('aria-pressed',on?'true':'false');
-          /* opcao que nao levaria a nenhum resultado fica apagada e inerte */
-          var vazia=(valor!=='tudo'&&!on&&quantos(g,valor)===0);
+          var q=(valor==='tudo')?null:quantos(g,valor);
+          /* contagem no rotulo: a pessoa ve o tamanho de cada caminho antes do clique */
+          if(extra.contagens){var s=f.querySelector('.f-qtd');if(s)s.textContent=q===null?'':' · '+q;}
+          /* opcao que zeraria fica apagada, mas legivel e focavel (nao some, nao risca) */
+          var vazia=(q===0&&!on);
           f.classList.toggle('sem-resultado',vazia);
-          f.disabled=vazia;
+          f.setAttribute('aria-disabled',vazia?'true':'false');
+          f.disabled=false;
         });
       });
-      if(conta){var n=visiveis().length;conta.textContent=n+' '+(n===1?unidade[0]:unidade[1]);}
-      if(extra.vazio)extra.vazio.hidden=visiveis().length>0;
+      var n=visiveis().length;
+      if(conta){
+        /* "1 de 34 cursos": no recorte o plural segue o total */
+        conta.textContent=n===itens.length
+          ?n+' '+(n===1?unidade[0]:unidade[1])
+          :n+' de '+itens.length+' '+unidade[1];
+      }
+      if(extra.vazio){
+        extra.vazio.hidden=n>0;
+        if(!extra.vazio.hidden&&extra.vazioTexto){
+          var quem=[];
+          if(termo)quem.push('a busca “'+termo+'”');
+          grupos.forEach(function(g){if(g.valor!=='tudo')quem.push('“'+rotuloDe(g)+'”');});
+          var titulo=document.getElementById('lcVazioTitulo');
+          if(titulo)titulo.textContent=termo?('Nada para '+quem.join(' + ')+'.'):'Nenhum curso com essa combinação.';
+          extra.vazioTexto.textContent=termo
+            ?'Se o curso que você procura não está no catálogo, veja os cursos da área mais próxima ou limpe a busca.'
+            :'Remova um dos critérios acima ou limpe tudo para ver o catálogo inteiro.';
+        }
+      }
+      pintaEstado();
+      if(extra.url)escreveUrl();
+    }
+    /* o filtro sobrevive ao botao voltar e vira link compartilhavel */
+    function escreveUrl(){
+      var p=new URLSearchParams();
+      if(termo)p.set('q',termo);
+      grupos.forEach(function(g){if(g.chave&&g.valor!=='tudo')p.set(g.chave,g.valor);});
+      var qs=p.toString();
+      history.replaceState(null,'',location.pathname+(qs?'?'+qs:'')+location.hash);
+    }
+    function leUrl(){
+      var p=new URLSearchParams(location.search);
+      if(p.get('q')){termo=normaliza(p.get('q'));if(extra.busca)extra.busca.value=p.get('q');}
+      grupos.forEach(function(g){
+        if(g.chave&&p.get(g.chave)){g.valor=p.get(g.chave);if(g.sel)g.barra.value=g.valor;}
+      });
     }
     grupos.forEach(function(g){
       if(g.sel){
@@ -495,7 +564,13 @@
         return;
       }
       g.chips.forEach(function(f){
-        f.addEventListener('click',function(){g.valor=f.getAttribute('data-cat');aplicar();});
+        f.addEventListener('click',function(){
+          if(f.getAttribute('aria-disabled')==='true')return;
+          var valor=f.getAttribute('data-cat');
+          /* clicar no que ja esta ativo desliga: pills viram interruptor */
+          g.valor=(valor===g.valor&&valor!=='tudo')?'tudo':valor;
+          aplicar();
+        });
       });
     });
     if(extra.busca){
@@ -509,6 +584,7 @@
         aplicar();
       });
     }
+    if(extra.url)leUrl();
     aplicar();
     return visiveis;
   }
@@ -526,14 +602,16 @@
               document.getElementById('nmConta'),['matéria','matérias']);
 
   montaFiltro(document.getElementById('lcGrid'),'.curso-card',
-              [{barra:document.getElementById('lcArea')},
-               {barra:document.getElementById('lcGrau'),  attr:'data-grau'},
-               {barra:document.getElementById('lcMod'),   attr:'data-mod'},
-               {barra:document.getElementById('lcTurno'), attr:'data-turno'}],
+              [{barra:document.getElementById('lcArea'),      chave:'area'},
+               {barra:document.getElementById('lcGrauPills'), chave:'tipo',  attr:'data-grau'},
+               {barra:document.getElementById('lcManha'),     chave:'turno', attr:'data-turno'}],
               document.getElementById('lcConta'),['curso','cursos'],
               {busca:document.getElementById('lcBusca'),
                vazio:document.getElementById('lcVazio'),
-               limpar:document.getElementById('lcLimpar')});
+               vazioTexto:document.getElementById('lcVazioTexto'),
+               limpar:document.getElementById('lcLimpar'),
+               estado:document.getElementById('lcEstado'),
+               contagens:true,url:true});
 
 
   /* galeria do campus: filtro por categoria + lightbox (sem dependencia externa) */
