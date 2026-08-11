@@ -280,6 +280,7 @@ section{position:relative}
 /* DUVIDAS */
 .duvidas{background:var(--surface-2);border-top:1px solid var(--line)}
 .duv-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,58px);align-items:center}
+.duv-grid>*{min-width:0}
 .duv-info h2{font-size:clamp(1.9rem,3.8vw,2.7rem);margin-top:.5rem}
 .duv-info .lead{color:var(--ink-soft);font-size:1.03rem;max-width:44ch;margin-top:1rem}
 .duv-contatos{display:flex;flex-direction:column;gap:12px;margin-top:28px}
@@ -291,7 +292,9 @@ section{position:relative}
 .lead-form{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(24px,3vw,36px);box-shadow:var(--shadow-sm)}
 .field{display:flex;flex-direction:column;gap:7px;margin-bottom:15px}
 .field label{font-size:.82rem;font-weight:800;color:var(--ink)}
-.field input,.field select,.field textarea{border:1px solid var(--line-strong);background:var(--ground);border-radius:11px;padding:13px 14px;font:inherit;font-size:.93rem;color:var(--ink);transition:border-color .16s,box-shadow .16s}
+/* width/min-width seguram o campo dentro da coluna: o recuo do optgroup engorda a
+   largura intrinseca do select e ele empurrava a grade inteira (13px de rolagem lateral) */
+.field input,.field select,.field textarea{width:100%;min-width:0;border:1px solid var(--line-strong);background:var(--ground);border-radius:11px;padding:13px 14px;font:inherit;font-size:.93rem;color:var(--ink);transition:border-color .16s,box-shadow .16s}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 15%,transparent)}
 .field textarea{resize:vertical;min-height:96px}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -1425,6 +1428,23 @@ nav.main .subnav a:hover{background:var(--surface-2)}
   .secnav .wrap{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
 }
 
+/* Convite que acompanha a rolagem no celular: a ficha do topo sai de vista muito cedo
+   numa pagina de 13 mil px. So no toque, e recolhe quando o formulario/CTA final chegam. */
+.cta-fixo{display:none}
+@media (max-width:900px){
+  .cta-fixo{position:fixed;left:0;right:0;bottom:0;z-index:120;display:flex;align-items:center;gap:12px;
+    background:var(--ground);border-top:1px solid var(--line);
+    padding:10px clamp(14px,4vw,20px) calc(10px + env(safe-area-inset-bottom));
+    box-shadow:0 -8px 24px rgba(15,34,30,.12);
+    transform:translateY(105%);transition:transform .28s cubic-bezier(.16,1,.3,1)}
+  .cta-fixo[hidden]{display:flex} /* o atributo so guarda o estado inicial; quem mostra e a classe */
+  .cta-fixo.on{transform:none}
+  .cta-fixo .btn{flex:1;justify-content:center;font-size:.92rem;padding:.72em 1em}
+  .cta-fixo-2{flex:none;font-weight:800;font-size:.86rem;color:var(--brand-deep);text-decoration:underline;
+    text-underline-offset:3px;min-height:44px;display:inline-flex;align-items:center}
+}
+@media (prefers-reduced-motion:reduce){.cta-fixo{transition:none}}
+
 /* botoes de acao dentro da ficha do curso */
 .cf-acoes{display:grid;gap:8px;margin-top:14px}
 .cf-acoes .btn{justify-content:center;font-size:.92rem;padding:.72em 1em;width:100%}
@@ -1446,8 +1466,9 @@ nav.main .subnav a:hover{background:var(--surface-2)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 /* teclado pula os ~20 tabs de menu; invisivel ate receber foco */
-.skip-link{position:absolute;left:-9999px;top:0;z-index:400;background:var(--brand-deep);color:#fff;font-weight:800;padding:12px 18px;border-radius:0 0 12px 0}
-.skip-link:focus{left:0}
+/* fora da tela por cima, nao pela lateral: -9999px de left aumenta a largura rolavel do documento */
+.skip-link{position:absolute;left:0;top:-100px;z-index:400;background:var(--brand-deep);color:#fff;font-weight:800;padding:12px 18px;border-radius:0 0 12px 0}
+.skip-link:focus{top:0}
 
 @media (max-width:900px){
   .secnav .wrap{padding-right:0}
@@ -1534,4 +1555,28 @@ nav.main .subnav a:hover{background:var(--surface-2)}
   .nivel-num{gap:16px}
   .grade-extra{grid-template-columns:1fr}
   .ge-total{text-align:left}
+}
+
+/* No celular a matriz de 3 colunas nascia cortada ("VOCE CURS...", carga fora da tela).
+   Cada disciplina vira um cartao: nome + carga na linha de cima, pre-requisito embaixo
+   e so quando existe. Mesma tabela, mesma semantica, zero rolagem lateral. */
+@media (max-width:700px){
+  .nivel-rolagem{overflow-x:visible}
+  .nivel-tabela{min-width:0;display:block}
+  .nivel-tabela thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .nivel-tabela tbody{display:grid;gap:9px;padding:14px}
+  .nivel-tabela tbody tr{display:grid;grid-template-columns:1fr auto;align-items:baseline;column-gap:12px;
+    background:var(--ground);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .nivel-tabela tbody tr:hover th,.nivel-tabela tbody tr:hover td{background:transparent}
+  .nivel-tabela tbody th{width:auto;padding:0;border-bottom:0;font-size:.97rem;line-height:1.3}
+  .nivel-tabela tbody td{padding:0;border-bottom:0}
+  .nt-h{grid-column:2;grid-row:1;align-self:baseline;font-size:.8rem}
+  .nt-h span{font-size:.84rem;color:var(--brand-deep)}
+  .nt-pre{grid-column:1/-1;grid-row:2;font-size:.84rem;margin-top:7px}
+  .nt-pre:has(.nt-sem){display:none} /* "sem pre-requisito" nao precisa de linha propria */
+  .nt-pre ul{display:flex;flex-wrap:wrap;gap:6px}
+  .nt-pre li{padding:2px 9px;background:var(--surface-2);border-radius:7px;font-size:.78rem}
+  .nt-pre li::before{display:none}
+  .nt-pre ul::before{content:"Depois de";align-self:center;font-size:.68rem;font-weight:900;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint)}
 }

@@ -120,6 +120,27 @@
   rail.addEventListener('scroll',upd,{passive:true});upd();
   }
 
+  /* barra de acao do celular: entra depois da ficha do topo, sai quando o
+     formulario ou o CTA final aparecem (senao seriam dois convites na mesma tela) */
+  var ctaFixo=document.getElementById('ctaFixo');
+  if(ctaFixo){
+    ctaFixo.removeAttribute('hidden');
+    var ficha=document.querySelector('.cf-acoes'),
+        fim=document.getElementById('contato')||document.getElementById('inscricao');
+    var pedidoCta=false;
+    function avaliaCta(){
+      pedidoCta=false;
+      var passouFicha=!ficha||ficha.getBoundingClientRect().bottom<0;
+      var chegouFim=fim&&fim.getBoundingClientRect().top<window.innerHeight*.85;
+      ctaFixo.classList.toggle('on',passouFicha&&!chegouFim);
+    }
+    addEventListener('scroll',function(){
+      if(!pedidoCta){pedidoCta=true;requestAnimationFrame(avaliaCta);}
+    },{passive:true});
+    addEventListener('resize',avaliaCta,{passive:true});
+    avaliaCta();
+  }
+
   /* telefone: o pattern validava caracteres, nao telefone — aqui contam os digitos */
   document.querySelectorAll('input[type=tel]').forEach(function(t){
     function valida(){
