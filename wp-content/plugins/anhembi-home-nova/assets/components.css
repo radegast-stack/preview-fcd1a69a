@@ -995,9 +995,12 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .pag-meio a svg{width:13px;height:13px;transition:transform .18s}
 .pag-meio a:hover svg{transform:translateX(3px)}
 
-.teste-carreira{background:var(--surface-2);border-block:1px solid var(--line);padding:clamp(28px,4vw,46px) 0}
+/* faixa escura: a secao vivia apagada em cinza-claro entre duas secoes claras */
+.teste-carreira{background:linear-gradient(135deg,var(--brand-deep),var(--brand) 70%,var(--brand-bright));color:#fff;padding:clamp(32px,4.5vw,54px) 0}
 .tc-grid{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.teste-carreira h2{font-size:clamp(1.35rem,2.8vw,1.9rem);margin-top:.4rem;max-width:24ch}
+.teste-carreira h2{font-size:clamp(1.35rem,2.8vw,1.9rem);margin-top:.4rem;max-width:24ch;color:#fff}
+.teste-carreira .btn{background:#fff;color:var(--brand-deep);border-color:#fff}
+.teste-carreira .btn:hover{background:var(--highlight);border-color:var(--highlight);color:var(--highlight-ink)}
 .faq-resposta{color:var(--ink-soft);max-width:78ch;padding-bottom:6px}
 
 @media (max-width:900px){
@@ -1564,7 +1567,7 @@ nav.main .subnav a:hover{background:var(--surface-2)}
 .cta-nota{font-size:.8rem;font-weight:700;color:var(--ink-faint);margin:.6rem 0 0}
 .vest-hero .cta-nota{color:#f3d9e9}
 .forma-card .cta-nota{margin-top:.45rem;display:block}
-.tc-nota{font-size:.85rem;font-weight:700;margin:.4rem 0 0;opacity:.85}
+.tc-nota{font-size:.85rem;font-weight:700;margin:.4rem 0 0;color:#d6efe8}
 .vestcta-alt{margin-top:1rem;font-size:.9rem;color:#f3d9e9}
 .vestcta-alt a{color:#fff;font-weight:800;text-decoration:underline;text-underline-offset:3px}
 
