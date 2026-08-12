@@ -1678,9 +1678,33 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .grade-lista li span{color:var(--ink)}
 .grade-lista li b{color:var(--ink-faint);font-size:.86rem;white-space:nowrap}
 
-.areas-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:clamp(20px,2.6vw,28px)}
-.area-chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.5em 1.05em;font-size:.9rem;font-weight:700;color:var(--ink-soft);transition:border-color .2s,color .2s,transform .2s}
-.area-chip:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-2px)}
+/* ===== onde atuar: tres perguntas, tres colunas ===== */
+.atuacao-lead{color:var(--ink-soft);max-width:64ch;margin-top:.9rem;font-size:1.02rem}
+.atuacao-grid{display:grid;gap:clamp(12px,1.8vw,18px);margin-top:clamp(22px,3vw,32px);
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.atu-col{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(18px,2.2vw,24px)}
+.atu-olho{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;font-weight:900;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint)}
+.atu-olho::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--ink-faint)}
+.atu-olho--cargo::before{background:var(--action)}
+.atu-olho--lugar::before{background:var(--brand-bright)}
+.atu-olho--area::before{background:var(--brand)}
+.atu-col h3{margin:.55rem 0 0;font-size:1.08rem;font-weight:900;letter-spacing:-.025em;line-height:1.2}
+.atu-lista{list-style:none;margin:14px 0 0;padding:0;display:grid}
+/* curso cadastrado com uma natureza só (Logística, por exemplo): a lista se
+   divide em duas para o card não virar uma coluna de texto solta na largura */
+@media(min-width:700px){
+  .atuacao-grid[style*="--cols:1"] .atu-lista{columns:2;column-gap:clamp(20px,3vw,40px)}
+  .atuacao-grid[style*="--cols:1"] .atu-lista li{break-inside:avoid}
+}
+.atu-lista li{padding:10px 0;border-top:1px solid var(--line)}
+.atu-lista li:first-child{border-top:0;padding-top:0}
+.atu-lista b{display:flex;align-items:center;gap:8px;font-size:.94rem;font-weight:700;line-height:1.3}
+.atu-lista b small{flex:none;font-size:.62rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--brand);background:color-mix(in srgb,var(--brand) 11%,var(--surface));
+  border-radius:99px;padding:.28em .6em}
+.atu-lista span{display:block;margin-top:3px;font-size:.84rem;line-height:1.45;color:var(--ink-soft)}
 
 .curso-tagline{color:#d3f0e9;font-size:clamp(1.02rem,2vw,1.22rem);font-weight:700;margin-top:.7rem;max-width:46ch}
 .cf-linha.destaque b{color:var(--highlight);font-size:1.12rem}
@@ -1871,12 +1895,18 @@ nav.main .subnav a:hover{background:var(--surface-2)}
 /* ==========================================================================
    MENU DA PROPRIA PAGINA (acompanha a rolagem, desktop e celular)
    ========================================================================== */
-.secnav{position:sticky;top:var(--hdr-h,72px);z-index:30;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(12px) saturate(120%);border-block:1px solid var(--line)}
+/* faixa escura: a barra vira um objeto proprio, separado do cabecalho claro e
+   do conteudo. O ativo e branco; a cor de marca fica para o conteudo. */
+.secnav{position:sticky;top:var(--hdr-h,72px);z-index:30;
+  background:color-mix(in srgb,var(--brand-deep) 96%,transparent);
+  backdrop-filter:blur(12px) saturate(120%)}
 .secnav-track{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x proximity;padding:8px 0}
 .secnav-track::-webkit-scrollbar{display:none}
-.secnav a{flex:none;scroll-snap-align:start;position:relative;padding:.62em 1.05em;border-radius:999px;font-size:.86rem;font-weight:800;color:var(--ink-soft);white-space:nowrap;transition:background .18s,color .18s}
-.secnav a:hover{background:var(--surface-2);color:var(--ink)}
-.secnav a.on{background:var(--brand);color:#fff}
+.secnav a{flex:none;scroll-snap-align:start;position:relative;padding:.62em 1.05em;border-radius:999px;font-size:.86rem;font-weight:800;color:rgba(255,255,255,.78);white-space:nowrap;transition:background .18s,color .18s}
+.secnav a:hover{background:rgba(255,255,255,.14);color:#fff}
+.secnav a.on{background:#fff;color:var(--brand-deep)}
+/* o magenta do foco some no verde escuro; aqui quem marca e o amarelo */
+.secnav a:focus-visible{outline-color:var(--highlight)}
 /* secao de conteudo e posicionada (section{position:relative}); sem z-index explicito
    ela disputa a pilha com a barra e pinta por cima. z-index:0 mantem tudo por baixo. */
 .secnav ~ section,.secnav ~ footer{z-index:0}
@@ -1985,11 +2015,6 @@ nav.main .subnav a:hover{background:var(--surface-2)}
 /* ==========================================================================
    A ALUNA COM O "A": presenca humana em pontos escolhidos (Fase 2)
    ========================================================================== */
-/* pagina de curso: areas de atuacao ganham a foto ao lado */
-.areas-sec{overflow:hidden}
-.areas-grid{display:grid;grid-template-columns:1fr minmax(280px,420px);gap:clamp(20px,4vw,50px);align-items:end}
-.areas-foto{align-self:end;margin-bottom:calc(-1 * clamp(46px,7vw,92px))}
-.areas-foto img{width:100%;height:auto;display:block}
 
 /* hello: a foto acompanha o titulo no fundo verde */
 .hero-com-aluna{padding-bottom:0;overflow:hidden}
@@ -1998,15 +2023,9 @@ nav.main .subnav a:hover{background:var(--surface-2)}
 .hero-aluna img{width:100%;height:auto;display:block;filter:drop-shadow(0 22px 40px rgba(0,0,0,.22))}
 
 @media (max-width:900px){
-  .areas-grid{grid-template-columns:1fr}
-  .areas-foto{max-width:340px;justify-self:end;margin-bottom:calc(-1 * clamp(30px,6vw,60px))}
   .hero-com-aluna .wrap{grid-template-columns:1fr}
   .hero-aluna{max-width:320px;justify-self:end}
 }
-@media (max-width:600px){
-  .areas-foto{display:none}   /* no celular a foto rouba espaco da lista */
-}
-
 /* ==========================================================================
    GRADE POR NIVEL (matriz nova, sem semestre fixo)
    ========================================================================== */
