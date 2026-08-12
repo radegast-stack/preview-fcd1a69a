@@ -102,7 +102,8 @@ section{position:relative}
 /* MODALIDADES */
 .mods{padding:clamp(34px,5vw,60px) 0 0}
 .modbar{display:flex;flex-direction:column;gap:14px}
-.modgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+/* cinco modalidades: cabem em linha no desktop largo, e viram 3+2 e 2+2+1 antes de empilhar */
+.modgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .modsearch{position:relative;display:flex;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0 14px;transition:border-color .18s,box-shadow .18s}
 .modsearch:focus-within{border-color:var(--brand);box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 16%,transparent)}
 .modsearch svg{width:19px;height:19px;color:var(--ink-faint);flex:none}
@@ -370,6 +371,7 @@ body.notes .note{display:block}
 .m-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
 
 /* responsive */
+@media(max-width:1180px){.modgrid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:1040px){
   .modgrid{grid-template-columns:1fr 1fr}
   
