@@ -1071,24 +1071,51 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 /* ===== bacharelado x tecnólogo: a dúvida que trava antes de escolher o curso ===== */
 .graus-band{background:var(--surface-2);border-block:1px solid var(--line)}
 .graus-lead{color:var(--ink-soft);max-width:60ch;margin-top:.9rem;font-size:1.02rem}
-.graus-grid{display:grid;gap:clamp(14px,2vw,20px);margin-top:clamp(22px,3vw,32px)}
-@media(min-width:800px){.graus-grid{grid-template-columns:1fr 1fr}}
-.grau-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);
-  padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:16px}
-.grau-card header{display:grid;gap:5px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
-.grau-card header b{font-size:clamp(1.25rem,2.4vw,1.6rem);font-weight:900;letter-spacing:-.03em;line-height:1}
-.grau-nums{font-size:.78rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--action);
-  font-variant-numeric:tabular-nums}
-.grau-card ul{margin:0;padding:0;list-style:none;display:grid;gap:11px;flex:1}
-.grau-card li{display:grid;grid-template-columns:16px 1fr;gap:11px;font-size:.94rem;line-height:1.5;
-  color:var(--ink-soft)}
-.grau-card li::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--brand-bright);
-  margin-top:.45em}
-.grau-card .btn{align-self:flex-start;cursor:pointer}
+/* comparativo em tabela, no formato de comparação de planos */
+.graus-tab-wrap{margin-top:clamp(22px,3vw,32px);background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-lg);overflow:hidden}
+.graus-tab{width:100%;border-collapse:collapse;table-layout:fixed}
+.graus-tab thead td{width:38%}
+.graus-tab th[scope="col"]{padding:clamp(16px,2.2vw,22px) clamp(10px,1.4vw,16px);text-align:left;
+  vertical-align:bottom;border-bottom:2px solid var(--ink)}
+.graus-tab th[scope="col"] b{display:block;font-size:clamp(1.05rem,2.1vw,1.4rem);font-weight:900;
+  letter-spacing:-.03em;line-height:1.1}
+.graus-tab th[scope="col"] span{display:block;margin-top:4px;font-size:.72rem;font-weight:900;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--action);font-variant-numeric:tabular-nums}
+.graus-tab th[scope="row"]{text-align:left;font-weight:700;font-size:.86rem;color:var(--ink-soft);
+  line-height:1.35;padding:clamp(11px,1.5vw,14px) clamp(14px,2vw,20px)}
+.graus-tab td{padding:clamp(11px,1.5vw,14px) clamp(10px,1.4vw,16px);font-size:.92rem;font-weight:700;
+  line-height:1.3;vertical-align:top}
+.graus-tab td span{display:block;font-weight:400;font-size:.8rem;color:var(--ink-faint);margin-top:2px}
+.graus-tab tbody tr:nth-child(odd){background:var(--surface-2)}
+.graus-tab tbody tr+tr{border-top:1px solid var(--line)}
+/* a coluna de critério fica destacada como cabeçalho lateral */
+.graus-tab tbody th[scope="row"]{border-right:1px solid var(--line)}
+.gt-marca{text-align:center}
+.gt-sim{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:99px;
+  background:var(--brand);color:#fff}
+.gt-sim svg{width:15px;height:15px}
+.gt-nao{display:inline-block;color:var(--ink-faint);font-size:1.1rem;line-height:26px}
+.graus-tab tfoot td{padding:clamp(14px,2vw,20px) clamp(10px,1.4vw,16px);border-top:2px solid var(--ink)}
+.graus-tab tfoot .btn{width:100%;justify-content:center;cursor:pointer}
+/* .graus-tab td span{display:block} venceria: o seletor precisa ser mais forte */
+.graus-tab tfoot .gt-nome{display:inline}
+@media(max-width:560px){
+  .graus-tab tfoot .gt-nome{display:none} /* "Ver os 19" já basta embaixo da coluna */
+  .graus-tab thead td{width:34%}
+  .graus-tab th[scope="row"]{font-size:.78rem;padding-inline:11px}
+  .graus-tab td{font-size:.82rem;padding-inline:8px}
+  .graus-tab td span{font-size:.72rem}
+  .graus-tab tfoot .btn{font-size:.8rem;padding-inline:.7em}
+}
 .graus-nota{margin-top:clamp(16px,2.2vw,22px);font-size:.93rem;line-height:1.55;color:var(--ink-soft);
   background:var(--surface);border:1px dashed var(--line-strong);border-radius:var(--radius);
   padding:clamp(14px,2vw,18px)}
 .graus-nota b{color:var(--ink)}
+.graus-nota a{display:inline-flex;align-items:center;gap:.35em;margin-left:.35em;color:var(--brand);
+  font-weight:900;white-space:nowrap}
+.graus-nota a svg{width:14px;height:14px;transition:transform .2s}
+.graus-nota a:hover svg{transform:translateX(3px)}
 
 /* ===== histórico: registro, não convite — lista compacta no fim da página ===== */
 .ev-hist{background:var(--surface-2);border-top:1px solid var(--line);padding:clamp(34px,4.4vw,58px) 0}
