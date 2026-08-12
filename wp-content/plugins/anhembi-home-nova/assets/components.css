@@ -1068,6 +1068,28 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
   .ag-txt h3{display:none} /* o título já está na linha */
   .ag-card--capa .ag-txt h3{font-size:1.18rem}
 }
+/* ===== bacharelado x tecnólogo: a dúvida que trava antes de escolher o curso ===== */
+.graus-band{background:var(--surface-2);border-block:1px solid var(--line)}
+.graus-lead{color:var(--ink-soft);max-width:60ch;margin-top:.9rem;font-size:1.02rem}
+.graus-grid{display:grid;gap:clamp(14px,2vw,20px);margin-top:clamp(22px,3vw,32px)}
+@media(min-width:800px){.graus-grid{grid-template-columns:1fr 1fr}}
+.grau-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:16px}
+.grau-card header{display:grid;gap:5px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+.grau-card header b{font-size:clamp(1.25rem,2.4vw,1.6rem);font-weight:900;letter-spacing:-.03em;line-height:1}
+.grau-nums{font-size:.78rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--action);
+  font-variant-numeric:tabular-nums}
+.grau-card ul{margin:0;padding:0;list-style:none;display:grid;gap:11px;flex:1}
+.grau-card li{display:grid;grid-template-columns:16px 1fr;gap:11px;font-size:.94rem;line-height:1.5;
+  color:var(--ink-soft)}
+.grau-card li::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--brand-bright);
+  margin-top:.45em}
+.grau-card .btn{align-self:flex-start;cursor:pointer}
+.graus-nota{margin-top:clamp(16px,2.2vw,22px);font-size:.93rem;line-height:1.55;color:var(--ink-soft);
+  background:var(--surface);border:1px dashed var(--line-strong);border-radius:var(--radius);
+  padding:clamp(14px,2vw,18px)}
+.graus-nota b{color:var(--ink)}
+
 /* ===== histórico: registro, não convite — lista compacta no fim da página ===== */
 .ev-hist{background:var(--surface-2);border-top:1px solid var(--line);padding:clamp(34px,4.4vw,58px) 0}
 .hist-top{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap}

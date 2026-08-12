@@ -626,6 +626,19 @@
     return visiveis;
   }
 
+  /* "Ver os bacharelados" liga o filtro que já existe em vez de recarregar a
+     página: o chip vira o estado ativo e a lista rola para o lugar. */
+  document.querySelectorAll('[data-filtra-grau]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var pills = document.getElementById('lcGrauPills');
+      var chip  = pills && pills.querySelector('[data-cat="' + b.dataset.filtraGrau + '"]');
+      if (!chip) return;
+      if (chip.getAttribute('aria-pressed') !== 'true') chip.click();
+      var lista = document.getElementById('cursos');
+      if (lista) lista.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
   /* Agenda de eventos no celular: cada linha abre o card completo abaixo dela.
      No desktop a barra está com display:none, então nada disso roda. */
   document.querySelectorAll('.ag-linha').forEach(function(barra){
