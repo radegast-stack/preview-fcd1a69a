@@ -946,6 +946,23 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
   .vdif-txt p{font-size:.85rem}
 }
 
+/* ===== "os professores conhecem os alunos pelo nome" =====
+   a frase sozinha vira slogan; aqui ela vem com o que muda na pratica. */
+.profs-bloco{margin:0 0 clamp(22px,3vw,32px)}
+.profs-frase{font-size:clamp(1.5rem,3.4vw,2.35rem);font-weight:900;letter-spacing:-.025em;line-height:1.12;
+  margin:0;max-width:20ch;text-wrap:balance}
+.profs-lead{color:var(--ink-soft);font-size:1rem;margin:.7rem 0 0;max-width:48ch}
+.profs-razoes{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(14px,2vw,22px);
+  margin-top:clamp(20px,2.6vw,28px)}
+.profs-razao{border-top:2px solid var(--brand-lime);padding-top:12px}
+.profs-razao b{display:block;font-size:1rem;font-weight:900;letter-spacing:-.015em;margin-bottom:.25rem}
+.profs-razao p{margin:0;font-size:.9rem;line-height:1.5;color:var(--ink-soft)}
+/* dentro da coordenacao do curso e do bloco de diferenciais do vestibular */
+.profs-bloco--curso{margin-top:clamp(28px,3.6vw,44px);padding-top:clamp(24px,3vw,34px);border-top:1px solid var(--line)}
+.profs-bloco--curso .profs-frase{font-size:clamp(1.3rem,2.7vw,1.85rem)}
+.profs-bloco--vest{margin-top:clamp(30px,4vw,48px)}
+.profs-bloco--vest .profs-frase{font-size:clamp(1.3rem,2.7vw,1.85rem)}
+
 /* ===== reels do campus: um componente, tres tamanhos =====
    palco (secao propria), janela (dentro do mosaico) e fresta (tile na fileira).
    Fachada: capa do YouTube + play; o player so entra no toque. */
@@ -974,14 +991,26 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .reel--fresta .reel-txt b{font-size:.84rem}
 .reel--fresta .reel-txt span{font-size:.7rem}
 
-/* nivel 1: palco + fila de episodios */
-.reels-sec{padding:clamp(38px,5.5vw,68px) 0;background:var(--surface-2);border-block:1px solid var(--line)}
-.reels-grid{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:clamp(16px,2.4vw,28px);align-items:start;
+/* nivel 1: um video por aspecto do campus, em grade */
+.reels-temas{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:clamp(12px,1.8vw,18px);
   margin-top:clamp(18px,2.6vw,26px)}
-.reels-fila{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
-@media (max-width:820px){
-  .reels-grid{grid-template-columns:1fr}
-  .reels-fila{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+.reel-tema{display:block}
+.reel--tema .reel-play{width:46px;height:46px}
+.reel--tema .reel-play svg{width:19px;height:19px}
+.reel--tema .reel-txt b{font-size:.92rem}
+/* espaco reservado: so o administrador ve, como lembrete do que falta gravar */
+.reel-tema--vazio{border:2px dashed var(--line-strong);border-radius:var(--radius-lg);padding:16px 15px;
+  display:grid;gap:5px;align-content:center;aspect-ratio:9/16;background:var(--surface-2)}
+.reel-tema--vazio b{font-size:.95rem;font-weight:900;letter-spacing:-.01em}
+.reel-tema--vazio span{font-size:.82rem;color:var(--ink-soft);line-height:1.4}
+.reel-tema--vazio em{font-size:.72rem;color:var(--ink-faint);font-style:normal;margin-top:.3rem}
+.reels-admin{margin-top:14px;font-size:.84rem;color:var(--ink-faint);background:var(--surface-2);
+  border:1px dashed var(--line-strong);border-radius:12px;padding:10px 14px}
+.reels-admin code{background:var(--ground);padding:.1em .45em;border-radius:5px;font-size:.94em}
+@media (max-width:520px){
+  .reels-temas{grid-template-columns:1fr 1fr;gap:10px}
+  .reel-tema--vazio{padding:12px}
+  .reel-tema--vazio span{font-size:.76rem}
 }
 
 /* nivel 2: o reel ocupa a coluna alta do mosaico */
