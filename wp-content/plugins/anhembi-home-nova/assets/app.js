@@ -84,8 +84,36 @@
     {chip:'Na mídia',c:'#4a5f59',date:'Portal Band',title:'Anhembi na imprensa',sub:'Direito em pauta',desc:'A Feira de Direito Constitucional da faculdade debateu os direitos da criança em Sorocaba e virou notícia nos principais veículos da região.',cta:'Ler a notícia'},
     {chip:'Evento',c:'#84bc45',date:'15 de agosto',title:'Hands On',sub:'Comunicação e negócios na prática',desc:'Workshops abertos à comunidade, com profissionais do mercado, reunindo alunos e quem quer conhecer as áreas de comunicação e negócios.',cta:'Quero participar'}
   ];
+  /* os eventos cadastrados no painel mandam: cada card leva ao proprio link de
+     inscricao. Sem evento aberto, valem os cartoes institucionais acima. */
+  var dadosAcontece=document.getElementById('aconteceData');
+  if(dadosAcontece){
+    try{
+      var reais=JSON.parse(dadosAcontece.textContent||'[]');
+      if(reais.length)ITEMS=reais.concat(ITEMS.filter(function(i){return !/vaga|presen|participar/i.test(i.cta);}));
+    }catch(err){}
+  }
+
   var rail=document.getElementById('rail');
   var ov=document.getElementById('ov');
+  /* destinos dos cartoes institucionais: saem dos proprios links do site,
+     para o preview estatico (caminhos relativos) continuar funcionando */
+  function achaLink(padrao){
+    var a=[].slice.call(document.querySelectorAll('#hdr a,.mobmenu a')).filter(function(x){
+      return padrao.test(x.getAttribute('href')||'');
+    })[0];
+    return a?a.href:'';
+  }
+  var mMore=document.getElementById('m-more');
+  var ACONTECE_EVENTOS=(mMore&&mMore.href)||achaLink(/eventos/);
+  var AC_PADRAO={
+    'Fazer inscrição':achaLink(/vestibular/),
+    'Ler a notícia':achaLink(/na-midia/),
+    'Ouvir agora':achaLink(/na-midia/),
+    'Confirmar presença':ACONTECE_EVENTOS,
+    'Quero participar':ACONTECE_EVENTOS,
+    'Garantir minha vaga':ACONTECE_EVENTOS
+  };
   function arrow(){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';}
   if(rail&&ov){
   ITEMS.forEach(function(it,i){
@@ -112,12 +140,17 @@
     document.getElementById('m-date').textContent=it.date;
     document.getElementById('m-title').textContent=it.title;
     document.getElementById('m-desc').textContent=it.desc;
-    document.getElementById('m-link').textContent=it.cta;
+    var link=document.getElementById('m-link');
+    link.textContent=it.cta;
+    /* o botao leva ao destino do proprio card: inscricao externa, pagina do
+       evento ou a secao correspondente do site */
+    link.href=it.url||AC_PADRAO[it.cta]||ACONTECE_EVENTOS;
+    if(it.ext){link.target='_blank';link.rel='noopener';}
+    else{link.removeAttribute('target');link.removeAttribute('rel');}
     ov.classList.add('on');document.body.style.overflow='hidden';
   }
   function closeModal(){ov.classList.remove('on');document.body.style.overflow='';}
   document.getElementById('mclose').addEventListener('click',closeModal);
-  document.getElementById('m-more').addEventListener('click',closeModal);
   ov.addEventListener('click',function(e){if(e.target===ov)closeModal();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 
