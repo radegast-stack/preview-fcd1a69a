@@ -400,6 +400,10 @@
       f.allowFullscreen=true;
       if(botao.classList.contains('tour-play')){
         var moldura=botao.parentNode;moldura.innerHTML='';moldura.appendChild(f);
+      }else if(botao.classList.contains('reel-fachada')){
+        /* reel: o player fica no mesmo formato vertical da fachada */
+        var vert=document.createElement('div');vert.className='reel-frame';vert.appendChild(f);
+        botao.parentNode.replaceChild(vert,botao);
       }else{
         var caixa=document.createElement('div');caixa.className='yt-frame';caixa.appendChild(f);
         botao.parentNode.replaceChild(caixa,botao);
