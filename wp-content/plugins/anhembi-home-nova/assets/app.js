@@ -626,6 +626,17 @@
     return visiveis;
   }
 
+  /* Agenda de eventos no celular: cada linha abre o card completo abaixo dela.
+     No desktop a barra está com display:none, então nada disso roda. */
+  document.querySelectorAll('.ag-linha').forEach(function(barra){
+    barra.addEventListener('click', function(){
+      var card = barra.closest('.ag-card');
+      if (!card) return;
+      var abriu = card.classList.toggle('aberto');
+      barra.setAttribute('aria-expanded', abriu ? 'true' : 'false');
+    });
+  });
+
   montaFiltro(document.getElementById('evGrid'),'.ev-card',
               [{barra:document.getElementById('evFiltros')}],
               document.getElementById('evConta'),['edição','edições']);

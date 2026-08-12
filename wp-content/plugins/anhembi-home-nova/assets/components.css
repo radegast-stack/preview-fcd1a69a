@@ -954,6 +954,8 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .feed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:clamp(14px,2vw,22px)}
 .ag-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;
   display:flex;flex-direction:column}
+.ag-corpo{display:flex;flex-direction:column;flex:1}
+.ag-linha{display:none} /* só existe no celular; ver o bloco de lista lá embaixo */
 .ag-capa{position:relative;aspect-ratio:16/10;background:var(--surface-2);overflow:hidden}
 .ag-capa img{width:100%;height:100%;object-fit:cover;display:block}
 /* fundo do cartaz quando o evento ainda não tem arte de divulgação */
@@ -978,7 +980,7 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .ag-card--capa .ag-selo{padding:12px 17px 10px}
 .ag-card--capa .ag-selo b{font-size:1.8rem}
 @media(min-width:900px){
-  .ag-card--capa{flex-direction:row}
+  .ag-card--capa .ag-corpo{flex-direction:row}
   /* teto de altura: cartaz quadrado numa coluna larga faria um card de 600px */
   .ag-card--capa .ag-capa{flex:0 0 46%;aspect-ratio:auto}
   .ag-card--capa .ag-capa img{max-height:430px}
@@ -999,6 +1001,53 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .ag-pub--restrito{background:#fdf1e8;color:#8c4a12}
 .ag-resumo{margin:0;font-size:.9rem;line-height:1.5;color:var(--ink-soft)}
 .ag-txt .btn{justify-self:start;margin-top:auto}
+
+/* ===== no celular o feed vira agenda: uma linha por evento, tudo numa tela =====
+   O card inteiro continua no HTML; aqui ele fica escondido até a linha ser tocada. */
+@media(max-width:699px){
+  .feed-grid{grid-template-columns:1fr;gap:0;background:var(--surface);
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .ag-card{border:0;border-radius:0;border-bottom:1px solid var(--line);background:none}
+  .feed-grid .ag-card:last-child{border-bottom:0}
+  .ag-linha{display:grid;grid-template-columns:44px 62px 1fr 18px;gap:11px;align-items:center;
+    width:100%;text-align:left;background:none;border:0;padding:13px 14px;color:inherit;cursor:pointer;
+    font-family:inherit;-webkit-tap-highlight-color:transparent}
+  .ag-linha-data{display:grid;justify-items:center;line-height:1;color:var(--brand-deep)}
+  .ag-linha-data b{font-size:1.15rem;font-weight:900;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+  .ag-linha-data i{font-style:normal;font-size:.6rem;font-weight:900;letter-spacing:.09em;
+    margin-top:3px;color:var(--ink-faint)}
+  .ag-mini{width:62px;height:54px;border-radius:10px;overflow:hidden;background:var(--surface-3);display:block}
+  .ag-mini img{width:100%;height:100%;object-fit:cover;display:block}
+  .ag-mini-vazia{display:block;width:100%;height:100%;
+    background:linear-gradient(135deg,var(--brand-deep),color-mix(in srgb,var(--brand-deep) 70%,#000))}
+  .ag-linha-txt{min-width:0;display:grid;gap:3px}
+  .ag-linha-txt>b{font-size:.94rem;font-weight:900;letter-spacing:-.02em;line-height:1.18}
+  .ag-meta{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;font-size:.72rem;color:var(--ink-faint)}
+  .ag-meta-st{font-weight:900}
+  .ag-meta-st--ok{color:var(--brand)}
+  .ag-meta-st--breve{color:#8c4a12}
+  .ag-meta-pub{position:relative;padding-left:11px}
+  .ag-meta-pub::before{content:"";position:absolute;left:0;top:.42em;width:3px;height:3px;
+    border-radius:99px;background:var(--line-strong)}
+  .ag-dica{font-size:.72rem;font-weight:900;color:var(--brand);margin-top:2px}
+  .ag-chev{width:18px;height:18px;color:var(--ink-faint);transition:transform .22s ease}
+  .ag-corpo{display:none}
+  .ag-card.aberto .ag-corpo{display:flex}
+  .ag-card.aberto .ag-chev{transform:rotate(180deg)}
+  .ag-card.aberto .ag-dica{display:none}
+  .ag-card.aberto .ag-linha{padding-bottom:4px}
+  /* aberto, o cartaz aparece inteiro e a ficha completa vem abaixo */
+  .ag-corpo .ag-capa{aspect-ratio:4/3;margin:0 14px;border-radius:12px}
+  .ag-corpo .ag-capa img{object-fit:contain}
+  /* nada se repete entre a linha e o card aberto
+     (o seletor do público precisa do filho: .ag-ficha>div já define display) */
+  .ag-corpo .ag-selo,
+  .ag-corpo .ag-status,
+  .ag-ficha>.ag-ficha-pub{display:none}
+  .ag-txt{padding:14px}
+  .ag-txt h3{display:none} /* o título já está na linha */
+  .ag-card--capa .ag-txt h3{font-size:1.18rem}
+}
 /* ===== histórico: registro, não convite — lista compacta no fim da página ===== */
 .ev-hist{background:var(--surface-2);border-top:1px solid var(--line);padding:clamp(34px,4.4vw,58px) 0}
 .hist-top{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap}
