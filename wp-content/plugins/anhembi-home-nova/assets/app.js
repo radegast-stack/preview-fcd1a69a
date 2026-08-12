@@ -464,7 +464,8 @@
   function montaFiltro(grade,seletorItem,grupos,conta,unidade,extra){
     if(!grade)return null;
     extra=extra||{};
-    grupos=(grupos||[]).filter(function(g){return g&&g.barra;});
+    /* grupo sem barra e legitimo: chega pela URL e aparece so na linha de estado */
+    grupos=(grupos||[]).filter(function(g){return g&&(g.barra||g.chave);});
     if(!grupos.length&&!extra.busca)return null;
     var itens=[].slice.call(grade.querySelectorAll(seletorItem));
     function normaliza(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
@@ -480,8 +481,8 @@
     grupos.forEach(function(g){
       g.attr=g.attr||'data-cat';
       g.valor='tudo';
-      g.sel=g.barra.tagName==='SELECT';
-      if(!g.sel)g.chips=[].slice.call(g.barra.querySelectorAll('.gal-f'));
+      g.sel=!!g.barra&&g.barra.tagName==='SELECT';
+      g.chips=(!g.sel&&g.barra)?[].slice.call(g.barra.querySelectorAll('.gal-f')):[];
     });
     function visiveis(){return itens.filter(function(b){return !b.classList.contains('off');});}
     function tem(b,g,valor){
@@ -503,7 +504,7 @@
     function rotuloDe(g){
       if(g.sel){var op=g.barra.querySelector('option[value="'+g.valor+'"]');return op?op.textContent:g.valor;}
       var f=g.chips.filter(function(c){return c.getAttribute('data-cat')===g.valor;})[0];
-      if(!f)return g.valor;
+      if(!f)return (g.rotulos&&g.rotulos[g.valor])||g.valor;
       var clone=f.cloneNode(true);
       [].slice.call(clone.querySelectorAll('.f-qtd,svg')).forEach(function(x){x.remove();});
       return clone.textContent.trim();
@@ -536,6 +537,7 @@
         b.classList.toggle('off',!(casaBusca(b)&&grupos.every(function(g){return casa(b,g);})));
       });
       grupos.forEach(function(g){
+        if(!g.barra)return;
         if(g.sel){
           [].slice.call(g.barra.options).forEach(function(op){
             op.disabled=(op.value!=='tudo'&&op.value!==g.valor&&quantos(g,op.value)===0);
@@ -596,6 +598,7 @@
       });
     }
     grupos.forEach(function(g){
+      if(!g.barra)return;
       if(g.sel){
         g.barra.addEventListener('change',function(){g.valor=g.barra.value;aplicar();});
         return;
@@ -665,7 +668,10 @@
   montaFiltro(document.getElementById('lcGrid'),'.curso-card',
               [{barra:document.getElementById('lcArea'),      chave:'area'},
                {barra:document.getElementById('lcGrauPills'), chave:'tipo',  attr:'data-grau'},
-               {barra:document.getElementById('lcTurnoPills'),chave:'turno', attr:'data-turno'}],
+               {barra:document.getElementById('lcTurnoPills'),chave:'turno', attr:'data-turno'},
+               /* sem barra propria: chega pelo link da home e sai pelo chip de estado */
+               {barra:null, chave:'mod', attr:'data-mod',
+                rotulos:{presencial:'Presencial', semipresencial:'Semipresencial'}}],
               document.getElementById('lcConta'),['curso','cursos'],
               {busca:document.getElementById('lcBusca'),
                vazio:document.getElementById('lcVazio'),
