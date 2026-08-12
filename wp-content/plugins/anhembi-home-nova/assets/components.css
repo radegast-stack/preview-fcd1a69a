@@ -946,13 +946,52 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
   .vdif-txt p{font-size:.85rem}
 }
 
-/* ===== agenda de eventos: o que ainda vai acontecer ganha ficha completa ===== */
-.agenda-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:clamp(14px,2vw,22px);
+/* ===== o feed: quem entra na página vê primeiro o que ainda vai acontecer ===== */
+.ev-topo{padding:clamp(26px,4vw,44px) 0 clamp(18px,2.4vw,26px)}
+.ev-topo .big-h{margin:.35rem 0 0}
+.ev-lead{color:var(--ink-soft);max-width:56ch;margin-top:.9rem;font-size:1.05rem;line-height:1.55}
+.feed-ev{padding-bottom:clamp(38px,5vw,64px)}
+.feed-cab{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  border-bottom:2px solid var(--ink);padding-bottom:12px}
+.feed-cab .big-h{margin:0;font-size:clamp(1.6rem,3.4vw,2.3rem)}
+.feed-conta{font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+.feed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:clamp(14px,2vw,22px);
   margin-top:clamp(20px,3vw,30px)}
 .ag-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;
   display:flex;flex-direction:column}
 .ag-capa{position:relative;aspect-ratio:16/10;background:var(--surface-2);overflow:hidden}
 .ag-capa img{width:100%;height:100%;object-fit:cover;display:block}
+/* fundo do cartaz quando o evento ainda não tem arte de divulgação */
+.ag-capa-vazia{position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--brand-deep) 0%,color-mix(in srgb,var(--brand-deep) 72%,#000) 100%)}
+.ag-capa-vazia::after{content:"";position:absolute;inset:0;opacity:.16;
+  background:repeating-linear-gradient(-45deg,#fff 0 2px,transparent 2px 13px)}
+/* selo de data: canto de cima, onde o cartaz costuma ter menos informação */
+.ag-selo{position:absolute;right:12px;top:12px;z-index:1;display:grid;justify-items:center;line-height:1;
+  background:#fff;color:var(--brand-deep);border-radius:12px;padding:9px 13px 8px;
+  box-shadow:0 6px 20px rgba(0,0,0,.22)}
+.ag-selo b{font-size:1.35rem;font-weight:900;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.ag-selo i{font-style:normal;font-size:.66rem;font-weight:900;letter-spacing:.1em;margin-top:3px;color:var(--ink-soft)}
+/* o primeiro do feed ocupa a linha inteira e mostra o cartaz por completo */
+.ag-card--capa{grid-column:1/-1}
+/* cartaz de divulgação costuma ser quadrado ou retrato: no celular o quadro
+   precisa ser alto o bastante para a arte não virar um selo no meio do fundo */
+.ag-card--capa .ag-capa{aspect-ratio:4/3;background:var(--brand-deep)}
+@media(min-width:700px){.ag-card--capa .ag-capa{aspect-ratio:16/9}}
+.ag-card--capa .ag-capa img{object-fit:contain}
+.ag-card--capa .ag-txt h3{font-size:clamp(1.4rem,2.6vw,1.9rem)}
+.ag-card--capa .ag-selo{padding:12px 17px 10px}
+.ag-card--capa .ag-selo b{font-size:1.8rem}
+@media(min-width:900px){
+  .ag-card--capa{flex-direction:row}
+  /* teto de altura: cartaz quadrado numa coluna larga faria um card de 600px */
+  .ag-card--capa .ag-capa{flex:0 0 46%;aspect-ratio:auto}
+  .ag-card--capa .ag-capa img{max-height:430px}
+  .ag-card--capa .ag-txt{padding:clamp(22px,2.6vw,34px);gap:14px;justify-content:center}
+}
+.ag-tag-breve{display:inline-block;background:var(--highlight);color:var(--highlight-ink);
+  border-radius:999px;padding:.18em .7em;font-size:.7rem;font-weight:900;letter-spacing:.06em;
+  text-transform:uppercase;margin-right:.5em;vertical-align:.08em}
 .ag-status{position:absolute;left:12px;top:12px;font-size:.72rem;font-weight:900;letter-spacing:.04em;
   border-radius:999px;padding:5px 12px;background:var(--brand-deep);color:#fff}
 .ag-status.breve{background:var(--highlight);color:var(--highlight-ink)}
@@ -969,10 +1008,25 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .ag-resumo{margin:0;font-size:.9rem;line-height:1.5;color:var(--ink-soft)}
 .ag-txt .btn{justify-self:start;margin-top:auto}
 .ag-aviso{font-size:.84rem;color:var(--ink-faint);border-top:1px dashed var(--line-strong);padding-top:10px;margin-top:auto}
-/* evento encerrado: registro discreto, sem link e sem convite */
-.ev-card--fim{cursor:default}
-.ev-card--fim .ev-foto img{filter:saturate(.72)}
-.ev-card--fim:hover{transform:none;box-shadow:none}
+/* ===== histórico: registro, não convite — lista compacta no fim da página ===== */
+.ev-hist{background:var(--surface-2);border-top:1px solid var(--line);padding:clamp(34px,4.4vw,58px) 0}
+.hist-top{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hist-top h2{margin:0;font-size:clamp(1.15rem,2.2vw,1.5rem);font-weight:900;letter-spacing:-.02em}
+.hist-top p{color:var(--ink-faint);max-width:52ch;margin:.5rem 0 0;font-size:.9rem;line-height:1.5}
+.hist-conta{font-size:.74rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+.ev-hist .gal-filtros{margin-top:clamp(14px,2vw,20px)}
+.hist-lista{list-style:none;margin:clamp(14px,2vw,20px) 0 0;padding:0;
+  border-top:1px solid var(--line);column-gap:clamp(22px,4vw,54px)}
+@media(min-width:820px){.hist-lista{columns:2}}
+/* herda .ev-card (o filtro casa por essa classe), então zera o visual de card */
+.hist-item{display:grid;grid-template-columns:86px 1fr;gap:4px 14px;align-items:baseline;
+  background:none;border:0;border-radius:0;box-shadow:none;transform:none;
+  padding:11px 0;border-bottom:1px solid var(--line);break-inside:avoid}
+.hist-quando{font-size:.72rem;font-weight:900;letter-spacing:.07em;color:var(--ink-faint);
+  font-variant-numeric:tabular-nums}
+.hist-item b{font-size:.96rem;font-weight:700;line-height:1.3}
+.hist-area{grid-column:2;font-size:.78rem;color:var(--ink-faint)}
+.hist-area:empty{display:none}
 
 /* ===== "os professores conhecem os alunos pelo nome" =====
    a frase sozinha vira slogan; aqui ela vem com o que muda na pratica. */
