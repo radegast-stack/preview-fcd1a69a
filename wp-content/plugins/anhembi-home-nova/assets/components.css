@@ -1092,10 +1092,12 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 /* a coluna de critério fica destacada como cabeçalho lateral */
 .graus-tab tbody th[scope="row"]{border-right:1px solid var(--line)}
 .gt-marca{text-align:center}
-.gt-sim{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:99px;
+/* .graus-tab td span pinta de cinza qualquer span da tabela e vence .gt-sim:
+   o check herdava currentColor cinza e sumia dentro do circulo verde */
+.graus-tab .gt-sim{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:99px;
   background:var(--brand);color:#fff}
-.gt-sim svg{width:15px;height:15px}
-.gt-nao{display:inline-block;color:var(--ink-faint);font-size:1.1rem;line-height:26px}
+.graus-tab .gt-sim svg{width:17px;height:17px;display:block}
+.graus-tab .gt-nao{display:inline-block;color:var(--ink-faint);font-size:1.3rem;line-height:28px}
 .graus-tab tfoot td{padding:clamp(14px,2vw,20px) clamp(10px,1.4vw,16px);border-top:2px solid var(--ink)}
 .graus-tab tfoot .btn{width:100%;justify-content:center;cursor:pointer}
 /* .graus-tab td span{display:block} venceria: o seletor precisa ser mais forte */
@@ -1560,6 +1562,13 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .cf-bolsa:hover{color:#fff}
 .cf-bolsa:hover svg{transform:translateX(3px)}
 
+/* dinheiro merece destaque: a faixa de bolsas sai do branco e vira lima */
+.bolsas-sec{background:var(--brand-lime);border-block:1px solid color-mix(in srgb,var(--brand-lime) 76%,#000)}
+.bolsas-sec .big-h,.bolsas-sec .bolsa-card b{color:#16290a}
+.bolsas-sec .bolsas-nota{color:#2b4416}
+.bolsas-sec .bolsas-nota b{color:#16290a}
+/* o botão verde sumia no lima: aqui ele fica escuro */
+.bolsas-sec .bolsas-cab .btn-lime{background:var(--brand-deep);color:#fff}
 .bolsas-cab{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(20px,3vw,28px)}
 .bolsas-nota{color:var(--ink-soft);margin-top:.7rem;max-width:56ch;font-size:.98rem}
 .bolsas-nota b{color:var(--ink)}
@@ -2102,4 +2111,40 @@ nav.main .subnav a:hover{background:var(--surface-2)}
   .nt-pre li::before{display:none}
   .nt-pre ul::before{content:"Depois de";align-self:center;font-size:.68rem;font-weight:900;
     letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint)}
+}
+
+/* ==========================================================================
+   ASSINATURA DOS CARDS
+   A dobra no canto inferior direito e a barra que cresce no hover nasceram nos
+   cards de modalidade da home (.modbox). Repetidas nos cards das outras
+   paginas, elas dao ao site uma marca propria em vez do card chapado padrao.
+   Cada card diz a sua cor em --c; sem isso, cai no verde da marca.
+   ========================================================================== */
+.curso-card,.serie-card,.sol-card,.hello-card,.bolsa-card,.ag-card,.atu-col{
+  --c:var(--brand);position:relative;overflow:hidden}
+.curso-card::after,.serie-card::after,.sol-card::after,.hello-card::after,
+.bolsa-card::after,.ag-card::after,.atu-col::after{
+  content:"";position:absolute;right:-24px;bottom:-24px;width:80px;height:80px;
+  background:var(--c);opacity:.1;clip-path:polygon(100% 0,0 100%,100% 100%);
+  transition:transform .24s cubic-bezier(.16,1,.3,1);pointer-events:none}
+a.curso-card:hover::after,a.serie-card:hover::after,a.sol-card:hover::after,
+.hello-card:hover::after,.ag-card:hover::after{transform:scale(1.35)}
+/* o card do teste de carreira ja e um bloco colorido inteiro: a dobra sumiria */
+.hello-card--teste::after{background:#fff;opacity:.14}
+/* cor propria de cada familia de card */
+.serie-card{--c:var(--action)}
+.bolsa-card{--c:var(--brand-deep)}
+.atu-col{--c:var(--brand-bright)}
+.sol-card{--c:var(--brand-deep)}
+/* barra lateral que cresce: so nos cards que levam a algum lugar */
+a.serie-card::before,a.sol-card::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c);z-index:2;
+  transform:scaleY(0);transform-origin:bottom;transition:transform .24s cubic-bezier(.16,1,.3,1)}
+a.serie-card:hover::before,a.sol-card:hover::before{transform:scaleY(1)}
+/* na listagem a barra ja existe no topo: ela ganha a cor da area do curso */
+.curso-card::before{background:var(--c)}
+@media(max-width:699px){.ag-card::after{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .curso-card::after,.serie-card::after,.sol-card::after,.hello-card::after,
+  .bolsa-card::after,.ag-card::after,.atu-col::after{transition:none}
 }
