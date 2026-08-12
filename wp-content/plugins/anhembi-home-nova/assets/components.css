@@ -951,12 +951,7 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .ev-topo .big-h{margin:.35rem 0 0}
 .ev-lead{color:var(--ink-soft);max-width:56ch;margin-top:.9rem;font-size:1.05rem;line-height:1.55}
 .feed-ev{padding-bottom:clamp(38px,5vw,64px)}
-.feed-cab{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  border-bottom:2px solid var(--ink);padding-bottom:12px}
-.feed-cab .big-h{margin:0;font-size:clamp(1.6rem,3.4vw,2.3rem)}
-.feed-conta{font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
-.feed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:clamp(14px,2vw,22px);
-  margin-top:clamp(20px,3vw,30px)}
+.feed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:clamp(14px,2vw,22px)}
 .ag-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;
   display:flex;flex-direction:column}
 .ag-capa{position:relative;aspect-ratio:16/10;background:var(--surface-2);overflow:hidden}
@@ -989,9 +984,6 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
   .ag-card--capa .ag-capa img{max-height:430px}
   .ag-card--capa .ag-txt{padding:clamp(22px,2.6vw,34px);gap:14px;justify-content:center}
 }
-.ag-tag-breve{display:inline-block;background:var(--highlight);color:var(--highlight-ink);
-  border-radius:999px;padding:.18em .7em;font-size:.7rem;font-weight:900;letter-spacing:.06em;
-  text-transform:uppercase;margin-right:.5em;vertical-align:.08em}
 .ag-status{position:absolute;left:12px;top:12px;font-size:.72rem;font-weight:900;letter-spacing:.04em;
   border-radius:999px;padding:5px 12px;background:var(--brand-deep);color:#fff}
 .ag-status.breve{background:var(--highlight);color:var(--highlight-ink)}
@@ -1007,7 +999,6 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .ag-pub--restrito{background:#fdf1e8;color:#8c4a12}
 .ag-resumo{margin:0;font-size:.9rem;line-height:1.5;color:var(--ink-soft)}
 .ag-txt .btn{justify-self:start;margin-top:auto}
-.ag-aviso{font-size:.84rem;color:var(--ink-faint);border-top:1px dashed var(--line-strong);padding-top:10px;margin-top:auto}
 /* ===== histórico: registro, não convite — lista compacta no fim da página ===== */
 .ev-hist{background:var(--surface-2);border-top:1px solid var(--line);padding:clamp(34px,4.4vw,58px) 0}
 .hist-top{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap}
