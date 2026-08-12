@@ -951,8 +951,12 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .lc-pills{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
 .lc-grupo{display:flex;gap:8px;flex-wrap:wrap}
 .f-qtd{font-weight:800;opacity:.65;font-size:.92em}
-.f-sol{width:1em;height:1em;margin-right:.35em;vertical-align:-.12em;color:#c99a06}
-.gal-f.on .f-sol{color:#ffd479}
+/* o simbolo do turno usa a mesma cor dos chips do card: sol quente, lua fria */
+.f-sol{width:1em;height:1em;margin-right:.35em;vertical-align:-.12em}
+.gal-f[data-cat="manha"] .f-sol,.gal-f[data-cat="integral"] .f-sol{color:#8a5c05}
+.gal-f[data-cat="tarde"] .f-sol{color:#8c4a12}
+.gal-f[data-cat="noite"] .f-sol{color:#2d4569}
+.gal-f.on .f-sol{color:#fff}
 /* opcao que zeraria: apagada e sem risco, mas legivel e focavel */
 .gal-f.sem-resultado{opacity:.55;filter:saturate(.4);text-decoration:none;cursor:not-allowed}
 .lc-estado{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0 2px}

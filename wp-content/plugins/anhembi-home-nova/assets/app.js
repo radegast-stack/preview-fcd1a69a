@@ -604,7 +604,7 @@
   montaFiltro(document.getElementById('lcGrid'),'.curso-card',
               [{barra:document.getElementById('lcArea'),      chave:'area'},
                {barra:document.getElementById('lcGrauPills'), chave:'tipo',  attr:'data-grau'},
-               {barra:document.getElementById('lcManha'),     chave:'turno', attr:'data-turno'}],
+               {barra:document.getElementById('lcTurnoPills'),chave:'turno', attr:'data-turno'}],
               document.getElementById('lcConta'),['curso','cursos'],
               {busca:document.getElementById('lcBusca'),
                vazio:document.getElementById('lcVazio'),
