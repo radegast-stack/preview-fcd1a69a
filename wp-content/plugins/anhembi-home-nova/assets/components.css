@@ -1021,14 +1021,30 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .sc-fotos--reel .sc-foto{position:relative;border-radius:var(--radius-lg);overflow:hidden;display:block}
 .sc-fotos--reel .sc-foto img{width:100%;height:100%;object-fit:cover;display:block}
 @media (max-width:700px){
+  /* segue em duas colunas: em largura cheia o 9:16 viraria meia tela de altura */
   .sc-fotos--reel{grid-template-columns:1fr 1fr}
-  .sc-fotos--reel .reel-fachada{grid-column:1/-1;grid-row:auto;aspect-ratio:9/12;min-height:0}
 }
 
 /* nivel 3: tile vertical no fim da fileira de fotos do curso */
 .est-reel{display:block;max-width:200px}
-@media (max-width:700px){.est-reel{max-width:none}}
-.hello-card--reel .reel-fachada{margin-top:auto;aspect-ratio:9/13}
+.hello-card--reel .reel-fachada{margin-top:auto;aspect-ratio:9/13;max-width:190px}
+
+/* no celular o tile vira faixa horizontal: capa pequena + texto, na mesma
+   altura dos cartoes vizinhos (o 9:16 de largura cheia dava 610px de altura) */
+@media (max-width:700px){
+  .est-reel{max-width:none}
+  .est-reel .reel-fachada,.hello-card--reel .reel-fachada{
+    aspect-ratio:auto;max-width:none;display:flex;align-items:center;gap:13px;padding:11px;
+    background:var(--ground);border:1px solid var(--line)}
+  .est-reel .reel-fachada::after,.hello-card--reel .reel-fachada::after{display:none}
+  .est-reel .reel-fachada img,.hello-card--reel .reel-fachada img{
+    position:relative;inset:auto;flex:none;width:78px;height:104px;border-radius:11px}
+  .est-reel .reel-play,.hello-card--reel .reel-play{left:50px;width:38px;height:38px}
+  .est-reel .reel-play svg,.hello-card--reel .reel-play svg{width:16px;height:16px}
+  .est-reel .reel-txt,.hello-card--reel .reel-txt{position:relative;inset:auto;padding:0;align-content:center;gap:3px}
+  .est-reel .reel-txt b,.hello-card--reel .reel-txt b{color:var(--ink);text-shadow:none;font-size:.98rem}
+  .est-reel .reel-txt span,.hello-card--reel .reel-txt span{color:var(--ink-soft);font-size:.8rem}
+}
 
 /* o player entra no lugar da fachada, no mesmo formato vertical */
 .reel-frame{position:relative;width:100%;aspect-ratio:9/16;border-radius:var(--radius-lg);overflow:hidden;background:#000}
