@@ -874,12 +874,25 @@ a.serie-card:hover .serie-go svg{transform:translateX(4px)}
 .hello-card .btn{justify-self:start;margin-top:1rem}
 
 .guias-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:clamp(22px,3vw,32px)}
-.guia-card{display:grid;gap:.5rem;align-content:space-between;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand-lime);border-radius:16px;padding:20px 22px;color:inherit;min-height:120px;transition:transform .2s cubic-bezier(.16,1,.3,1),border-color .2s,box-shadow .2s}
-.guia-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-sm);border-left-color:var(--brand)}
-.guia-card b{font-size:1.06rem;line-height:1.2}
-.guia-card span{color:var(--brand);font-weight:900;font-size:.86rem;display:inline-flex;align-items:center;gap:.4em}
-.guia-card span svg{width:14px;height:14px;transition:transform .2s}
-.guia-card:hover span svg{transform:translateX(4px)}
+/* cada guia entra pela foto do espaco onde aquela area estuda */
+.guia-card{--c:var(--brand-lime);position:relative;display:flex;flex-direction:column;background:var(--surface);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;color:inherit;
+  transition:transform .2s cubic-bezier(.16,1,.3,1),border-color .2s,box-shadow .2s}
+.guia-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-sm);border-color:var(--brand)}
+.guia-capa{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:var(--surface-3)}
+.guia-capa img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.guia-card:hover .guia-capa img{transform:scale(1.05)}
+.guia-capa::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 45%,rgba(0,32,27,.55))}
+.guia-selo{position:absolute;left:11px;top:11px;z-index:1;font-size:.63rem;font-weight:900;
+  letter-spacing:.07em;text-transform:uppercase;background:var(--brand-lime);color:#16290a;
+  border-radius:999px;padding:.34em .75em}
+.guia-txt{display:grid;gap:.45rem;align-content:space-between;padding:16px 18px 18px;flex:1}
+.guia-card b{font-size:1.06rem;line-height:1.18;font-weight:900;letter-spacing:-.02em}
+.guia-ir{color:var(--brand);font-weight:900;font-size:.86rem;display:inline-flex;align-items:center;gap:.4em}
+.guia-ir svg{width:14px;height:14px;transition:transform .2s}
+.guia-card:hover .guia-ir svg{transform:translateX(4px)}
 
 .obrigado{background:linear-gradient(145deg,var(--brand-deep),var(--brand) 60%,var(--brand-bright));color:#eafaf6;padding:clamp(46px,7vw,86px) 0;text-align:center}
 .obrigado .big-h{color:#fff;max-width:18ch;margin:1.2rem auto .8rem}
@@ -2122,15 +2135,15 @@ nav.main .subnav a:hover{background:var(--surface-2)}
    paginas, elas dao ao site uma marca propria em vez do card chapado padrao.
    Cada card diz a sua cor em --c; sem isso, cai no verde da marca.
    ========================================================================== */
-.curso-card,.serie-card,.sol-card,.hello-card,.bolsa-card,.ag-card,.atu-col{
+.curso-card,.serie-card,.sol-card,.hello-card,.bolsa-card,.ag-card,.atu-col,.guia-card{
   --c:var(--brand);position:relative;overflow:hidden}
 .curso-card::after,.serie-card::after,.sol-card::after,.hello-card::after,
-.bolsa-card::after,.ag-card::after,.atu-col::after{
+.bolsa-card::after,.ag-card::after,.atu-col::after,.guia-card::after{
   content:"";position:absolute;right:-24px;bottom:-24px;width:80px;height:80px;
   background:var(--c);opacity:.1;clip-path:polygon(100% 0,0 100%,100% 100%);
   transition:transform .24s cubic-bezier(.16,1,.3,1);pointer-events:none}
 a.curso-card:hover::after,a.serie-card:hover::after,a.sol-card:hover::after,
-.hello-card:hover::after,.ag-card:hover::after{transform:scale(1.35)}
+.hello-card:hover::after,.ag-card:hover::after,a.guia-card:hover::after{transform:scale(1.35)}
 /* o card do teste de carreira ja e um bloco colorido inteiro: a dobra sumiria */
 .hello-card--teste::after{background:#fff;opacity:.14}
 /* cor propria de cada familia de card */
