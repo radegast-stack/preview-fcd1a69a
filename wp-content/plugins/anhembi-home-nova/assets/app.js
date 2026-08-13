@@ -561,10 +561,19 @@
       });
       var n=visiveis().length;
       if(conta){
-        /* "1 de 34 cursos": no recorte o plural segue o total */
-        conta.textContent=n===itens.length
-          ?n+' '+(n===1?unidade[0]:unidade[1])
-          :n+' de '+itens.length+' '+unidade[1];
+        var recorte=n!==itens.length;
+        /* com contaSoFiltrado, o numero so aparece quando ha filtro: o total do
+           catalogo em repouso nao ajuda quem esta escolhendo curso */
+        if(extra.contaSoFiltrado&&!recorte){
+          conta.hidden=true;
+          conta.textContent='';
+        }else{
+          conta.hidden=false;
+          /* "1 de 34 cursos": no recorte o plural segue o total */
+          conta.textContent=recorte
+            ?n+' de '+itens.length+' '+unidade[1]
+            :n+' '+(n===1?unidade[0]:unidade[1]);
+        }
       }
       if(extra.vazio){
         extra.vazio.hidden=n>0;
@@ -678,7 +687,7 @@
                vazioTexto:document.getElementById('lcVazioTexto'),
                limpar:document.getElementById('lcLimpar'),
                estado:document.getElementById('lcEstado'),
-               contagens:true,url:true});
+               contagens:false,contaSoFiltrado:true,url:true});
 
 
   /* galeria do campus: filtro por categoria + lightbox (sem dependencia externa) */
